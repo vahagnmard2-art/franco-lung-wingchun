@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
+import FadeIn from "@/components/FadeIn";
 
 const testimonials = [
   {
@@ -21,6 +22,15 @@ export default function HomePage() {
     <>
       {/* ─── HERO ──────────────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background photo — very subtle under the gradient */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/sifu-action.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          style={{ opacity: 0.12 }}
+        />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,_#1e1400_0%,_#080808_65%)]" />
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -73,17 +83,19 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
             {/* Photo */}
-            <div className="relative aspect-[3/4] overflow-hidden">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/sifu-portrait.jpg"
-                alt="Grandmaster Franco Lung"
-                className="absolute inset-0 w-full h-full object-cover object-top"
-              />
-            </div>
+            <FadeIn direction="left">
+              <div className="relative aspect-[3/4] overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/sifu-portrait.jpg"
+                  alt="Grandmaster Franco Lung"
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                />
+              </div>
+            </FadeIn>
 
             {/* Text */}
-            <div>
+            <FadeIn direction="right" delay={0.15}>
               <p className="font-cinzel text-[10px] tracking-ultra text-gold/70 uppercase mb-4">
                 About the Grandmaster
               </p>
@@ -106,13 +118,63 @@ export default function HomePage() {
               <Link href="/about" className="btn-outline inline-flex items-center gap-3">
                 Full Biography <ArrowRight size={14} />
               </Link>
-            </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── WHY TRAIN HERE ───────────────────────────────────────────────── */}
+      <section className="section-pad bg-ink">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+              What Sets Us Apart
+            </p>
+            <h2 className="font-cinzel text-3xl md:text-4xl font-bold text-white tracking-wide">
+              Why Train at <span className="text-gold">Franco Lung</span>
+            </h2>
+            <div className="gold-line mx-auto w-24 mt-6" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: "✦",
+                title: "Direct Hong Kong Lineage",
+                desc: "GM Lung trained under Wong Shun Leung, Wan Kam Leung, and Hawkins Cheung — the most celebrated Wing Chun masters of the modern era.",
+              },
+              {
+                icon: "◈",
+                title: "Internal System",
+                desc: "Most schools teach only external mechanics. GM Lung's curriculum unlocks the energetic \"Software\" — the internal dimension that separates advanced practitioners.",
+              },
+              {
+                icon: "◇",
+                title: "All Levels Welcome",
+                desc: "From children as young as five to experienced martial artists, every class is taught with the same depth and personal attention.",
+              },
+              {
+                icon: "○",
+                title: "Small Class Sizes",
+                desc: "Classes are intentionally kept small so that every student receives real guidance from Grandmaster Lung himself — not just group observation.",
+              },
+            ].map((item, i) => (
+              <FadeIn key={item.title} delay={i * 0.1}>
+                <div className="card-base p-8 flex flex-col items-start h-full">
+                  <span className="text-gold text-2xl mb-5 leading-none">{item.icon}</span>
+                  <h3 className="font-cinzel text-sm font-semibold text-white tracking-wide mb-3 leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="text-white/45 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ─── TESTIMONIALS ─────────────────────────────────────────────────── */}
-      <section className="section-pad bg-ink">
+      <section className="section-pad bg-ink-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
@@ -126,17 +188,22 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
-              <div key={i} className="card-base p-8 flex flex-col">
-                <div className="flex gap-1 mb-5">
-                  {Array.from({ length: t.stars }).map((_, j) => (
-                    <Star key={j} size={13} className="text-gold fill-gold" />
-                  ))}
+              <FadeIn key={i} delay={i * 0.12}>
+                <div className="card-base p-8 flex flex-col h-full">
+                  <div className="flex gap-1 mb-5">
+                    {Array.from({ length: t.stars }).map((_, j) => (
+                      <Star key={j} size={13} className="text-gold fill-gold" />
+                    ))}
+                  </div>
+                  <p className="text-white/55 text-sm leading-relaxed flex-1 mb-6 italic">
+                    &ldquo;{t.text}&rdquo;
+                  </p>
+                  <span className="gold-line-short !w-8 mb-3" />
+                  <span className="font-cinzel text-[9px] tracking-ultra text-gold/40 uppercase">
+                    Verified Student
+                  </span>
                 </div>
-                <p className="text-white/55 text-sm leading-relaxed flex-1 mb-6 italic">
-                  &ldquo;{t.text}&rdquo;
-                </p>
-                <span className="gold-line-short !w-8" />
-              </div>
+              </FadeIn>
             ))}
           </div>
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Instagram, Facebook, Youtube } from "lucide-react";
+import { MapPin, Phone, Instagram, Facebook, Youtube } from "lucide-react";
 
 const navLinks = [
   { href: "/about",   label: "About" },
@@ -70,6 +70,13 @@ export default function Footer() {
                   5614 Rosemead Blvd<br />
                   Temple City, CA 91780
                 </span>
+              </a>
+              <a
+                href="tel:+16262332882"
+                className="flex items-center gap-3 text-sm text-white/40 hover:text-gold transition-colors duration-200 group"
+              >
+                <Phone size={15} className="text-gold flex-shrink-0 group-hover:scale-110 transition-transform" />
+                (626) 233-2882
               </a>
               <a
                 href="https://www.instagram.com/wingchunfrancolung"

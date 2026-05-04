@@ -71,7 +71,7 @@ const schedule = [
     classes: [
       { time: "11:00 AM – 12:30 PM", type: "Teen Class",  age: "Ages 11–16" },
       { time: "1:30 – 3:00 PM",      type: "Kids Class",  age: "Ages 6–10"  },
-      { time: "3:30 – 5:00 PM",      type: "Mix Class",   age: "Adult & Teens" },
+      { time: "3:30 – 5:00 PM",      type: "Mixed Adult & Teen",   age: "All Adults" },
     ],
   },
   {

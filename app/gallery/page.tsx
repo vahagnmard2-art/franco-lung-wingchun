@@ -1,8 +1,19 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import { Play } from "lucide-react";
 
 const photos = [
+  {
+    src: "/images/sifu-action.jpg",
+    alt: "GM Franco Lung demonstrating Wing Chun",
+    wide: false,
+    caption: "Grandmaster Lung",
+  },
   {
     src: "/images/class-training.jpg",
     alt: "Wing Chun class training",
@@ -27,25 +38,41 @@ const photos = [
     wide: true,
     caption: "Saturday Teen Class",
   },
+  {
+    src: "/images/sifu-portrait.jpg",
+    alt: "Grandmaster Franco Lung portrait",
+    wide: false,
+    caption: "Grandmaster Franco Lung",
+  },
 ];
 
-function PhotoCard({ photo }: { photo: typeof photos[0] }) {
+function PhotoCard({
+  photo,
+  index,
+  onOpen,
+}: {
+  photo: (typeof photos)[0];
+  index: number;
+  onOpen: (i: number) => void;
+}) {
   return (
     <div
-      className={`group relative bg-ink-200 border border-ink-400 hover:border-gold/40 transition-all duration-300 overflow-hidden ${
+      onClick={() => onOpen(index)}
+      className={`group relative bg-ink-200 border border-ink-400 hover:border-gold/40 transition-all duration-300 overflow-hidden cursor-zoom-in ${
         photo.wide ? "col-span-2" : ""
       }`}
       style={{ aspectRatio: photo.wide ? "2/1" : "1/1" }}
     >
-      {/* Real image — hides if file missing */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={photo.src}
         alt={photo.alt}
         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        onError={(e) => { e.currentTarget.style.display = "none"; }}
+        onError={(e) => {
+          e.currentTarget.style.display = "none";
+        }}
       />
-      {/* Fallback shown behind image (visible when image is missing) */}
+      {/* Fallback */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <span className="font-cinzel text-4xl text-gold/10">✦</span>
       </div>
@@ -63,6 +90,8 @@ function PhotoCard({ photo }: { photo: typeof photos[0] }) {
 }
 
 export default function GalleryPage() {
+  const [lightboxIndex, setLightboxIndex] = useState(-1);
+
   return (
     <>
       {/* Header */}
@@ -77,7 +106,7 @@ export default function GalleryPage() {
             <span className="text-gold">Gallery</span>
           </h1>
           <p className="text-white/40 text-sm leading-relaxed max-w-md mx-auto mt-6">
-            A glimpse into life at Franco Lung Wing Chun.
+            A glimpse into life at Franco Lung Wing Chun. Click any photo to view full size.
           </p>
           <div className="gold-line mx-auto w-24 mt-8" />
         </div>
@@ -87,8 +116,8 @@ export default function GalleryPage() {
       <section className="section-pad bg-ink-100">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {photos.map((photo) => (
-              <PhotoCard key={photo.src} photo={photo} />
+            {photos.map((photo, i) => (
+              <PhotoCard key={photo.src} photo={photo} index={i} onOpen={setLightboxIndex} />
             ))}
           </div>
 
@@ -122,27 +151,69 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* YouTube */}
-      <section className="py-20 bg-ink text-center px-6">
-        <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
-          Video
-        </p>
-        <h2 className="font-cinzel text-2xl font-bold text-white tracking-wide mb-4">
-          Watch GM Lung in <span className="text-gold">Action</span>
-        </h2>
-        <p className="text-white/40 text-sm max-w-sm mx-auto leading-relaxed mb-8">
-          Videos of GM Lung demonstrating Wing Chun techniques, Chi Sau, and his 3-level system
-          are available on YouTube.
-        </p>
-        <a
-          href="https://www.youtube.com/@FrancoLungWingChun"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-outline"
-        >
-          Visit YouTube Channel
-        </a>
+      {/* YouTube — cinematic card */}
+      <section className="section-pad bg-ink">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+              Video
+            </p>
+            <h2 className="font-cinzel text-2xl font-bold text-white tracking-wide">
+              Watch GM Lung in <span className="text-gold">Action</span>
+            </h2>
+          </div>
+
+          <a
+            href="https://www.youtube.com/@FrancoLungWingChun"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative block overflow-hidden border border-ink-400 hover:border-gold/40 transition-colors duration-300"
+            style={{ aspectRatio: "16/7" }}
+          >
+            {/* Background photo */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/class-training.jpg"
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              style={{ opacity: 0.35 }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/20" />
+
+            {/* Play button */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 z-10">
+              <div className="w-16 h-16 rounded-full border-2 border-gold/60 flex items-center justify-center group-hover:border-gold group-hover:bg-gold/10 transition-all duration-300">
+                <Play size={22} className="text-gold ml-1" />
+              </div>
+              <div className="text-center">
+                <p className="font-cinzel text-white tracking-wide text-sm mb-1">
+                  Franco Lung Wing Chun
+                </p>
+                <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase">
+                  Watch on YouTube ↗
+                </p>
+              </div>
+            </div>
+
+            {/* Corner accents */}
+            <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-gold/30 group-hover:border-gold/60 transition-colors" />
+            <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-gold/30 group-hover:border-gold/60 transition-colors" />
+          </a>
+        </div>
       </section>
+
+      {/* Lightbox */}
+      <Lightbox
+        open={lightboxIndex >= 0}
+        index={lightboxIndex}
+        close={() => setLightboxIndex(-1)}
+        slides={photos.map((p) => ({ src: p.src, alt: p.alt }))}
+        plugins={[Zoom]}
+        styles={{
+          container: { backgroundColor: "rgba(8,8,8,0.97)" },
+        }}
+      />
 
       {/* CTA */}
       <section className="py-16 bg-ink-100 text-center px-6 border-t border-ink-400">

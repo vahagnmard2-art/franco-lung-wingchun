@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 const links = [
   { href: "/about",   label: "About" },
   { href: "/lineage", label: "Lineage" },
-  { href: "/system",  label: "The System" },
+  { href: "/system",  label: "System" },
   { href: "/classes", label: "Classes" },
   { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
@@ -72,8 +72,8 @@ export default function Navbar() {
                 {label}
               </Link>
             ))}
-            <Link href="/classes" className="btn-gold text-[10px] ml-2">
-              Book Now
+            <Link href="/contact" className="btn-gold text-[10px] ml-2">
+              Get Started
             </Link>
           </div>
 
@@ -109,8 +109,8 @@ export default function Navbar() {
           </Link>
         ))}
         <div className="gold-line w-24 mt-10 mb-8" />
-        <Link href="/classes" className="btn-gold" onClick={() => setOpen(false)}>
-          Book a Class
+        <Link href="/contact" className="btn-gold" onClick={() => setOpen(false)}>
+          Get Started
         </Link>
       </div>
     </>

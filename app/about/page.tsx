@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
   title: "About",
@@ -175,7 +176,8 @@ export default function AboutPage() {
 
             <div className="space-y-10">
               {timeline.map((item, i) => (
-                <div key={i} className="flex gap-0 md:gap-8 flex-col md:flex-row">
+                <FadeIn key={i} delay={i * 0.08}>
+                <div className="flex gap-0 md:gap-8 flex-col md:flex-row">
                   {/* Year */}
                   <div className="w-28 flex-shrink-0 text-right hidden md:block">
                     <span className="font-cinzel text-xs text-gold tracking-wide">{item.year}</span>
@@ -195,6 +197,7 @@ export default function AboutPage() {
                     <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
+                </FadeIn>
               ))}
             </div>
           </div>

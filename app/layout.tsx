@@ -3,6 +3,7 @@ import { Cinzel, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -43,6 +44,39 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "MartialArtsSchool",
+  name: "Franco Lung Wing Chun",
+  description:
+    "Traditional Wing Chun Kung Fu school in Temple City, CA. Train with Grandmaster Franco Lung — direct lineage from Hong Kong's greatest masters.",
+  url: "https://francolungwingchun.com",
+  telephone: "+16262332882",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "5614 Rosemead Blvd",
+    addressLocality: "Temple City",
+    addressRegion: "CA",
+    postalCode: "91780",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 34.0988,
+    longitude: -118.0573,
+  },
+  openingHoursSpecification: [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "19:30", closes: "21:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "11:00", closes: "17:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "14:30", closes: "17:00" },
+  ],
+  sameAs: [
+    "https://www.instagram.com/wingchunfrancolung",
+    "https://www.facebook.com/FrancoLung",
+    "https://www.youtube.com/@FrancoLungWingChun",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -50,12 +84,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${cinzel.variable} ${inter.variable} font-inter bg-ink text-neutral-100 antialiased`}
       >
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
