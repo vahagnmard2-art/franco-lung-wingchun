@@ -63,14 +63,19 @@ export default function AboutPage() {
       <section className="section-pad bg-ink-100">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
-            {/* Portrait — replace inner div with <Image src="/images/certificate-ceremony.jpg" fill .../> once saved */}
+            {/* Portrait */}
             <div className="lg:col-span-2">
-              <div className="relative aspect-[3/4] bg-ink-200 border border-ink-400 overflow-hidden flex items-center justify-center">
-                <span className="font-cinzel text-[80px] text-gold/[0.07] tracking-ultra select-none">FL</span>
-                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold" />
-                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold" />
-                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-gold" />
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold" />
+              <div className="relative aspect-[3/4] border border-ink-400 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/sifu-action.jpg"
+                  alt="Grandmaster Franco Lung demonstrating Wing Chun"
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                />
+                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold z-10" />
+                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold z-10" />
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-gold z-10" />
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold z-10" />
               </div>
 
               {/* Quick facts */}
