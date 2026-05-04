@@ -1,29 +1,23 @@
-import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Gallery",
-  description:
-    "Photos from Grandmaster Franco Lung's Wing Chun school in Temple City, CA — classes, students, and the team.",
-};
+import Link from "next/link";
 
 const photos = [
   {
     src: "/images/class-training.jpg",
-    alt: "Wing Chun class training at Franco Lung Wing Chun",
+    alt: "Wing Chun class training",
     wide: true,
     caption: "Wing Chun Class in Action",
   },
   {
     src: "/images/certificate-ceremony.jpg",
-    alt: "Student certificate ceremony with Grandmaster Franco Lung",
+    alt: "Student certificate ceremony",
     wide: false,
     caption: "Student Achievement",
   },
   {
     src: "/images/team-group.jpg",
-    alt: "Franco Lung Wing Chun instructor team",
+    alt: "Franco Lung Wing Chun team",
     wide: false,
     caption: "The Team",
   },
@@ -34,6 +28,39 @@ const photos = [
     caption: "Saturday Teen Class",
   },
 ];
+
+function PhotoCard({ photo }: { photo: typeof photos[0] }) {
+  return (
+    <div
+      className={`group relative bg-ink-200 border border-ink-400 hover:border-gold/40 transition-all duration-300 overflow-hidden ${
+        photo.wide ? "col-span-2" : ""
+      }`}
+      style={{ aspectRatio: photo.wide ? "2/1" : "1/1" }}
+    >
+      {/* Real image — hides if file missing */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={photo.src}
+        alt={photo.alt}
+        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        onError={(e) => { e.currentTarget.style.display = "none"; }}
+      />
+      {/* Fallback shown behind image (visible when image is missing) */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <span className="font-cinzel text-4xl text-gold/10">✦</span>
+      </div>
+      {/* Caption overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 z-10">
+        <span className="font-cinzel text-[10px] tracking-widest text-gold uppercase">
+          {photo.caption}
+        </span>
+      </div>
+      {/* Corner accents */}
+      <div className="absolute top-0 left-0 w-5 h-5 border-t border-l border-gold/0 group-hover:border-gold/60 transition-colors duration-300 z-10" />
+      <div className="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-gold/0 group-hover:border-gold/60 transition-colors duration-300 z-10" />
+    </div>
+  );
+}
 
 export default function GalleryPage() {
   return (
@@ -61,30 +88,7 @@ export default function GalleryPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {photos.map((photo) => (
-              <div
-                key={photo.src}
-                className={`group relative bg-ink-200 border border-ink-400 hover:border-gold/40 transition-all duration-300 overflow-hidden ${
-                  photo.wide ? "col-span-2" : ""
-                }`}
-                style={{ aspectRatio: photo.wide ? "2/1" : "1/1" }}
-              >
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes={photo.wide ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 50vw, 33vw"}
-                />
-                {/* Caption overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="font-cinzel text-[10px] tracking-widest text-gold uppercase">
-                    {photo.caption}
-                  </span>
-                </div>
-                {/* Corner accents */}
-                <div className="absolute top-0 left-0 w-5 h-5 border-t border-l border-gold/0 group-hover:border-gold/60 transition-colors duration-300" />
-                <div className="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-gold/0 group-hover:border-gold/60 transition-colors duration-300" />
-              </div>
+              <PhotoCard key={photo.src} photo={photo} />
             ))}
           </div>
 

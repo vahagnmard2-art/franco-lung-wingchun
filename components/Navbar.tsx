@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
@@ -41,12 +40,14 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="group flex items-center gap-3 leading-none">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/images/logo.png"
-              alt="Franco Lung Wing Chun logo"
+              alt=""
               width={42}
               height={42}
               className="rounded-full opacity-85 group-hover:opacity-100 transition-opacity duration-200"
+              onError={(e) => { e.currentTarget.style.display = "none"; }}
             />
             <div className="flex flex-col">
               <span className="font-cinzel text-lg tracking-ultra text-white group-hover:text-gold transition-colors duration-200">
