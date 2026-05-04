@@ -59,15 +59,34 @@ const programs = [
   },
 ];
 
-// ⚠️  Update this schedule with the actual current schedule
 const schedule = [
-  { day: "Monday",    time: "—",           type: "Contact for availability" },
-  { day: "Tuesday",   time: "—",           type: "Contact for availability" },
-  { day: "Wednesday", time: "—",           type: "Contact for availability" },
-  { day: "Thursday",  time: "—",           type: "Contact for availability" },
-  { day: "Friday",    time: "—",           type: "Contact for availability" },
-  { day: "Saturday",  time: "—",           type: "Contact for availability" },
-  { day: "Sunday",    time: "Closed",      type: "" },
+  {
+    day: "Friday",
+    classes: [
+      { time: "7:30 – 9:00 PM",    type: "Adult Class",  age: "" },
+    ],
+  },
+  {
+    day: "Saturday",
+    classes: [
+      { time: "11:00 AM – 12:30 PM", type: "Teen Class",  age: "Ages 11–16" },
+      { time: "1:30 – 3:00 PM",      type: "Kids Class",  age: "Ages 6–10"  },
+      { time: "3:30 – 5:00 PM",      type: "Mix Class",   age: "Adult & Teens" },
+    ],
+  },
+  {
+    day: "Sunday",
+    classes: [
+      { time: "2:30 – 3:00 PM",  type: "Kids Class", age: "Ages 6–10" },
+      { time: "3:30 – 5:00 PM",  type: "Kids Class", age: "Ages 6–10" },
+    ],
+  },
+  {
+    day: "Mon – Thu",
+    classes: [
+      { time: "By Appointment", type: "Private Lessons", age: "Flexible" },
+    ],
+  },
 ];
 
 export default function ClassesPage() {
@@ -227,15 +246,28 @@ export default function ClassesPage() {
             {schedule.map((row, i) => (
               <div
                 key={row.day}
-                className={`flex items-center justify-between px-6 py-4 ${
-                  i < schedule.length - 1 ? "border-b border-ink-400" : ""
-                }`}
+                className={`${i < schedule.length - 1 ? "border-b border-ink-400" : ""}`}
               >
-                <span className="font-cinzel text-sm text-white/70 tracking-wide w-28">
-                  {row.day}
-                </span>
-                <span className="text-sm text-gold/70">{row.time}</span>
-                <span className="text-xs text-white/35 text-right">{row.type}</span>
+                {row.classes.map((cls, j) => (
+                  <div
+                    key={j}
+                    className={`flex items-center gap-4 px-6 py-4 ${
+                      j < row.classes.length - 1 ? "border-b border-ink-400/40" : ""
+                    }`}
+                  >
+                    {/* Day — only show on first row of each day */}
+                    <span className="font-cinzel text-sm text-white/70 tracking-wide w-24 flex-shrink-0">
+                      {j === 0 ? row.day : ""}
+                    </span>
+                    <span className="text-sm text-gold/80 w-44 flex-shrink-0">{cls.time}</span>
+                    <span className="text-sm text-white/60 flex-1">{cls.type}</span>
+                    {cls.age && (
+                      <span className="font-cinzel text-[10px] text-white/30 tracking-wide border border-ink-400 px-2 py-0.5 whitespace-nowrap hidden sm:block">
+                        {cls.age}
+                      </span>
+                    )}
+                  </div>
+                ))}
               </div>
             ))}
           </div>
