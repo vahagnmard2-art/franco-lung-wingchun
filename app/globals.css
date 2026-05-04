@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8CC7A;
+  --gold-dark: #9A7830;
+  --ink: #080808;
+  --ink-100: #111111;
+  --ink-200: #181818;
+  --ink-300: #222222;
+  --ink-400: #2a2a2a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--ink);
+  color: #f0f0f0;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+
+/* Utility classes */
+.section-pad {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+}
+
+.gold-line-short {
+  display: block;
+  height: 2px;
+  width: 48px;
+  background: var(--gold);
+}
+
+.card-base {
+  background: var(--ink-200);
+  border: 1px solid var(--ink-400);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-base:hover {
+  border-color: var(--gold-dark);
+  box-shadow: 0 0 24px rgba(201, 168, 76, 0.08);
+}
+
+/* Corner decoration for hero */
+.corner-tl, .corner-tr, .corner-bl, .corner-br {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0.4;
+}
+.corner-tl { top: 24px; left: 24px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+.corner-tr { top: 24px; right: 24px; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+.corner-bl { bottom: 24px; left: 24px; border-bottom: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+.corner-br { bottom: 24px; right: 24px; border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+
+/* Shimmer text animation */
+.text-shimmer {
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 25%, var(--gold) 50%, var(--gold-light) 75%, var(--gold) 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 5s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Staggered animation delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+
+/* Fade up utility */
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.7s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Page header hero common style */
+.page-hero {
+  padding-top: 10rem;
+  padding-bottom: 5rem;
+  background: radial-gradient(ellipse at top, #1a1200 0%, var(--ink) 60%);
+  border-bottom: 1px solid var(--ink-400);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Btn styles */
+.btn-gold {
+  display: inline-block;
+  background: var(--gold);
+  color: #080808;
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.btn-gold:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.btn-outline:hover {
+  background: var(--gold);
+  color: #080808;
+  transform: translateY(-1px);
+}
