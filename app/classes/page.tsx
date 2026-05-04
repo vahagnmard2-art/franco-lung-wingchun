@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
+import FAQAccordion from "@/components/FAQAccordion";
 
 export const metadata: Metadata = {
   title: "Classes & Schedule",
@@ -111,6 +112,58 @@ export default function ClassesPage() {
         </div>
       </div>
 
+      {/* Schedule — shown first so visitors confirm a time exists before seeing price */}
+      <section className="section-pad bg-ink-100">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+              Availability
+            </p>
+            <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
+              Class <span className="text-gold">Schedule</span>
+            </h2>
+            <p className="text-white/40 text-xs mt-3 tracking-wide">
+              Times subject to change — contact us for the most current schedule.
+            </p>
+            <div className="gold-line mx-auto w-24 mt-6" />
+          </div>
+
+          <div className="card-base overflow-hidden">
+            {schedule.map((row, i) => (
+              <div
+                key={row.day}
+                className={`${i < schedule.length - 1 ? "border-b border-ink-400" : ""}`}
+              >
+                {row.classes.map((cls, j) => (
+                  <div
+                    key={j}
+                    className={`flex items-center gap-4 px-6 py-4 ${
+                      j < row.classes.length - 1 ? "border-b border-ink-400/40" : ""
+                    }`}
+                  >
+                    <span className="font-cinzel text-sm text-white/70 tracking-wide w-24 flex-shrink-0">
+                      {j === 0 ? row.day : ""}
+                    </span>
+                    <span className="text-sm text-gold/80 w-44 flex-shrink-0">{cls.time}</span>
+                    <span className="text-sm text-white/60 flex-1">{cls.type}</span>
+                    {cls.age && (
+                      <span className="font-cinzel text-[10px] text-white/30 tracking-wide border border-ink-400 px-2 py-0.5 whitespace-nowrap hidden sm:block">
+                        {cls.age}
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+
+          <p className="text-white/30 text-xs text-center mt-6 leading-relaxed">
+            Private lessons are arranged directly with Sifu Lung and are available on a flexible
+            schedule. Contact us to arrange.
+          </p>
+        </div>
+      </section>
+
       {/* Pricing cards */}
       <section className="section-pad bg-ink-100">
         <div className="max-w-5xl mx-auto px-6">
@@ -152,7 +205,7 @@ export default function ClassesPage() {
                 ))}
               </ul>
               <Link href="/contact" className="btn-outline mt-8 text-center text-[10px]">
-                Ask About Schedule
+                Enquire Now
               </Link>
             </div>
 
@@ -226,59 +279,6 @@ export default function ClassesPage() {
         </div>
       </section>
 
-      {/* Schedule */}
-      <section className="section-pad bg-ink">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
-              Availability
-            </p>
-            <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
-              Class <span className="text-gold">Schedule</span>
-            </h2>
-            <p className="text-white/40 text-xs mt-3 tracking-wide">
-              Times subject to change — contact us for the most current schedule.
-            </p>
-            <div className="gold-line mx-auto w-24 mt-6" />
-          </div>
-
-          <div className="card-base overflow-hidden">
-            {schedule.map((row, i) => (
-              <div
-                key={row.day}
-                className={`${i < schedule.length - 1 ? "border-b border-ink-400" : ""}`}
-              >
-                {row.classes.map((cls, j) => (
-                  <div
-                    key={j}
-                    className={`flex items-center gap-4 px-6 py-4 ${
-                      j < row.classes.length - 1 ? "border-b border-ink-400/40" : ""
-                    }`}
-                  >
-                    {/* Day — only show on first row of each day */}
-                    <span className="font-cinzel text-sm text-white/70 tracking-wide w-24 flex-shrink-0">
-                      {j === 0 ? row.day : ""}
-                    </span>
-                    <span className="text-sm text-gold/80 w-44 flex-shrink-0">{cls.time}</span>
-                    <span className="text-sm text-white/60 flex-1">{cls.type}</span>
-                    {cls.age && (
-                      <span className="font-cinzel text-[10px] text-white/30 tracking-wide border border-ink-400 px-2 py-0.5 whitespace-nowrap hidden sm:block">
-                        {cls.age}
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-
-          <p className="text-white/30 text-xs text-center mt-6 leading-relaxed">
-            Private lessons are arranged directly with Sifu Lung and are available on a flexible
-            schedule. Contact us to arrange.
-          </p>
-        </div>
-      </section>
-
       {/* Programs */}
       <section className="section-pad bg-ink-100">
         <div className="max-w-5xl mx-auto px-6">
@@ -322,6 +322,28 @@ export default function ClassesPage() {
               Contact to Enroll
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section-pad bg-ink">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+              Questions
+            </p>
+            <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
+              Frequently Asked <span className="text-gold">Questions</span>
+            </h2>
+            <div className="gold-line mx-auto w-24 mt-6" />
+          </div>
+          <FAQAccordion />
+          <p className="text-center text-white/30 text-sm mt-10">
+            Don&apos;t see your question?{" "}
+            <Link href="/contact" className="text-gold/60 hover:text-gold transition-colors underline underline-offset-4">
+              Send us a message
+            </Link>
+          </p>
         </div>
       </section>
     </>

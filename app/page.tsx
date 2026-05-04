@@ -63,8 +63,8 @@ export default function HomePage() {
             <Link href="/system" className="btn-gold">
               Explore the System
             </Link>
-            <Link href="/contact" className="btn-outline">
-              Book a Class
+            <Link href="/classes" className="btn-outline">
+              View Classes
             </Link>
           </div>
         </div>
