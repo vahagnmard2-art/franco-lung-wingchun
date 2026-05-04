@@ -73,19 +73,13 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
             {/* Photo */}
-            <div className="relative">
-              <div className="aspect-[3/4] border border-ink-400 relative overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/sifu-action.jpg"
-                  alt="Grandmaster Franco Lung demonstrating Wing Chun"
-                  className="absolute inset-0 w-full h-full object-cover object-top"
-                />
-                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold z-10" />
-                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold z-10" />
-                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-gold z-10" />
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold z-10" />
-              </div>
+            <div className="relative aspect-[3/4] overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/sifu-portrait.jpg"
+                alt="Grandmaster Franco Lung"
+                className="absolute inset-0 w-full h-full object-cover object-top"
+              />
             </div>
 
             {/* Text */}
