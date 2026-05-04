@@ -137,20 +137,40 @@ export default function ClassesPage() {
                 {row.classes.map((cls, j) => (
                   <div
                     key={j}
-                    className={`flex items-center gap-4 px-6 py-4 ${
+                    className={`px-5 py-4 ${
                       j < row.classes.length - 1 ? "border-b border-ink-400/40" : ""
                     }`}
                   >
-                    <span className="font-cinzel text-sm text-white/70 tracking-wide w-24 flex-shrink-0">
-                      {j === 0 ? row.day : ""}
-                    </span>
-                    <span className="text-sm text-gold/80 w-44 flex-shrink-0">{cls.time}</span>
-                    <span className="text-sm text-white/60 flex-1">{cls.type}</span>
-                    {cls.age && (
-                      <span className="font-cinzel text-[10px] text-white/30 tracking-wide border border-ink-400 px-2 py-0.5 whitespace-nowrap hidden sm:block">
-                        {cls.age}
+                    {/* Mobile layout — stacked */}
+                    <div className="flex items-start justify-between gap-2 sm:hidden">
+                      <div>
+                        {j === 0 && (
+                          <p className="font-cinzel text-[10px] text-gold/60 tracking-widest uppercase mb-1">
+                            {row.day}
+                          </p>
+                        )}
+                        <p className="text-sm text-white/70">{cls.type}</p>
+                        <p className="text-xs text-gold/70 mt-0.5">{cls.time}</p>
+                      </div>
+                      {cls.age && (
+                        <span className="font-cinzel text-[9px] text-white/25 tracking-wide border border-ink-400 px-2 py-0.5 whitespace-nowrap flex-shrink-0 mt-0.5">
+                          {cls.age}
+                        </span>
+                      )}
+                    </div>
+                    {/* Desktop layout — horizontal */}
+                    <div className="hidden sm:flex items-center gap-4">
+                      <span className="font-cinzel text-sm text-white/70 tracking-wide w-24 flex-shrink-0">
+                        {j === 0 ? row.day : ""}
                       </span>
-                    )}
+                      <span className="text-sm text-gold/80 w-44 flex-shrink-0">{cls.time}</span>
+                      <span className="text-sm text-white/60 flex-1">{cls.type}</span>
+                      {cls.age && (
+                        <span className="font-cinzel text-[10px] text-white/30 tracking-wide border border-ink-400 px-2 py-0.5 whitespace-nowrap">
+                          {cls.age}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -165,7 +185,7 @@ export default function ClassesPage() {
       </section>
 
       {/* Pricing cards */}
-      <section className="section-pad bg-ink-100">
+      <section className="section-pad bg-ink">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">

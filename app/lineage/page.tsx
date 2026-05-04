@@ -74,7 +74,7 @@ export default function LineagePage() {
         <div className="max-w-3xl mx-auto px-6">
           <div className="flex flex-col items-center gap-0">
             {/* Ip Man */}
-            <div className="border border-gold/30 bg-ink-200 px-8 py-4 text-center">
+            <div className="border border-gold/30 bg-ink-200 px-4 sm:px-8 py-4 text-center w-full max-w-xs">
               <p className="font-cinzel text-[9px] tracking-ultra text-gold/50 uppercase mb-1">Origin</p>
               <p className="font-cinzel text-sm font-semibold text-white tracking-wide">
                 Grandmaster Ip Man 葉問
@@ -87,13 +87,13 @@ export default function LineagePage() {
             <div className="w-px h-8 bg-gold/20" />
 
             {/* 3 branches */}
-            <div className="grid grid-cols-3 gap-3 w-full relative">
+            <div className="grid grid-cols-3 gap-2 w-full relative">
               <div className="absolute top-0 left-[16.67%] right-[16.67%] h-px bg-gold/20" />
               {["Wong Shun Leung", "Wan Kam Leung", "Hawkins Cheung"].map((name) => (
                 <div key={name} className="flex flex-col items-center gap-0">
                   <div className="w-px h-6 bg-gold/20" />
-                  <div className="border border-gold/20 bg-ink-200 p-3 text-center w-full">
-                    <p className="font-cinzel text-[10px] text-white/70 tracking-wide leading-tight">
+                  <div className="border border-gold/20 bg-ink-200 p-2 text-center w-full">
+                    <p className="font-cinzel text-[9px] sm:text-[10px] text-white/70 tracking-wide leading-snug">
                       {name}
                     </p>
                   </div>
@@ -107,7 +107,7 @@ export default function LineagePage() {
             <div className="w-px h-8 bg-gold/20" />
 
             {/* Franco Lung */}
-            <div className="border border-gold bg-ink-200 px-10 py-5 text-center shadow-[0_0_30px_rgba(201,168,76,0.12)]">
+            <div className="border border-gold bg-ink-200 px-6 sm:px-10 py-5 text-center shadow-[0_0_30px_rgba(201,168,76,0.12)] w-full max-w-xs">
               <p className="font-cinzel text-[9px] tracking-ultra text-gold uppercase mb-1">
                 Grandmaster
               </p>

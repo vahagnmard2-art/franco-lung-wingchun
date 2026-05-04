@@ -55,6 +55,45 @@ export default function SystemPage() {
         </div>
       </div>
 
+      {/* What is Wing Chun */}
+      <section className="section-pad bg-ink">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Pull quote */}
+            <div className="border-l-2 border-gold pl-8">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-5">
+                The Art
+              </p>
+              <blockquote className="font-cinzel text-2xl md:text-3xl font-bold text-white tracking-wide leading-snug">
+                A system built for the smaller to defeat the larger. For intelligence to overcome force.
+              </blockquote>
+              <div className="gold-line-short mt-8" />
+            </div>
+            {/* Explanation */}
+            <div className="space-y-5 text-white/55 text-[15px] leading-relaxed">
+              <p>
+                Wing Chun (詠春) is a southern Chinese martial art developed roughly 300 years ago.
+                Unlike strength-based fighting systems, Wing Chun was designed around one core
+                principle: <span className="text-white/80">economy of structure over economy of effort</span>.
+                Every technique is built to work regardless of the practitioner&apos;s size, speed, or
+                raw physical power.
+              </p>
+              <p>
+                The system centers on the <span className="text-white/80">centerline theory</span> —
+                controlling the straight line between you and an opponent — combined with simultaneous
+                attack and defense, close-range sensitivity training (Chi Sau), and a deeply logical
+                progression of forms that encode its principles into muscle memory.
+              </p>
+              <p>
+                Wing Chun is best known in the West as the martial art that shaped{" "}
+                <span className="text-white/80">Bruce Lee</span> before he developed Jeet Kune Do.
+                Today it is one of the most practiced and seriously studied kung fu systems in the world.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 3 Levels */}
       <section className="section-pad bg-ink-100">
         <div className="max-w-6xl mx-auto px-6">
