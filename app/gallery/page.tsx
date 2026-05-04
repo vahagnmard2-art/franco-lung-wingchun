@@ -1,20 +1,39 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "Photos and media from Grandmaster Franco Lung's Wing Chun school in Temple City, CA.",
+    "Photos from Grandmaster Franco Lung's Wing Chun school in Temple City, CA — classes, students, and the team.",
 };
 
-// ⚠️  Replace these placeholder items with actual images.
-// Add your .jpg / .webp files to /public/images/ and update src accordingly.
-// Example: { src: "/images/sifu-demo.jpg", alt: "GM Lung demonstrating Chi Sau", span: "col-span-2" }
-const photos = Array.from({ length: 9 }, (_, i) => ({
-  id: i + 1,
-  label: `Photo ${i + 1}`,
-  wide: i === 0 || i === 5,
-}));
+const photos = [
+  {
+    src: "/images/class-training.jpg",
+    alt: "Wing Chun class training at Franco Lung Wing Chun",
+    wide: true,
+    caption: "Wing Chun Class in Action",
+  },
+  {
+    src: "/images/certificate-ceremony.jpg",
+    alt: "Student certificate ceremony with Grandmaster Franco Lung",
+    wide: false,
+    caption: "Student Achievement",
+  },
+  {
+    src: "/images/team-group.jpg",
+    alt: "Franco Lung Wing Chun instructor team",
+    wide: false,
+    caption: "The Team",
+  },
+  {
+    src: "/images/saturday-teen.jpg",
+    alt: "Saturday Teen Wing Chun class",
+    wide: true,
+    caption: "Saturday Teen Class",
+  },
+];
 
 export default function GalleryPage() {
   return (
@@ -40,43 +59,31 @@ export default function GalleryPage() {
       {/* Photo grid */}
       <section className="section-pad bg-ink-100">
         <div className="max-w-6xl mx-auto px-6">
-          {/* Instruction note — visible only in dev/edit mode. Remove before launch. */}
-          <div className="mb-10 border border-gold/20 bg-ink-200 p-5 text-center">
-            <p className="font-cinzel text-xs text-gold/60 tracking-wide mb-1">
-              How to add photos
-            </p>
-            <p className="text-white/40 text-xs leading-relaxed">
-              Add image files to{" "}
-              <code className="text-gold/70 font-mono">/public/images/</code> then update{" "}
-              <code className="text-gold/70 font-mono">app/gallery/page.tsx</code> to use{" "}
-              <code className="text-gold/70 font-mono">next/image</code> components. Replace the
-              placeholder divs below.
-            </p>
-          </div>
-
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {photos.map((photo) => (
               <div
-                key={photo.id}
-                className={`group relative bg-ink-200 border border-ink-400 hover:border-gold/30 transition-all duration-300 overflow-hidden ${
+                key={photo.src}
+                className={`group relative bg-ink-200 border border-ink-400 hover:border-gold/40 transition-all duration-300 overflow-hidden ${
                   photo.wide ? "col-span-2" : ""
                 }`}
                 style={{ aspectRatio: photo.wide ? "2/1" : "1/1" }}
               >
-                {/* Replace this entire div with next/image */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <span className="font-cinzel text-4xl text-gold/10 group-hover:text-gold/20 transition-colors">
-                      ✦
-                    </span>
-                    <p className="font-cinzel text-[10px] text-white/20 tracking-widest mt-2">
-                      {photo.label}
-                    </p>
-                  </div>
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes={photo.wide ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 50vw, 33vw"}
+                />
+                {/* Caption overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="font-cinzel text-[10px] tracking-widest text-gold uppercase">
+                    {photo.caption}
+                  </span>
                 </div>
-                {/* Gold corner on hover */}
-                <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-gold/0 group-hover:border-gold/40 transition-colors duration-300" />
-                <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-gold/0 group-hover:border-gold/40 transition-colors duration-300" />
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-5 h-5 border-t border-l border-gold/0 group-hover:border-gold/60 transition-colors duration-300" />
+                <div className="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-gold/0 group-hover:border-gold/60 transition-colors duration-300" />
               </div>
             ))}
           </div>
@@ -111,7 +118,7 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* YouTube teaser */}
+      {/* YouTube */}
       <section className="py-20 bg-ink text-center px-6">
         <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
           Video
@@ -131,9 +138,6 @@ export default function GalleryPage() {
         >
           Visit YouTube Channel
         </a>
-        <p className="text-white/20 text-xs mt-4">
-          ⚠️ Update the YouTube link above once you confirm the channel URL.
-        </p>
       </section>
 
       {/* CTA */}

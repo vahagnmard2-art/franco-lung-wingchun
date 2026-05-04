@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Instagram, Facebook, Youtube, Send, CheckCircle } from "lucide-react";
+import { MapPin, Phone, Instagram, Facebook, Youtube, Send, CheckCircle } from "lucide-react";
 
 // ⚠️  To enable real email delivery:
 // 1. Go to https://formspree.io and create a free account
@@ -109,16 +109,15 @@ export default function ContactPage() {
                   </div>
                 </a>
 
-                {/* ⚠️  Add phone number below once confirmed */}
-                {/* <a href="tel:+1XXXXXXXXXX" className="flex items-start gap-4 group">
+                <a href="tel:+16262332882" className="flex items-start gap-4 group">
                   <div className="w-9 h-9 border border-gold/30 flex items-center justify-center flex-shrink-0 group-hover:border-gold transition-colors">
                     <Phone size={14} className="text-gold" />
                   </div>
                   <div>
                     <p className="font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-1">Phone</p>
-                    <p className="text-sm text-white/60">(XXX) XXX-XXXX</p>
+                    <p className="text-sm text-white/60 group-hover:text-white/80 transition-colors">(626) 233-2882</p>
                   </div>
-                </a> */}
+                </a>
               </div>
 
               <span className="gold-line-short mb-8" />

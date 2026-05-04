@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
@@ -39,13 +40,22 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="group flex flex-col leading-none">
-            <span className="font-cinzel text-lg tracking-ultra text-white group-hover:text-gold transition-colors duration-200">
-              FRANCO <span className="text-gold">LUNG</span>
-            </span>
-            <span className="font-inter text-[9px] tracking-[0.45em] text-white/40 uppercase group-hover:text-gold/60 transition-colors duration-200">
-              Wing Chun
-            </span>
+          <Link href="/" className="group flex items-center gap-3 leading-none">
+            <Image
+              src="/images/logo.png"
+              alt="Franco Lung Wing Chun logo"
+              width={42}
+              height={42}
+              className="rounded-full opacity-85 group-hover:opacity-100 transition-opacity duration-200"
+            />
+            <div className="flex flex-col">
+              <span className="font-cinzel text-lg tracking-ultra text-white group-hover:text-gold transition-colors duration-200">
+                FRANCO <span className="text-gold">LUNG</span>
+              </span>
+              <span className="font-inter text-[9px] tracking-[0.45em] text-white/40 uppercase group-hover:text-gold/60 transition-colors duration-200">
+                Wing Chun
+              </span>
+            </div>
           </Link>
 
           {/* Desktop links */}

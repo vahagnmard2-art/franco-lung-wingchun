@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Instagram, Facebook, Youtube } from "lucide-react";
 
 const navLinks = [
@@ -17,13 +18,22 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-14">
           {/* Brand */}
           <div>
-            <Link href="/" className="inline-block mb-4">
-              <span className="font-cinzel text-xl tracking-ultra text-white">
-                FRANCO <span className="text-gold">LUNG</span>
-              </span>
-              <span className="block text-[10px] tracking-[0.45em] text-white/40 uppercase mt-1">
-                Wing Chun
-              </span>
+            <Link href="/" className="inline-flex items-center gap-4 mb-4">
+              <Image
+                src="/images/logo.png"
+                alt="Franco Lung Wing Chun"
+                width={64}
+                height={64}
+                className="rounded-full opacity-80 hover:opacity-100 transition-opacity"
+              />
+              <div>
+                <span className="font-cinzel text-xl tracking-ultra text-white block">
+                  FRANCO <span className="text-gold">LUNG</span>
+                </span>
+                <span className="text-[10px] tracking-[0.45em] text-white/40 uppercase block mt-1">
+                  Wing Chun
+                </span>
+              </div>
             </Link>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
               Over five decades of Wing Chun mastery. Training in Los Angeles

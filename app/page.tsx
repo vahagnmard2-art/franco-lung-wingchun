@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Star } from "lucide-react";
 
 const systemPillars = [
@@ -30,19 +31,19 @@ const systemPillars = [
 
 const testimonials = [
   {
-    name: "Michael T.",
+    name: "Google Review ★★★★★",
     stars: 5,
-    text: "Training with Grandmaster Lung is a transformative experience. His depth of knowledge and patient teaching style have taken my Wing Chun to a completely new level.",
+    text: "We love Franco Lung Wing Chun martial arts school. Both of my kids age 7 and 10 have been going for over a year now. They enjoy classes very much and have learned a lot. We are grateful we have found this place. Very nice, caring and supportive staff. Highly recommending to anyone. Thank you, Sifu Franco!",
   },
   {
-    name: "Sarah K.",
+    name: "Google Review ★★★★★",
     stars: 5,
-    text: "I've trained with several Wing Chun instructors, but Sifu Lung's system is something else entirely. The internal component he teaches is rarely found in the West.",
+    text: "If you're looking for a place to learn Self-Defense, Increase Confidence, and have Fun — Franco Lung Wing Chun is the place to go. Sifu Franco, Sifu Jason, and Sifu David teach Wing Chun in the most practical, minimalist, and easy way that anybody can understand. I'd recommend this place to anybody.",
   },
   {
-    name: "David R.",
+    name: "Google Review ★★★★★",
     stars: 5,
-    text: "My son started the Little Dragon Program two years ago and his confidence and discipline have grown tremendously. Sifu Lung is an extraordinary teacher.",
+    text: "Absolutely incredible! The detail Sifu teaches is second to none. Real explanation with practical application. You'll learn quickly and organically. I've found something special and couldn't be any happier. I'm truly starting to float while maintaining tremendous structure. So grateful to have met Sifu Franco Lung!",
   },
 ];
 
@@ -138,21 +139,21 @@ export default function HomePage() {
       <section className="section-pad bg-ink-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Photo placeholder */}
+            {/* Photo */}
             <div className="relative">
-              <div className="aspect-[3/4] bg-ink-200 border border-ink-400 flex items-center justify-center overflow-hidden">
-                {/* Replace <div> below with <Image> pointing to an actual photo */}
-                <div className="flex flex-col items-center justify-center gap-4">
-                  <span className="font-cinzel text-6xl text-gold/20 tracking-ultra">FL</span>
-                  <span className="font-inter text-xs text-white/20 tracking-widest">
-                    Photo Coming Soon
-                  </span>
-                </div>
-                {/* Gold accent corners on photo */}
-                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold" />
-                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold" />
-                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-gold" />
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold" />
+              <div className="relative aspect-[3/4] overflow-hidden border border-ink-400">
+                <Image
+                  src="/images/team-group.jpg"
+                  alt="Grandmaster Franco Lung with students"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+                {/* Gold accent corners */}
+                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold z-10" />
+                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold z-10" />
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-gold z-10" />
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold z-10" />
               </div>
             </div>
 

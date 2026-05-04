@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -65,15 +66,18 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
             {/* Portrait */}
             <div className="lg:col-span-2">
-              <div className="relative aspect-[3/4] bg-ink-200 border border-ink-400 flex items-center justify-center">
-                <div className="flex flex-col items-center gap-4">
-                  <span className="font-cinzel text-7xl text-gold/15 tracking-ultra">FL</span>
-                  <span className="font-inter text-xs text-white/20 tracking-widest">Photo</span>
-                </div>
-                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold" />
-                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold" />
-                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-gold" />
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold" />
+              <div className="relative aspect-[3/4] overflow-hidden border border-ink-400">
+                <Image
+                  src="/images/certificate-ceremony.jpg"
+                  alt="Grandmaster Franco Lung presenting a student certificate"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold z-10" />
+                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold z-10" />
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-gold z-10" />
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold z-10" />
               </div>
 
               {/* Quick facts */}
