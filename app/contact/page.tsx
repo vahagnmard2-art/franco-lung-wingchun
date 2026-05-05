@@ -3,18 +3,23 @@
 import { useState } from "react";
 import { MapPin, Phone, Instagram, Facebook, Youtube, Send, CheckCircle } from "lucide-react";
 
-// ⚠️  To enable real email delivery:
-// 1. Go to https://formspree.io and create a free account
-// 2. Create a new form — you'll get an ID like "xpzgkwqr"
-// 3. Replace the FORM_ID value below with your actual ID
-const FORMSPREE_ID = "YOUR_FORMSPREE_ID";
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/FrancoLungWingChunAcademy@gmail.com";
+
+const INTEREST_LABELS: Record<string, string> = {
+  group: "Group Classes",
+  "private-1hr": "Private Lesson (1 hr)",
+  "private-90min": "Private Lesson (90 min)",
+  children: "Children's Program",
+  fma: "Filipino Stick Fighting",
+  general: "General Inquiry",
+};
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    interest: "general",
+    interest: "group",
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -29,26 +34,24 @@ export default function ContactPage() {
     e.preventDefault();
     setStatus("sending");
 
-    if (FORMSPREE_ID === "YOUR_FORMSPREE_ID") {
-      // Fallback: open mail client if Formspree not configured yet
-      const subject = encodeURIComponent(`Wing Chun Inquiry from ${formData.name}`);
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nInterest: ${formData.interest}\n\n${formData.message}`
-      );
-      window.location.href = `mailto:info@francolungwingchun.com?subject=${subject}&body=${body}`;
-      setStatus("idle");
-      return;
-    }
-
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const res = await fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          Name: formData.name,
+          Email: formData.email,
+          Phone: formData.phone || "Not provided",
+          Interest: INTEREST_LABELS[formData.interest] ?? formData.interest,
+          Message: formData.message,
+          _subject: `Wing Chun Inquiry — ${formData.name}`,
+          _replyto: formData.email,
+          _captcha: "false",
+        }),
       });
       if (res.ok) {
         setStatus("sent");
-        setFormData({ name: "", email: "", phone: "", interest: "general", message: "" });
+        setFormData({ name: "", email: "", phone: "", interest: "group", message: "" });
       } else {
         setStatus("error");
       }
@@ -170,8 +173,11 @@ export default function ContactPage() {
 
             {/* Contact form */}
             <div className="lg:col-span-3">
-              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-6">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
                 Send a Message
+              </p>
+              <p className="text-white/30 text-xs mb-6 leading-relaxed">
+                Rated 5★ on Google · Students from all backgrounds welcome
               </p>
 
               {status === "sent" ? (
@@ -186,52 +192,53 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-2">
-                        Your Name *
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full bg-ink border border-ink-400 focus:border-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/20"
-                        placeholder="Full name"
-                      />
+                  <fieldset className="space-y-5">
+                    <legend className="font-cinzel text-[10px] tracking-widest text-gold/40 uppercase mb-3">Your Information</legend>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div>
+                        <label className="block font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-2">
+                          Your Name *
+                        </label>
+                        <input
+                          type="text"
+                          name="name"
+                          required
+                          value={formData.name}
+                          onChange={handleChange}
+                          className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/20"
+                          placeholder="Full name"
+                        />
+                      </div>
+                      <div>
+                        <label className="block font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-2">
+                          Email Address *
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          required
+                          value={formData.email}
+                          onChange={handleChange}
+                          className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/20"
+                          placeholder="your@email.com"
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <label className="block font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-2">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full bg-ink border border-ink-400 focus:border-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/20"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-2">
-                        Phone (optional)
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full bg-ink border border-ink-400 focus:border-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/20"
-                        placeholder="(XXX) XXX-XXXX"
-                      />
-                    </div>
-                    <div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div>
+                        <label className="block font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-2">
+                          Phone (optional)
+                        </label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/20"
+                          placeholder="(XXX) XXX-XXXX"
+                        />
+                      </div>
+                      <div>
                       <label className="block font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-2">
                         I&apos;m interested in
                       </label>
@@ -239,17 +246,18 @@ export default function ContactPage() {
                         name="interest"
                         value={formData.interest}
                         onChange={handleChange}
-                        className="w-full bg-ink border border-ink-400 focus:border-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors"
+                        className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors"
                       >
-                        <option value="general">General Inquiry</option>
                         <option value="group">Group Classes</option>
                         <option value="private-1hr">Private Lesson (1 hr)</option>
                         <option value="private-90min">Private Lesson (90 min)</option>
                         <option value="children">Children&apos;s Program</option>
                         <option value="fma">Filipino Stick Fighting</option>
+                        <option value="general">General Inquiry</option>
                       </select>
+                      </div>
                     </div>
-                  </div>
+                  </fieldset>
 
                   <div>
                     <label className="block font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-2">
@@ -261,7 +269,7 @@ export default function ContactPage() {
                       rows={6}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full bg-ink border border-ink-400 focus:border-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors resize-none placeholder:text-white/20"
+                      className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors resize-none placeholder:text-white/20"
                       placeholder="Tell us about your experience level, goals, or any questions you have..."
                     />
                   </div>
@@ -272,19 +280,24 @@ export default function ContactPage() {
                     </p>
                   )}
 
-                  <button
-                    type="submit"
-                    disabled={status === "sending"}
-                    className="btn-gold flex items-center gap-3 disabled:opacity-50"
-                  >
-                    {status === "sending" ? (
-                      "Sending..."
-                    ) : (
-                      <>
-                        Send Message <Send size={13} />
-                      </>
-                    )}
-                  </button>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                    <button
+                      type="submit"
+                      disabled={status === "sending"}
+                      className="btn-gold flex items-center gap-3 disabled:opacity-50"
+                    >
+                      {status === "sending" ? (
+                        "Sending..."
+                      ) : (
+                        <>
+                          Send Message <Send size={13} />
+                        </>
+                      )}
+                    </button>
+                    <p className="text-white/30 text-xs">
+                      We typically respond within 24 hours.
+                    </p>
+                  </div>
                 </form>
               )}
             </div>

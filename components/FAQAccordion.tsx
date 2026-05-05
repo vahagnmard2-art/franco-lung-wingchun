@@ -42,6 +42,7 @@ export default function FAQAccordion() {
         <div key={i} className="card-base overflow-hidden">
           <button
             onClick={() => setOpen(open === i ? null : i)}
+            aria-expanded={open === i}
             className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left group"
           >
             <span className="font-cinzel text-sm text-white/80 group-hover:text-white tracking-wide leading-snug transition-colors">

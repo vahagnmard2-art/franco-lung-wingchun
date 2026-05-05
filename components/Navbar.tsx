@@ -3,12 +3,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 
 const links = [
   { href: "/about",   label: "About" },
-  { href: "/lineage", label: "Lineage" },
   { href: "/system",  label: "System" },
+  { href: "/lineage", label: "Lineage" },
   { href: "/classes", label: "Classes" },
   { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
@@ -65,15 +65,25 @@ export default function Navbar() {
               <Link
                 key={href}
                 href={href}
-                className={`font-cinzel text-[11px] tracking-wide2 uppercase transition-colors duration-200 hover:text-gold ${
+                className={`font-cinzel text-[11px] tracking-wide2 uppercase transition-colors duration-200 hover:text-gold relative pb-1 ${
                   pathname === href ? "text-gold" : "text-white/60"
                 }`}
               >
                 {label}
+                {pathname === href && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-gold" />
+                )}
               </Link>
             ))}
-            <Link href="/contact" className="btn-gold text-[10px] ml-2">
-              Get Started
+            <a
+              href="tel:+16262332882"
+              className="hidden lg:flex items-center gap-1.5 font-cinzel text-[10px] tracking-widest text-white/40 hover:text-gold transition-colors ml-1"
+            >
+              <Phone size={11} aria-hidden="true" />
+              (626) 233-2882
+            </a>
+            <Link href="/classes" className="btn-gold text-[10px] ml-2">
+              Book a Class
             </Link>
           </div>
 
@@ -82,6 +92,7 @@ export default function Navbar() {
             onClick={() => setOpen((v) => !v)}
             className="md:hidden text-white/80 hover:text-gold transition-colors"
             aria-label="Toggle navigation"
+            aria-expanded={open}
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -90,28 +101,42 @@ export default function Navbar() {
 
       {/* Mobile full-screen menu */}
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
+        onClick={() => setOpen(false)}
         className={`fixed inset-0 z-40 bg-ink flex flex-col items-center justify-center md:hidden transition-opacity duration-300 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="gold-line w-24 mb-10" />
-        {links.map(({ href, label }, i) => (
-          <Link
-            key={href}
-            href={href}
+        <div onClick={(e) => e.stopPropagation()} className="flex flex-col items-center w-full">
+          <div className="gold-line w-24 mb-10" />
+          {links.map(({ href, label }, i) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={() => setOpen(false)}
+              className={`font-cinzel text-2xl tracking-ultra py-5 transition-colors duration-200 hover:text-gold fade-up ${
+                pathname === href ? "text-gold" : "text-white/70"
+              }`}
+              style={{ animationDelay: `${i * 60}ms` }}
+            >
+              {label}
+            </Link>
+          ))}
+          <div className="gold-line w-24 mt-10 mb-6" />
+          <a
+            href="tel:+16262332882"
+            className="flex items-center gap-2 font-cinzel text-sm tracking-widest text-white/40 hover:text-gold transition-colors mb-6"
             onClick={() => setOpen(false)}
-            className={`font-cinzel text-2xl tracking-ultra py-5 transition-colors duration-200 hover:text-gold fade-up ${
-              pathname === href ? "text-gold" : "text-white/70"
-            }`}
-            style={{ animationDelay: `${i * 60}ms` }}
           >
-            {label}
+            <Phone size={13} aria-hidden="true" />
+            (626) 233-2882
+          </a>
+          <Link href="/classes" className="btn-gold" onClick={() => setOpen(false)}>
+            Book a Class
           </Link>
-        ))}
-        <div className="gold-line w-24 mt-10 mb-8" />
-        <Link href="/contact" className="btn-gold" onClick={() => setOpen(false)}>
-          Get Started
-        </Link>
+        </div>
       </div>
     </>
   );

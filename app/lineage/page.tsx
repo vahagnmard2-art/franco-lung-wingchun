@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Lineage",
   description:
-    "The lineage of Grandmaster Franco Lung — tracing his Wing Chun heritage through Grandmaster Wong Shun Leung, Grandmaster Wan Kam Leung, and Sisok Hawkins Cheung.",
+    "The lineage of Grandmaster Franco Lung — tracing his Wing Chun heritage through Grandmaster Wong Shun Leung and Grandmaster Wan Kam Leung, direct students of Ip Man.",
 };
 
 const masters = [
@@ -33,18 +33,18 @@ const masters = [
       `The influence of GM Wan Kam Leung is deeply embedded in GM Lung's own system — particularly his emphasis on structure, internal development, and clear explanations of why techniques work.`,
     ],
   },
-  {
-    name: "Sisok Hawkins Cheung",
-    chineseName: "張卓慶",
-    period: "Mentor — Internal Wing Chun",
-    dates: "Born 1938",
-    label: "Sisok",
-    desc: [
-      `Hawkins Cheung is an Ip Man disciple and a senior training brother of Bruce Lee from their days together in Hong Kong. He is widely respected for his deep understanding of Wing Chun's internal principles — the energetic, structural, and philosophical dimensions that underpin the system's power.`,
-      `Often referred to by practitioners as the "Software" of Wing Chun, these internal principles govern how force is generated, received, and redirected without relying on physical size or muscular tension.`,
-      `Grandmaster Lung specifically credits Sisok Hawkins Cheung for revealing this internal dimension of Wing Chun to him — a gift that fundamentally shaped how GM Lung teaches and how his students experience the art.`,
-    ],
-  },
+];
+
+const disciples = [
+  { name: "Howard Lin",      coach: false },
+  { name: "Jason Tsai",      coach: true  },
+  { name: "Patrick Pace",    coach: true  },
+  { name: "Walter Alves",    coach: false },
+  { name: "Bradley Temple",  coach: false },
+  { name: "Scottmann",       coach: false },
+  { name: "David Wong",      coach: true  },
+  { name: "Ken Wu",          coach: true  },
+  { name: "Michael Koster",  coach: false },
 ];
 
 export default function LineagePage() {
@@ -69,8 +69,20 @@ export default function LineagePage() {
         </div>
       </div>
 
-      {/* Lineage tree — simple visual */}
-      <section className="py-16 bg-ink-100">
+      {/* WSL Quote */}
+      <section className="py-12 bg-ink-100 border-b border-ink-400">
+        <div className="max-w-2xl mx-auto px-6 text-center">
+          <blockquote className="font-cinzel text-lg md:text-xl text-white/60 tracking-wide leading-relaxed italic">
+            &ldquo;If you really want to learn Wing Chun, you must spend your time feeling it, not just thinking about it.&rdquo;
+          </blockquote>
+          <p className="font-cinzel text-[10px] tracking-ultra text-gold/50 uppercase mt-5">
+            — Wong Shun Leung 黃淳梁
+          </p>
+        </div>
+      </section>
+
+      {/* Lineage tree */}
+      <section className="py-16 bg-ink">
         <div className="max-w-3xl mx-auto px-6">
           <div className="flex flex-col items-center gap-0">
             {/* Ip Man */}
@@ -86,10 +98,10 @@ export default function LineagePage() {
             <div className="w-2 h-2 rounded-full bg-gold/40" />
             <div className="w-px h-8 bg-gold/20" />
 
-            {/* 3 branches */}
-            <div className="grid grid-cols-3 gap-2 w-full relative">
-              <div className="absolute top-0 left-[16.67%] right-[16.67%] h-px bg-gold/20" />
-              {["Wong Shun Leung", "Wan Kam Leung", "Hawkins Cheung"].map((name) => (
+            {/* 2 branches */}
+            <div className="grid grid-cols-2 gap-2 w-full max-w-sm mx-auto relative">
+              <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gold/20" />
+              {["Wong Shun Leung", "Wan Kam Leung"].map((name) => (
                 <div key={name} className="flex flex-col items-center gap-0">
                   <div className="w-px h-6 bg-gold/20" />
                   <div className="border border-gold/20 bg-ink-200 p-2 text-center w-full">
@@ -116,12 +128,24 @@ export default function LineagePage() {
               </p>
               <p className="font-inter text-xs text-white/30 mt-1">Temple City, CA · Est. 2009</p>
             </div>
+
+            {/* Connector to disciples */}
+            <div className="w-px h-8 bg-gold/20" />
+            <div className="w-2 h-2 rounded-full bg-gold/40" />
+            <div className="w-px h-8 bg-gold/20" />
+
+            {/* Disciples label */}
+            <div className="border border-gold/20 bg-ink-200 px-6 py-3 text-center w-full max-w-xs">
+              <p className="font-cinzel text-[9px] tracking-ultra text-gold/50 uppercase">
+                Disciples · Temple City
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Master profiles */}
-      <section className="section-pad bg-ink">
+      <section className="section-pad bg-ink-100">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
@@ -138,9 +162,9 @@ export default function LineagePage() {
               <div key={m.name} className="card-base p-8 md:p-10">
                 <div className="flex flex-col md:flex-row md:items-start gap-6 mb-6">
                   {/* Photo placeholder */}
-                  <div className="w-24 h-24 flex-shrink-0 bg-ink border border-ink-400 flex items-center justify-center">
-                    <span className="font-cinzel text-gold/20 text-2xl">
-                      {m.name.split(" ").pop()?.charAt(0)}
+                  <div className="w-24 h-24 flex-shrink-0 bg-ink border border-gold/20 flex items-center justify-center">
+                    <span className="text-gold/30 text-4xl leading-none" style={{ fontFamily: "serif" }} aria-hidden="true">
+                      {m.chineseName.charAt(0)}
                     </span>
                   </div>
                   {/* Header */}
@@ -149,7 +173,7 @@ export default function LineagePage() {
                       <span className="font-cinzel text-[9px] tracking-ultra text-gold/50 uppercase border border-gold/20 px-2 py-0.5">
                         {m.label}
                       </span>
-                      <span className="font-cinzel text-[9px] tracking-ultra text-white/30 uppercase">
+                      <span className="font-cinzel text-[9px] tracking-ultra text-white/50 uppercase">
                         {m.dates}
                       </span>
                     </div>
@@ -167,7 +191,7 @@ export default function LineagePage() {
                 <span className="gold-line-short mb-6" />
                 <div className="space-y-4 mt-6">
                   {m.desc.map((para, i) => (
-                    <p key={i} className="text-white/55 text-sm leading-relaxed">
+                    <p key={i} className="text-white/65 text-sm leading-relaxed">
                       {para}
                     </p>
                   ))}
@@ -175,10 +199,70 @@ export default function LineagePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="text-center mt-14">
+      {/* Disciples */}
+      <section className="section-pad bg-ink">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+              Carrying It Forward
+            </p>
+            <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
+              GM Lung&apos;s <span className="text-gold">Disciples</span>
+            </h2>
+            <p className="text-white/40 text-sm max-w-md mx-auto mt-4 leading-relaxed">
+              These students have dedicated themselves to the study and preservation of GM Lung&apos;s system.
+              Those marked as coaches actively teach under his guidance.
+            </p>
+            <div className="gold-line mx-auto w-24 mt-6" />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {disciples.map((d) => (
+              <div
+                key={d.name}
+                className={`flex items-center justify-between gap-3 px-5 py-4 border transition-colors duration-200 ${
+                  d.coach
+                    ? "border-gold/40 bg-ink-200 shadow-[0_0_16px_rgba(201,168,76,0.06)]"
+                    : "border-ink-400 bg-ink-200"
+                }`}
+              >
+                <span className="font-cinzel text-sm text-white tracking-wide">
+                  {d.name}
+                </span>
+                {d.coach && (
+                  <span className="font-cinzel text-[8px] tracking-ultra text-gold uppercase border border-gold/40 px-2 py-0.5 whitespace-nowrap flex-shrink-0">
+                    Coach
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 sm:py-24 bg-ink text-center px-6 relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 gold-line opacity-20" />
+        <div className="max-w-xl mx-auto">
+          <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+            The Living Tradition
+          </p>
+          <h2 className="font-cinzel text-2xl md:text-3xl font-bold text-white tracking-wide mb-4">
+            Experience the <span className="text-gold">System</span>
+          </h2>
+          <p className="text-white/40 text-sm leading-relaxed mb-10 max-w-sm mx-auto">
+            This lineage lives on at GM Lung&apos;s school in Temple City. Explore the structured
+            curriculum he has built from five decades of study.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/system" className="btn-gold inline-flex items-center gap-3">
               Explore GM Lung&apos;s System <ArrowRight size={14} />
+            </Link>
+            <Link href="/classes" className="btn-outline">
+              View Classes &amp; Schedule
             </Link>
           </div>
         </div>

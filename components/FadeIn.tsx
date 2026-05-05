@@ -1,5 +1,5 @@
 "use client";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 
 export default function FadeIn({
@@ -15,6 +15,11 @@ export default function FadeIn({
 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const shouldReduce = useReducedMotion();
+
+  if (shouldReduce) {
+    return <div ref={ref} className={className}>{children}</div>;
+  }
 
   return (
     <motion.div

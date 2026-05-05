@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 
@@ -66,12 +67,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
             {/* Portrait */}
             <div className="lg:col-span-2">
-              <div className="relative aspect-[3/4] overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+              <div className="relative aspect-[3/4] overflow-hidden max-h-[60vh] md:max-h-none">
+                <Image
                   src="/images/sifu-portrait.jpg"
                   alt="Grandmaster Franco Lung"
-                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  fill
+                  className="object-cover object-top"
                 />
               </div>
 
@@ -83,7 +84,6 @@ export default function AboutPage() {
                   ["In Los Angeles", "Since 2009"],
                   ["Location", "Temple City, CA"],
                   ["Style", "Wing Chun Kung Fu"],
-                  ["Also Teaches", "Chinese Internal Martial Arts & Filipino Stick Fighting"],
                 ].map(([label, value]) => (
                   <div key={label} className="flex justify-between items-start gap-4">
                     <span className="font-cinzel text-[10px] tracking-widest text-gold/50 uppercase whitespace-nowrap">
@@ -92,6 +92,17 @@ export default function AboutPage() {
                     <span className="text-sm text-white/60 text-right">{value}</span>
                   </div>
                 ))}
+                <div className="flex justify-between items-start gap-4">
+                  <span className="font-cinzel text-[10px] tracking-widest text-gold/50 uppercase whitespace-nowrap">
+                    Also Teaches
+                  </span>
+                  <span className="text-sm text-white/60 text-right">
+                    Chinese Internal Martial Arts &amp; Filipino Stick Fighting{" "}
+                    <Link href="/classes" className="text-gold/60 hover:text-gold transition-colors whitespace-nowrap">
+                      → See Programs
+                    </Link>
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -105,7 +116,7 @@ export default function AboutPage() {
               </h2>
               <span className="gold-line-short mb-8" />
 
-              <div className="space-y-5 text-white/60 leading-relaxed text-[15px] mt-8">
+              <div className="space-y-5 text-white/65 leading-relaxed text-[15px] mt-8">
                 <p>
                   Grandmaster Franco Lung was born in 1954. His journey in Wing Chun began in Hong
                   Kong over five decades ago with Wing Chun legends — GM Wong Shun Leung and
@@ -131,8 +142,11 @@ export default function AboutPage() {
                   designed to give students a clear, principled pathway from beginner to advanced
                   practitioner.
                 </p>
-                <blockquote className="border-l-2 border-gold pl-6 my-8 italic text-white/50">
-                  &ldquo;Learning Has No Bounds.&rdquo;
+                <blockquote className="my-10 px-8 py-6 border border-gold/30 bg-ink text-center">
+                  <p className="font-cinzel text-xl md:text-2xl text-white/80 tracking-wide italic leading-relaxed">
+                    &ldquo;Learning Has No Bounds.&rdquo;
+                  </p>
+                  <span className="gold-line-short mx-auto mt-4" />
                 </blockquote>
                 <p>
                   Today, GM Lung teaches students of all ages and backgrounds at his school in
@@ -194,12 +208,35 @@ export default function AboutPage() {
                     <h3 className="font-cinzel text-sm font-semibold text-white tracking-wide mb-2">
                       {item.title}
                     </h3>
-                    <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+                    <p className="text-white/65 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
                 </FadeIn>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+      {/* End CTA */}
+      <section className="py-16 sm:py-24 bg-ink text-center px-6 relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 gold-line opacity-20" />
+        <div className="max-w-xl mx-auto">
+          <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+            Begin Your Journey
+          </p>
+          <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide mb-4">
+            Train with <span className="text-gold">GM Lung</span>
+          </h2>
+          <p className="text-white/40 text-sm leading-relaxed mb-10 max-w-sm mx-auto">
+            Classes are open to all ages and experience levels in Temple City, CA.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/classes" className="btn-gold">
+              View Classes &amp; Schedule
+            </Link>
+            <Link href="/contact" className="btn-outline">
+              Contact Us
+            </Link>
           </div>
         </div>
       </section>

@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
-import { Play } from "lucide-react";
+import { Play, ArrowUpRight, ImageOff } from "lucide-react";
 
 const photos = [
   {
@@ -57,24 +58,25 @@ function PhotoCard({
 }) {
   return (
     <div
+      role="button"
+      tabIndex={0}
       onClick={() => onOpen(index)}
+      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onOpen(index)}
+      aria-label={`View ${photo.caption} full size`}
       className={`group relative bg-ink-200 border border-ink-400 hover:border-gold/40 transition-all duration-300 overflow-hidden cursor-zoom-in ${
-        photo.wide ? "col-span-2" : ""
+        photo.wide ? "sm:col-span-2" : ""
       }`}
       style={{ aspectRatio: photo.wide ? "2/1" : "1/1" }}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src={photo.src}
         alt={photo.alt}
-        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        onError={(e) => {
-          e.currentTarget.style.display = "none";
-        }}
+        fill
+        className="object-cover group-hover:scale-105 transition-transform duration-500"
       />
       {/* Fallback */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <span className="font-cinzel text-4xl text-gold/10">✦</span>
+        <ImageOff size={28} className="text-gold/10" aria-hidden="true" />
       </div>
       {/* Caption overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 z-10">
@@ -115,7 +117,7 @@ export default function GalleryClient() {
       {/* Photo grid */}
       <section className="section-pad bg-ink-100">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {photos.map((photo, i) => (
               <PhotoCard key={photo.src} photo={photo} index={i} onOpen={setLightboxIndex} />
             ))}
@@ -134,17 +136,17 @@ export default function GalleryClient() {
                 href="https://www.instagram.com/wingchunfrancolung"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-gold"
+                className="btn-gold inline-flex items-center gap-2"
               >
-                Instagram → @wingchunfrancolung
+                Instagram @wingchunfrancolung <ArrowUpRight size={13} aria-hidden="true" />
               </a>
               <a
                 href="https://www.facebook.com/FrancoLung"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-outline"
+                className="btn-outline inline-flex items-center gap-2"
               >
-                Facebook → Franco Lung
+                Facebook Franco Lung <ArrowUpRight size={13} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -171,12 +173,12 @@ export default function GalleryClient() {
             style={{ aspectRatio: "16/7" }}
           >
             {/* Background photo */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/class-training.jpg"
+            <Image
+              src="/images/sifu-action.jpg"
               alt=""
               aria-hidden="true"
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-700"
               style={{ opacity: 0.35 }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/20" />
@@ -216,13 +218,28 @@ export default function GalleryClient() {
       />
 
       {/* CTA */}
-      <section className="py-16 bg-ink-100 text-center px-6 border-t border-ink-400">
-        <p className="text-white/40 text-sm mb-6">
-          Interested in training? Classes are open to all levels.
-        </p>
-        <Link href="/contact" className="btn-gold">
-          Contact Us to Get Started
-        </Link>
+      <section className="py-16 sm:py-24 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,_#1e1400_0%,_#080808_70%)] relative overflow-hidden text-center px-6">
+        <div className="absolute top-0 left-0 right-0 gold-line opacity-20" />
+        <div className="absolute bottom-0 left-0 right-0 gold-line opacity-20" />
+        <div className="max-w-xl mx-auto">
+          <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+            Begin Your Journey
+          </p>
+          <h2 className="font-cinzel text-2xl md:text-3xl font-bold text-white tracking-wide mb-4">
+            Ready to <span className="text-gold">Train?</span>
+          </h2>
+          <p className="text-white/40 text-sm leading-relaxed mb-10 max-w-sm mx-auto">
+            Classes are open to all levels. Reach out to arrange a first visit with Grandmaster Lung.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact" className="btn-gold">
+              Contact Us to Get Started
+            </Link>
+            <Link href="/classes" className="btn-outline">
+              View Classes &amp; Schedule
+            </Link>
+          </div>
+        </div>
       </section>
     </>
   );

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { MapPin, Phone, Instagram, Facebook, Youtube } from "lucide-react";
 
 const navLinks = [
+  { href: "/",        label: "Home" },
   { href: "/about",   label: "About" },
   { href: "/lineage", label: "Lineage" },
   { href: "/system",  label: "The System" },
@@ -13,7 +14,7 @@ const navLinks = [
 export default function Footer() {
   return (
     <footer className="bg-ink-100 border-t border-ink-400">
-      <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-6 pt-16 pb-20 sm:pb-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-14">
           {/* Brand */}
           <div>
@@ -31,6 +32,9 @@ export default function Footer() {
             </p>
             <p className="font-cinzel text-xs text-gold/50 tracking-widest mt-4 italic">
               &ldquo;Learning Has No Bounds&rdquo;
+            </p>
+            <p className="font-cinzel text-2xl text-gold/15 tracking-widest mt-3" aria-hidden="true">
+              詠春
             </p>
           </div>
 

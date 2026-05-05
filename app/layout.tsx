@@ -5,12 +5,13 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/react";
 import ScrollToTop from "@/components/ScrollToTop";
+import MobileCallBar from "@/components/MobileCallBar";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
   variable: "--font-cinzel",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "600", "700", "900"],
 });
 
 const inter = Inter({
@@ -20,6 +21,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://francolungwingchun.com"),
   title: {
     default: "Grandmaster Franco Lung | Wing Chun Los Angeles",
     template: "%s | Franco Lung Wing Chun",
@@ -28,13 +30,17 @@ export const metadata: Metadata = {
     "Train with Grandmaster Franco Lung — over 50 years of Wing Chun mastery. Direct lineage from Hong Kong legends Wong Shun Leung and Wan Kam Leung. Classes in Temple City, CA.",
   keywords: [
     "Wing Chun",
-    "martial arts",
-    "Los Angeles",
-    "Temple City",
+    "Wing Chun Los Angeles",
+    "Wing Chun Temple City",
+    "martial arts Temple City CA",
+    "kung fu Los Angeles",
     "Franco Lung",
-    "kung fu",
-    "self defense",
+    "Grandmaster Franco Lung",
+    "Wing Chun classes near me",
+    "self defense Los Angeles",
     "Sifu",
+    "kids martial arts Temple City",
+    "private martial arts lessons LA",
   ],
   openGraph: {
     title: "Grandmaster Franco Lung | Wing Chun Los Angeles",
@@ -42,6 +48,12 @@ export const metadata: Metadata = {
       "Over 50 years of Wing Chun mastery. Direct lineage from Hong Kong's greatest masters.",
     type: "website",
     locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Grandmaster Franco Lung | Wing Chun Los Angeles",
+    description:
+      "Train with Grandmaster Franco Lung — over 50 years of Wing Chun mastery. Classes in Temple City, CA.",
   },
 };
 
@@ -94,10 +106,17 @@ export default function RootLayout({
       <body
         className={`${cinzel.variable} ${inter.variable} font-inter bg-ink text-neutral-100 antialiased`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-gold focus:text-ink focus:px-4 focus:py-2 focus:font-cinzel focus:text-xs focus:tracking-widest focus:uppercase"
+        >
+          Skip to main content
+        </a>
         <Navbar />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
         <ScrollToTop />
+        <MobileCallBar />
         <Analytics />
       </body>
     </html>

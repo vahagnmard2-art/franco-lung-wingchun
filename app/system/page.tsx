@@ -64,13 +64,14 @@ export default function SystemPage() {
               <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-5">
                 The Art
               </p>
+              <p className="font-cinzel text-6xl text-gold/10 leading-none mb-4" aria-hidden="true">詠春</p>
               <blockquote className="font-cinzel text-2xl md:text-3xl font-bold text-white tracking-wide leading-snug">
                 A system built for the smaller to defeat the larger. For intelligence to overcome force.
               </blockquote>
               <div className="gold-line-short mt-8" />
             </div>
             {/* Explanation */}
-            <div className="space-y-5 text-white/55 text-[15px] leading-relaxed">
+            <div className="space-y-5 text-white/65 text-[15px] leading-relaxed">
               <p>
                 Wing Chun (詠春) is a southern Chinese martial art developed roughly 300 years ago.
                 Unlike strength-based fighting systems, Wing Chun was designed around one core
@@ -114,11 +115,6 @@ export default function SystemPage() {
                   <span className="font-cinzel text-5xl font-black text-gold/10 group-hover:text-gold/20 transition-colors leading-none">
                     {l.level}
                   </span>
-                  <div className="text-right">
-                    <p className="font-cinzel text-[9px] tracking-ultra text-gold/40 uppercase">
-                      Level {l.level}
-                    </p>
-                  </div>
                 </div>
                 <h3 className="font-cinzel text-xl font-bold text-white tracking-wide mb-1">
                   {l.title}
@@ -127,10 +123,10 @@ export default function SystemPage() {
                   {l.subtitle}
                 </p>
                 <span className="gold-line-short mb-5" />
-                <p className="text-white/50 text-sm leading-relaxed mb-6 flex-1">{l.desc}</p>
+                <p className="text-white/60 text-sm leading-relaxed mb-6 flex-1">{l.desc}</p>
                 <ul className="space-y-2">
                   {l.focus.map((f) => (
-                    <li key={f} className="flex items-center gap-3 text-xs text-white/40">
+                    <li key={f} className="flex items-center gap-3 text-xs text-white/60">
                       <span className="w-1 h-1 bg-gold rounded-full flex-shrink-0" />
                       {f}
                     </li>
@@ -164,7 +160,7 @@ export default function SystemPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-ink-100 text-center px-6">
+      <section className="py-16 sm:py-24 bg-ink-100 text-center px-6">
         <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
           Experience it First-Hand
         </p>
@@ -177,7 +173,7 @@ export default function SystemPage() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/classes" className="btn-gold">
-            View Classes &amp; Pricing
+            View Classes &amp; Schedule
           </Link>
           <Link href="/contact" className="btn-outline">
             Ask a Question

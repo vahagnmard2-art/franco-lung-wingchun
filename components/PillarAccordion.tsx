@@ -50,6 +50,7 @@ export default function PillarAccordion() {
         <div key={p.num} className="card-base overflow-hidden group">
           <button
             onClick={() => setOpen(open === i ? null : i)}
+            aria-expanded={open === i}
             className="w-full flex items-center gap-6 px-8 py-5 text-left"
           >
             <span className="font-cinzel text-3xl font-black text-gold/15 group-hover:text-gold/25 transition-colors leading-none flex-shrink-0 w-10">
@@ -72,7 +73,7 @@ export default function PillarAccordion() {
           >
             <div className="px-8 pb-6">
               <span className="gold-line-short mb-4" />
-              <p className="text-white/55 text-sm leading-relaxed mt-4 mb-5">{p.desc}</p>
+              <p className="text-white/65 text-sm leading-relaxed mt-4 mb-5">{p.desc}</p>
               <div className="border-l-2 border-gold/30 pl-4">
                 <p className="text-white/35 text-sm italic leading-relaxed">{p.insight}</p>
               </div>

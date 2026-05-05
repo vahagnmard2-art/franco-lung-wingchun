@@ -13,7 +13,7 @@ const programs = [
   {
     title: "Children's Little Dragon Program",
     age: "Ages 5–12",
-    desc: "A structured, fun program designed specifically for children. Students develop focus, discipline, coordination, and confidence through age-appropriate Wing Chun training. Grandmaster Lung's patient and encouraging teaching style makes this an ideal martial arts foundation for young practitioners.",
+    desc: "A structured, fun program designed specifically for children. Students develop focus, discipline, coordination, and confidence through age-appropriate Wing Chun training. Grandmaster Lung's patient and encouraging teaching style makes this an ideal martial arts foundation for young practitioners. Many parents report improvements in focus, respect, and self-confidence within the first few months.",
     includes: [
       "Age-appropriate Wing Chun fundamentals",
       "Focus and discipline training",
@@ -72,7 +72,7 @@ const schedule = [
     classes: [
       { time: "11:00 AM – 12:30 PM", type: "Teen Class",  age: "Ages 11–16" },
       { time: "1:30 – 3:00 PM",      type: "Kids Class",  age: "Ages 6–10"  },
-      { time: "3:30 – 5:00 PM",      type: "Mixed Adult & Teen",   age: "All Adults" },
+      { time: "3:30 – 5:00 PM",      type: "Mixed Adult & Teen",   age: "Ages 11+" },
     ],
   },
   {
@@ -85,7 +85,7 @@ const schedule = [
   {
     day: "Mon – Thu",
     classes: [
-      { time: "By Appointment", type: "Private Lessons", age: "Flexible" },
+      { time: "By Appointment", type: "Private Lessons", age: "All Ages" },
     ],
   },
 ];
@@ -102,7 +102,7 @@ export default function ClassesPage() {
             Train with a Grandmaster
           </p>
           <h1 className="font-cinzel text-4xl md:text-6xl font-bold text-white tracking-wide mb-4">
-            Classes &amp; <span className="text-gold">Pricing</span>
+            Classes &amp; <span className="text-gold">Schedule</span>
           </h1>
           <p className="text-white/40 text-sm leading-relaxed max-w-lg mx-auto mt-6">
             Students of all ages and experience levels are welcome. Space is limited to ensure
@@ -210,7 +210,7 @@ export default function ClassesPage() {
               </div>
               <p className="text-white/30 text-xs mb-6">Per class · Drop-in welcome</p>
               <span className="gold-line-short mb-6" />
-              <ul className="space-y-3 text-sm text-white/50 flex-1">
+              <ul className="space-y-3 text-sm text-white/60 flex-1">
                 {[
                   "All experience levels welcome",
                   "Wing Chun forms & application",
@@ -225,12 +225,12 @@ export default function ClassesPage() {
                 ))}
               </ul>
               <Link href="/contact" className="btn-outline mt-8 text-center text-[10px]">
-                Enquire Now
+                Book a Class
               </Link>
             </div>
 
             {/* Private 1hr — FEATURED */}
-            <div className="relative bg-ink-200 border border-gold/50 p-8 flex flex-col shadow-[0_0_50px_rgba(201,168,76,0.12)]">
+            <div className="relative bg-ink-200 border border-gold/50 p-8 flex flex-col shadow-[0_0_50px_rgba(201,168,76,0.12)] hover:border-gold hover:shadow-[0_0_60px_rgba(201,168,76,0.2)] transition-all duration-300">
               <div className="absolute -top-px left-6 right-6 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
               <p className="font-cinzel text-[9px] tracking-ultra text-gold uppercase mb-3">
                 Most Popular
@@ -244,7 +244,7 @@ export default function ClassesPage() {
               </div>
               <p className="text-white/30 text-xs mb-6">One-on-one · Flexible scheduling</p>
               <span className="gold-line-short mb-6" />
-              <ul className="space-y-3 text-sm text-white/50 flex-1">
+              <ul className="space-y-3 text-sm text-white/60 flex-1">
                 {[
                   "Direct instruction from GM Lung",
                   "Personalised to your level",
@@ -277,7 +277,7 @@ export default function ClassesPage() {
               </div>
               <p className="text-white/30 text-xs mb-6">One-on-one · Flexible scheduling</p>
               <span className="gold-line-short mb-6" />
-              <ul className="space-y-3 text-sm text-white/50 flex-1">
+              <ul className="space-y-3 text-sm text-white/60 flex-1">
                 {[
                   "All private 1-hour benefits",
                   "Extended deep-dive sessions",
@@ -324,10 +324,10 @@ export default function ClassesPage() {
                   </span>
                 </div>
                 <span className="gold-line-short mb-4" />
-                <p className="text-white/50 text-sm leading-relaxed mb-5 mt-4">{p.desc}</p>
+                <p className="text-white/60 text-sm leading-relaxed mb-5 mt-4">{p.desc}</p>
                 <ul className="space-y-2">
                   {p.includes.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-xs text-white/35">
+                    <li key={item} className="flex items-start gap-2 text-xs text-white/45">
                       <span className="w-1 h-1 bg-gold rounded-full mt-1.5 flex-shrink-0" />
                       {item}
                     </li>
@@ -341,6 +341,13 @@ export default function ClassesPage() {
             <Link href="/contact" className="btn-gold">
               Contact to Enroll
             </Link>
+            <p className="text-white/30 text-xs mt-5">
+              New to Wing Chun? You&apos;re welcome to{" "}
+              <Link href="/contact" className="text-gold/50 hover:text-gold transition-colors underline underline-offset-4">
+                contact us to arrange a first visit
+              </Link>{" "}
+              before committing.
+            </p>
           </div>
         </div>
       </section>
