@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ const masters = [
   {
     name: "Grandmaster Wong Shun Leung",
     chineseName: "黃淳梁",
+    photo: "/images/wong-shun-leung.jpg",
     period: "Primary Teacher",
     dates: "1935 – 1997",
     label: "Dai Sifu",
@@ -24,6 +26,7 @@ const masters = [
   {
     name: "Grandmaster Wan Kam Leung",
     chineseName: "尹劍良",
+    photo: "/images/wan-kam-leung.jpg",
     period: "Primary Teacher",
     dates: "Born 1950",
     label: "Dai Sifu",
@@ -161,11 +164,14 @@ export default function LineagePage() {
             {masters.map((m) => (
               <div key={m.name} className="card-base p-8 md:p-10">
                 <div className="flex flex-col md:flex-row md:items-start gap-6 mb-6">
-                  {/* Photo placeholder */}
-                  <div className="w-24 h-24 flex-shrink-0 bg-ink border border-gold/20 flex items-center justify-center">
-                    <span className="text-gold/30 text-4xl leading-none" style={{ fontFamily: "serif" }} aria-hidden="true">
-                      {m.chineseName.charAt(0)}
-                    </span>
+                  {/* Photo */}
+                  <div className="w-24 h-24 flex-shrink-0 relative overflow-hidden border border-gold/20 bg-ink">
+                    <Image
+                      src={m.photo}
+                      alt={m.name}
+                      fill
+                      className="object-cover object-top"
+                    />
                   </div>
                   {/* Header */}
                   <div className="flex-1">
