@@ -15,7 +15,6 @@ const masters = [
     chineseName: "黃淳梁",
     photo: "/images/wong-shun-leung.jpg",
     period: "Primary Teacher",
-    dates: "1935 – 1997",
     label: "Dai Sifu",
     desc: [
       `Wong Shun Leung was one of the most celebrated Wing Chun masters of the 20th century and a direct student of the legendary Grandmaster Ip Man. Known throughout Hong Kong as "Gong Sau Wong" — the King of Talking Hands — he built his reputation through hundreds of challenge matches, proving the effectiveness of Wing Chun against all comers.`,
@@ -28,7 +27,6 @@ const masters = [
     chineseName: "尹劍良",
     photo: "/images/wan-kam-leung.jpg",
     period: "Primary Teacher",
-    dates: "Born 1950",
     label: "Dai Sifu",
     desc: [
       `Grandmaster Wan Kam Leung is the founder of the Practical Wing Chun system (實用詠春), a highly structured and principle-centered approach to classical Wing Chun. He trained under Wong Shun Leung and dedicated his life to distilling Wing Chun's most essential elements into a clear, teachable curriculum.`,
@@ -178,9 +176,6 @@ export default function LineagePage() {
                     <div className="flex flex-wrap items-center gap-3 mb-1">
                       <span className="font-cinzel text-[9px] tracking-ultra text-gold/50 uppercase border border-gold/20 px-2 py-0.5">
                         {m.label}
-                      </span>
-                      <span className="font-cinzel text-[9px] tracking-ultra text-white/50 uppercase">
-                        {m.dates}
                       </span>
                     </div>
                     <h3 className="font-cinzel text-xl md:text-2xl font-bold text-white tracking-wide">

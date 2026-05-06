@@ -209,7 +209,7 @@ export default function ClassesPage() {
               <p className="font-cinzel text-[9px] tracking-ultra text-gold/50 uppercase mb-3">
                 Group Training
               </p>
-              <h3 className="font-cinzel text-xl font-bold text-white mb-4">Group Class</h3>
+              <h3 className="font-cinzel text-xl font-bold text-white mb-4">Group Class · 90 Min</h3>
               <div className="flex items-baseline gap-1 mb-2">
                 <span className="font-cinzel text-5xl text-gold font-black">$30</span>
                 <span className="text-white/40 text-sm">/ session</span>
@@ -242,7 +242,7 @@ export default function ClassesPage() {
                 Most Popular
               </p>
               <h3 className="font-cinzel text-xl font-bold text-white mb-4">
-                Private · 1 Hour
+                Private · 60 Min
               </h3>
               <div className="flex items-baseline gap-1 mb-2">
                 <span className="font-cinzel text-5xl text-gold font-black">$50</span>

@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: "What should I wear to class?",
-    a: "Comfortable athletic or casual clothing. There is no formal uniform requirement to start. Bare feet or flat-soled shoes are recommended. GM Lung will advise on any additional equipment as you progress.",
+    a: "There is no formal uniform requirement to start. Flat-soled shoes are recommended. GM Lung provides school shirts and long sleeves for a fee.",
   },
   {
     q: "Can I join if I already train in another Wing Chun lineage or martial art?",

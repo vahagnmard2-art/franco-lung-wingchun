@@ -176,9 +176,6 @@ export default function ContactPage() {
               <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
                 Send a Message
               </p>
-              <p className="text-white/30 text-xs mb-6 leading-relaxed">
-                Rated 5★ on Google · Students from all backgrounds welcome
-              </p>
 
               {status === "sent" ? (
                 <div className="border border-gold/30 bg-ink-200 p-10 text-center">
