@@ -206,9 +206,6 @@ export default function ClassesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Group */}
             <div className="card-base p-8 flex flex-col">
-              <p className="font-cinzel text-[9px] tracking-ultra text-gold/50 uppercase mb-3">
-                Group Training
-              </p>
               <h3 className="font-cinzel text-xl font-bold text-white mb-4">Group Class · 90 Min</h3>
               <div className="flex items-baseline gap-1 mb-2">
                 <span className="font-cinzel text-5xl text-gold font-black">$30</span>
@@ -238,9 +235,6 @@ export default function ClassesPage() {
             {/* Private 1hr — FEATURED */}
             <div className="relative bg-ink-200 border border-gold/50 p-8 flex flex-col shadow-[0_0_50px_rgba(201,168,76,0.12)] hover:border-gold hover:shadow-[0_0_60px_rgba(201,168,76,0.2)] transition-all duration-300">
               <div className="absolute -top-px left-6 right-6 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
-              <p className="font-cinzel text-[9px] tracking-ultra text-gold uppercase mb-3">
-                Most Popular
-              </p>
               <h3 className="font-cinzel text-xl font-bold text-white mb-4">
                 Private · 60 Min
               </h3>
@@ -271,9 +265,6 @@ export default function ClassesPage() {
 
             {/* Private 90min */}
             <div className="card-base p-8 flex flex-col">
-              <p className="font-cinzel text-[9px] tracking-ultra text-gold/50 uppercase mb-3">
-                Extended Private
-              </p>
               <h3 className="font-cinzel text-xl font-bold text-white mb-4">
                 Private · 90 Min
               </h3>
