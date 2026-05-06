@@ -27,7 +27,7 @@ const programs = [
     age: "No experience required",
     desc: "Beginners are always welcome. GM Lung's system is specifically structured to guide new students clearly from zero to competence. You will learn the foundational forms, structures, and principles of Wing Chun in a welcoming environment with no prior experience required.",
     includes: [
-      "Siu Lim Tao (first form)",
+      "Siu Nim Tao (first form)",
       "Structural alignment and stance",
       "Entry-level Chi Sau (sticky hands)",
       "Core Wing Chun principles",

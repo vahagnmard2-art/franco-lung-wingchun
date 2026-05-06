@@ -66,7 +66,7 @@ export default function Navbar() {
                 key={href}
                 href={href}
                 className={`font-cinzel text-[11px] tracking-wide2 uppercase transition-colors duration-200 hover:text-gold relative pb-1 ${
-                  pathname === href ? "text-gold" : "text-white/60"
+                  pathname === href ? "text-gold" : "text-white/90"
                 }`}
               >
                 {label}
