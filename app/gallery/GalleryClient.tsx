@@ -72,6 +72,7 @@ function PhotoCard({
         src={photo.src}
         alt={photo.alt}
         fill
+        sizes={photo.wide ? "(max-width: 640px) 100vw, (max-width: 1280px) 66vw, 800px" : "(max-width: 640px) 100vw, (max-width: 1280px) 33vw, 400px"}
         className="object-cover group-hover:scale-105 transition-transform duration-500"
       />
       {/* Fallback */}
@@ -178,6 +179,7 @@ export default function GalleryClient() {
               alt=""
               aria-hidden="true"
               fill
+              sizes="(max-width: 1024px) 100vw, 896px"
               className="object-cover group-hover:scale-105 transition-transform duration-700"
               style={{ opacity: 0.35 }}
             />

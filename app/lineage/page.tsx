@@ -156,6 +156,7 @@ export default function LineagePage() {
                       src={m.photo}
                       alt={m.name}
                       fill
+                      sizes="96px"
                       className="object-cover object-top"
                     />
                   </div>

@@ -183,7 +183,7 @@ export default function ClassesPage() {
             ))}
           </div>
 
-          <p className="text-white/30 text-xs text-center mt-6 leading-relaxed">
+          <p className="text-white/50 text-xs text-center mt-6 leading-relaxed">
             Private lessons are arranged directly with Sifu Lung and are available on a flexible
             schedule. Contact us to arrange.
           </p>
@@ -209,9 +209,9 @@ export default function ClassesPage() {
               <h3 className="font-cinzel text-xl font-bold text-white mb-4">Group Class · 90 Min</h3>
               <div className="flex items-baseline gap-1 mb-2">
                 <span className="font-cinzel text-5xl text-gold font-black">$30</span>
-                <span className="text-white/40 text-sm">/ session</span>
+                <span className="text-white/55 text-sm">/ session</span>
               </div>
-              <p className="text-white/30 text-xs mb-6">Per class · Drop-in welcome</p>
+              <p className="text-white/55 text-xs mb-6">Per class · Drop-in welcome</p>
               <span className="gold-line-short mb-6" />
               <ul className="space-y-3 text-sm text-white/60 flex-1">
                 {[
@@ -240,14 +240,14 @@ export default function ClassesPage() {
               </h3>
               <div className="flex items-baseline gap-1 mb-2">
                 <span className="font-cinzel text-5xl text-gold font-black">$50</span>
-                <span className="text-white/40 text-sm">/ session</span>
+                <span className="text-white/55 text-sm">/ session</span>
               </div>
-              <p className="text-white/30 text-xs mb-6">One-on-one · Flexible scheduling</p>
+              <p className="text-white/55 text-xs mb-6">One-on-one · Flexible scheduling</p>
               <span className="gold-line-short mb-6" />
               <ul className="space-y-3 text-sm text-white/60 flex-1">
                 {[
                   "Direct instruction from GM Lung",
-                  "Personalised to your level",
+                  "Personalized to your level",
                   "Detailed technical correction",
                   "Choose your focus area",
                   "Schedule at your convenience",
@@ -270,13 +270,13 @@ export default function ClassesPage() {
               </h3>
               <div className="flex items-baseline gap-1 mb-2">
                 <span className="font-cinzel text-5xl text-gold font-black">$70</span>
-                <span className="text-white/40 text-sm">/ session</span>
+                <span className="text-white/55 text-sm">/ session</span>
               </div>
-              <p className="text-white/30 text-xs mb-6">One-on-one · Flexible scheduling</p>
+              <p className="text-white/55 text-xs mb-6">One-on-one · Flexible scheduling</p>
               <span className="gold-line-short mb-6" />
               <ul className="space-y-3 text-sm text-white/60 flex-1">
                 {[
-                  "All private 1-hour benefits",
+                  "All 60-minute private benefits",
                   "Extended deep-dive sessions",
                   "More time for Chi Sau work",
                   "System theory & application",
@@ -319,7 +319,7 @@ export default function ClassesPage() {
                 </div>
               ))}
             </div>
-            <p className="text-white/30 text-xs text-center mt-4">
+            <p className="text-white/50 text-xs text-center mt-4">
               Weapons training is available to qualifying students at GM Lung&apos;s discretion.
             </p>
           </div>
@@ -354,7 +354,7 @@ export default function ClassesPage() {
                 <p className="text-white/60 text-sm leading-relaxed mb-5 mt-4">{p.desc}</p>
                 <ul className="space-y-2">
                   {p.includes.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-xs text-white/45">
+                    <li key={item} className="flex items-start gap-2 text-xs text-white/60">
                       <span className="w-1 h-1 bg-gold rounded-full mt-1.5 flex-shrink-0" />
                       {item}
                     </li>
@@ -368,7 +368,7 @@ export default function ClassesPage() {
             <Link href="/contact" className="btn-gold">
               Contact to Enroll
             </Link>
-            <p className="text-white/30 text-xs mt-5">
+            <p className="text-white/50 text-xs mt-5">
               New to Wing Chun? You&apos;re welcome to{" "}
               <Link href="/contact" className="text-gold/50 hover:text-gold transition-colors underline underline-offset-4">
                 contact us to arrange a first visit

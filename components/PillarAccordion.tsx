@@ -81,7 +81,7 @@ export default function PillarAccordion() {
               <span className="gold-line-short mb-4" />
               <p className="text-white/65 text-sm leading-relaxed mt-4 mb-5">{p.desc}</p>
               <div className="border-l-2 border-gold/30 pl-4">
-                <p className="text-white/35 text-sm italic leading-relaxed">{p.insight}</p>
+                <p className="text-white/55 text-sm italic leading-relaxed">{p.insight}</p>
               </div>
             </div>
           </div>

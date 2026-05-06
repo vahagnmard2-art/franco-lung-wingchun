@@ -62,7 +62,7 @@ export default function FAQAccordion() {
           >
             <div className="px-6 pb-5">
               <div className="gold-line-short mb-4" />
-              <p className="text-white/50 text-sm leading-relaxed mt-3">{item.a}</p>
+              <p className="text-white/70 text-sm leading-relaxed mt-3">{item.a}</p>
             </div>
           </div>
         </div>

@@ -72,6 +72,7 @@ export default function AboutPage() {
                   src="/images/sifu-portrait.jpg"
                   alt="Grandmaster Franco Lung"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover object-top"
                 />
               </div>
@@ -154,7 +155,7 @@ export default function AboutPage() {
                   advanced Wing Chun practitioners, and those interested in Filipino Stick Fighting.
                   His curriculum includes, but is not limited to: Six Harmony Theory, Major Hand
                   development, Gong Lik development, 3-Gate Defense activation, Upgraded Chi Sau,
-                  and Empty Door Theory.
+                  Empty Door Theory, and Yin Yang Exchange.
                 </p>
               </div>
 

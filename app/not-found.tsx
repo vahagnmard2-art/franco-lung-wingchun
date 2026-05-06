@@ -29,7 +29,7 @@ export default function NotFound() {
           <span className="text-gold">knocked out.</span>
         </h1>
         <div className="gold-line mx-auto w-24 my-8" />
-        <p className="text-white/40 text-sm leading-relaxed mb-10 max-w-sm mx-auto">
+        <p className="text-white/65 text-sm leading-relaxed mb-10 max-w-sm mx-auto">
           The page you&apos;re looking for doesn&apos;t exist or may have moved.
           Let&apos;s get you back on the mat.
         </p>

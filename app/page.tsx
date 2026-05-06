@@ -33,6 +33,7 @@ export default function HomePage() {
           aria-hidden="true"
           priority
           fill
+          sizes="100vw"
           className="object-cover object-center"
           style={{ opacity: 0.28 }}
         />
@@ -82,7 +83,7 @@ export default function HomePage() {
               "Children & Adult Programs",
               "Temple City · Los Angeles",
             ].map((item) => (
-              <span key={item} className="font-cinzel text-[10px] tracking-widest text-white/35 uppercase flex items-center gap-2">
+              <span key={item} className="font-cinzel text-[10px] tracking-widest text-white/70 uppercase flex items-center gap-2">
                 <span className="w-1 h-1 rounded-full bg-gold/50 flex-shrink-0" aria-hidden="true" />
                 {item}
               </span>
@@ -103,6 +104,7 @@ export default function HomePage() {
                   src="/images/sifu-portrait.jpg"
                   alt="Grandmaster Franco Lung"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-top"
                 />
               </div>
