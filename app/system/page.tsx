@@ -146,10 +146,10 @@ export default function SystemPage() {
               Core Principles
             </p>
             <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
-              Six <span className="text-gold">Pillars</span> of the System
+              Seven <span className="text-gold">Pillars</span> of the System
             </h2>
             <p className="text-white/40 text-sm max-w-md mx-auto mt-4 leading-relaxed">
-              These six principles form the conceptual spine of GM Lung&apos;s curriculum.
+              These seven principles form the conceptual spine of GM Lung&apos;s curriculum.
               Together they define what makes his Wing Chun unique.
             </p>
             <div className="gold-line mx-auto w-24 mt-6" />

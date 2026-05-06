@@ -36,13 +36,19 @@ const pillars = [
   {
     num: "06",
     title: "Empty Door Theory",
-    desc: "Empty Door Theory identifies and exploits structural gaps in any opponent's defense — the openings that exist not because of poor technique, but because of the fundamental physics of how a body occupies space. Combined with the Yin Yang Exchange, this is the highest strategic layer of GM Lung's system.",
+    desc: "Empty Door Theory identifies and exploits structural gaps in any opponent's defense — the openings that exist not because of poor technique, but because of the fundamental physics of how a body occupies space. This is one of the highest strategic layers of GM Lung's system.",
     insight: "Every defense creates its own emptiness. The master learns to see and enter those doors before they close.",
+  },
+  {
+    num: "07",
+    title: "Yin Yang Exchange",
+    desc: "The Yin Yang Exchange describes the dynamic interplay between yielding and issuing — the constant, fluid shift between receiving force and expressing it. In GM Lung's system, this principle governs the timing and transition between defense and offense, making every absorption simultaneously a preparation to strike.",
+    insight: "When you yield, you are already attacking. When you attack, you are already yielding. This is the heart of the exchange.",
   },
 ];
 
 export default function PillarAccordion() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
     <div className="space-y-3">
