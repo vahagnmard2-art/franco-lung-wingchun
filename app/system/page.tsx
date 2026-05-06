@@ -14,7 +14,7 @@ const levels = [
     title: "Foundation",
     subtitle: "Building the Hardware",
     desc: "The first level establishes the structural and physical foundation. Students develop correct stance, body alignment, and the essential hand forms. The emphasis is on building the 'hardware' — the body's capacity to express Wing Chun principles safely and efficiently.",
-    focus: ["Basic Forms (Siu Lim Tao)", "Structural Alignment", "Stance & Footwork", "Entry-level Chi Sau"],
+    focus: ["Basic Forms (Siu Nim Tao)", "Structural Alignment", "Stance & Footwork", "Entry-level Chi Sau"],
   },
   {
     level: "02",

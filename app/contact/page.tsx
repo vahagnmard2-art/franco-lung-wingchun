@@ -73,7 +73,7 @@ export default function ContactPage() {
           <h1 className="font-cinzel text-4xl md:text-6xl font-bold text-white tracking-wide mb-4">
             <span className="text-gold">Contact</span> Us
           </h1>
-          <p className="text-white/40 text-sm leading-relaxed max-w-md mx-auto mt-6">
+          <p className="text-white/70 text-sm leading-relaxed max-w-md mx-auto mt-6">
             Questions about classes, private lessons, or enrollment? Send a message and
             Grandmaster Lung will be in touch.
           </p>
@@ -102,10 +102,10 @@ export default function ContactPage() {
                     <MapPin size={14} className="text-gold" />
                   </div>
                   <div>
-                    <p className="font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-1">
+                    <p className="font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-1">
                       Location
                     </p>
-                    <p className="text-sm text-white/60 group-hover:text-white/80 transition-colors leading-relaxed">
+                    <p className="text-sm text-white/75 group-hover:text-white/95 transition-colors leading-relaxed">
                       5614 Rosemead Blvd<br />
                       Temple City, CA 91780
                     </p>
@@ -117,8 +117,8 @@ export default function ContactPage() {
                     <Phone size={14} className="text-gold" />
                   </div>
                   <div>
-                    <p className="font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-1">Phone</p>
-                    <p className="text-sm text-white/60 group-hover:text-white/80 transition-colors">(626) 233-2882</p>
+                    <p className="font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-1">Phone</p>
+                    <p className="text-sm text-white/75 group-hover:text-white/95 transition-colors">(626) 233-2882</p>
                   </div>
                 </a>
               </div>
@@ -138,7 +138,7 @@ export default function ContactPage() {
                   <div className="w-9 h-9 border border-gold/30 flex items-center justify-center group-hover:border-gold transition-colors">
                     <Instagram size={14} className="text-gold" />
                   </div>
-                  <span className="text-sm text-white/50 group-hover:text-gold transition-colors">
+                  <span className="text-sm text-white/70 group-hover:text-gold transition-colors">
                     @wingchunfrancolung
                   </span>
                 </a>
@@ -151,7 +151,7 @@ export default function ContactPage() {
                   <div className="w-9 h-9 border border-gold/30 flex items-center justify-center group-hover:border-gold transition-colors">
                     <Facebook size={14} className="text-gold" />
                   </div>
-                  <span className="text-sm text-white/50 group-hover:text-gold transition-colors">
+                  <span className="text-sm text-white/70 group-hover:text-gold transition-colors">
                     Franco Lung
                   </span>
                 </a>
@@ -164,7 +164,7 @@ export default function ContactPage() {
                   <div className="w-9 h-9 border border-gold/30 flex items-center justify-center group-hover:border-gold transition-colors">
                     <Youtube size={14} className="text-gold" />
                   </div>
-                  <span className="text-sm text-white/50 group-hover:text-gold transition-colors">
+                  <span className="text-sm text-white/70 group-hover:text-gold transition-colors">
                     YouTube Channel
                   </span>
                 </a>
@@ -183,17 +183,17 @@ export default function ContactPage() {
                   <h3 className="font-cinzel text-lg text-white tracking-wide mb-2">
                     Message Sent
                   </h3>
-                  <p className="text-white/40 text-sm">
+                  <p className="text-white/70 text-sm">
                     Thank you for reaching out. GM Lung will get back to you soon.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <fieldset className="space-y-5">
-                    <legend className="font-cinzel text-[10px] tracking-widest text-gold/40 uppercase mb-3">Your Information</legend>
+                    <legend className="font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-3">Your Information</legend>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
-                        <label className="block font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-2">
+                        <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
                           Your Name *
                         </label>
                         <input
@@ -202,12 +202,12 @@ export default function ContactPage() {
                           required
                           value={formData.name}
                           onChange={handleChange}
-                          className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/20"
+                          className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/40"
                           placeholder="Full name"
                         />
                       </div>
                       <div>
-                        <label className="block font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-2">
+                        <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
                           Email Address *
                         </label>
                         <input
@@ -216,14 +216,14 @@ export default function ContactPage() {
                           required
                           value={formData.email}
                           onChange={handleChange}
-                          className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/20"
+                          className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/40"
                           placeholder="your@email.com"
                         />
                       </div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
-                        <label className="block font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-2">
+                        <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
                           Phone (optional)
                         </label>
                         <input
@@ -231,12 +231,12 @@ export default function ContactPage() {
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/20"
+                          className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/40"
                           placeholder="(XXX) XXX-XXXX"
                         />
                       </div>
                       <div>
-                      <label className="block font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-2">
+                      <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
                         I&apos;m interested in
                       </label>
                       <select
@@ -257,7 +257,7 @@ export default function ContactPage() {
                   </fieldset>
 
                   <div>
-                    <label className="block font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mb-2">
+                    <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
                       Message *
                     </label>
                     <textarea
@@ -266,7 +266,7 @@ export default function ContactPage() {
                       rows={6}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors resize-none placeholder:text-white/20"
+                      className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors resize-none placeholder:text-white/40"
                       placeholder="Tell us about your experience level, goals, or any questions you have..."
                     />
                   </div>
@@ -291,7 +291,7 @@ export default function ContactPage() {
                         </>
                       )}
                     </button>
-                    <p className="text-white/30 text-xs">
+                    <p className="text-white/60 text-xs">
                       We typically respond within 24 hours.
                     </p>
                   </div>
@@ -312,7 +312,7 @@ export default function ContactPage() {
             <h2 className="font-cinzel text-2xl font-bold text-white tracking-wide">
               Find <span className="text-gold">Us</span>
             </h2>
-            <p className="text-white/40 text-sm mt-2">
+            <p className="text-white/70 text-sm mt-2">
               5614 Rosemead Blvd, Temple City, CA 91780
             </p>
           </div>

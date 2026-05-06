@@ -75,13 +75,6 @@ export default function Navbar() {
                 )}
               </Link>
             ))}
-            <a
-              href="tel:+16262332882"
-              className="hidden lg:flex items-center gap-1.5 font-cinzel text-[10px] tracking-widest text-white/40 hover:text-gold transition-colors ml-1"
-            >
-              <Phone size={11} aria-hidden="true" />
-              (626) 233-2882
-            </a>
             <Link href="/classes" className="btn-gold text-[10px] ml-2">
               Book a Class
             </Link>
