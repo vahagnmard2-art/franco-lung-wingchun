@@ -62,28 +62,34 @@ const programs = [
 
 const schedule = [
   {
-    day: "Friday",
-    classes: [
-      { time: "7:30 – 9:00 PM",    type: "Adult Class",  age: "" },
-    ],
-  },
-  {
     day: "Saturday",
     classes: [
       { time: "11:00 AM – 12:30 PM", type: "Teen Class",  age: "Ages 11–16" },
       { time: "1:30 – 3:00 PM",      type: "Kids Class",  age: "Ages 6–10"  },
-      { time: "3:30 – 5:00 PM",      type: "Mixed Adult & Teen",   age: "Ages 11+" },
+      { time: "3:30 – 5:00 PM",      type: "Teen Class",  age: "Ages 11–16" },
     ],
   },
   {
     day: "Sunday",
     classes: [
-      { time: "2:30 – 3:00 PM",  type: "Kids Class", age: "Ages 6–10" },
+      { time: "2:00 – 3:30 PM",  type: "Kids Class", age: "Ages 6–10" },
       { time: "3:30 – 5:00 PM",  type: "Kids Class", age: "Ages 6–10" },
     ],
   },
   {
-    day: "Mon – Thu",
+    day: "Wednesday",
+    classes: [
+      { time: "3:30 – 5:00 PM", type: "Adult Class", age: "" },
+    ],
+  },
+  {
+    day: "Friday",
+    classes: [
+      { time: "7:30 – 9:00 PM", type: "Adult Class", age: "" },
+    ],
+  },
+  {
+    day: "Tue – Fri",
     classes: [
       { time: "By Appointment", type: "Private Lessons", age: "All Ages" },
     ],
@@ -296,6 +302,36 @@ export default function ClassesPage() {
               </Link>
             </div>
           </div>
+
+          {/* Additional fees */}
+          <div className="mt-14">
+            <div className="text-center mb-8">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-2">
+                Additional Training
+              </p>
+              <h3 className="font-cinzel text-xl font-bold text-white tracking-wide">
+                Weapons &amp; <span className="text-gold">Equipment Fees</span>
+              </h3>
+            </div>
+            <div className="card-base overflow-hidden">
+              {[
+                { item: "Wooden Dummy", price: "$300" },
+                { item: "Bat Cham Dao (Butterfly Knives)", price: "$600" },
+                { item: "Six-and-a-Half-Point Long Pole", price: "$600" },
+              ].map((row, i, arr) => (
+                <div
+                  key={row.item}
+                  className={`flex items-center justify-between px-6 py-4 ${i < arr.length - 1 ? "border-b border-ink-400" : ""}`}
+                >
+                  <span className="font-cinzel text-sm text-white/70 tracking-wide">{row.item}</span>
+                  <span className="font-cinzel text-lg font-bold text-gold">{row.price}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-white/30 text-xs text-center mt-4">
+              Weapons training is available to qualifying students at GM Lung&apos;s discretion.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -352,8 +388,74 @@ export default function ClassesPage() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* Private lesson policy */}
       <section className="section-pad bg-ink">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+              Private Training
+            </p>
+            <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
+              Booking <span className="text-gold">Policy</span>
+            </h2>
+            <div className="gold-line mx-auto w-24 mt-6" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Booking rules */}
+            <div className="card-base p-8">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+                Reservation Rules
+              </p>
+              <ul className="space-y-4">
+                {[
+                  "Reservations must be made in advance and confirmed with GM Lung.",
+                  "Payment for private lessons is required one day before your scheduled training.",
+                  "Sessions available Tuesday through Friday by appointment.",
+                ].map((rule, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-white/65 leading-relaxed">
+                    <span className="w-1.5 h-1.5 bg-gold rounded-full mt-2 flex-shrink-0" />
+                    {rule}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Cancellation policy */}
+            <div className="card-base p-8">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+                Cancellation Policy
+              </p>
+              <div className="space-y-5">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 border border-gold/30 px-2 py-1 text-center min-w-[4.5rem]">
+                    <p className="font-cinzel text-[9px] tracking-wide text-gold/60 uppercase leading-tight">1 Day</p>
+                    <p className="font-cinzel text-[9px] tracking-wide text-white/40 uppercase leading-tight">Notice</p>
+                  </div>
+                  <div>
+                    <p className="font-cinzel text-sm text-white tracking-wide">No Charge</p>
+                    <p className="text-xs text-white/40 mt-0.5 leading-relaxed">Cancel at least one day before — no fee applied.</p>
+                  </div>
+                </div>
+                <div className="gold-line-short" />
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 border border-gold/20 px-2 py-1 text-center min-w-[4.5rem]">
+                    <p className="font-cinzel text-[9px] tracking-wide text-white/40 uppercase leading-tight">Same</p>
+                    <p className="font-cinzel text-[9px] tracking-wide text-white/40 uppercase leading-tight">Day</p>
+                  </div>
+                  <div>
+                    <p className="font-cinzel text-sm text-white tracking-wide">Full Fee Charged</p>
+                    <p className="text-xs text-white/40 mt-0.5 leading-relaxed">Same-day cancellations are charged the full session price.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section-pad bg-ink-100">
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-12">
             <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
