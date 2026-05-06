@@ -70,18 +70,6 @@ export default function LineagePage() {
         </div>
       </div>
 
-      {/* WSL Quote */}
-      <section className="py-12 bg-ink-100 border-b border-ink-400">
-        <div className="max-w-2xl mx-auto px-6 text-center">
-          <blockquote className="font-cinzel text-lg md:text-xl text-white/60 tracking-wide leading-relaxed italic">
-            &ldquo;If you really want to learn Wing Chun, you must spend your time feeling it, not just thinking about it.&rdquo;
-          </blockquote>
-          <p className="font-cinzel text-[10px] tracking-ultra text-gold/50 uppercase mt-5">
-            — Wong Shun Leung 黃淳梁
-          </p>
-        </div>
-      </section>
-
       {/* Lineage tree */}
       <section className="py-16 bg-ink">
         <div className="max-w-3xl mx-auto px-6">
