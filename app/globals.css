@@ -20,10 +20,14 @@
   padding: 0;
 }
 
+html {
+  overflow-x: clip; /* clip instead of hidden — doesn't break position:fixed on iOS */
+}
+
 body {
   background-color: var(--ink);
   color: #f0f0f0;
-  overflow-x: hidden;
+  font-weight: 500; /* base medium weight for readability on mobile */
 }
 
 body::after {

@@ -25,19 +25,21 @@ export default function HomePage() {
   return (
     <>
       {/* ─── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background photo — very subtle under the gradient */}
-        <Image
-          src="/images/sifu-action.jpg"
-          alt=""
-          aria-hidden="true"
-          priority
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-          style={{ opacity: 0.28 }}
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,_#1e1400_0%,_#080808_65%)]" />
+      <section className="relative min-h-[100svh] flex items-center justify-center">
+        {/* Background — isolated so overflow:hidden here can't trap fixed elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src="/images/sifu-action.jpg"
+            alt=""
+            aria-hidden="true"
+            priority
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+            style={{ opacity: 0.28 }}
+          />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,_#1e1400_0%,_#080808_65%)]" />
+        </div>
         <div className="corner-tl" />
         <div className="corner-tr" />
         <div className="corner-bl" />

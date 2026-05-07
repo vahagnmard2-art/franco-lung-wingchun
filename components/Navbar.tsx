@@ -21,9 +21,16 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
+    onScroll(); // set initial state on mount
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Lock body scroll when mobile menu is open (prevents iOS background scroll-through)
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
 
   // Close mobile menu on route change
   useEffect(() => { setOpen(false); }, [pathname]);
@@ -33,8 +40,8 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-ink/95 backdrop-blur-md border-b border-ink-400"
-            : "bg-transparent"
+            ? "bg-ink/98 backdrop-blur-md border-b border-ink-400"
+            : "bg-ink/80 backdrop-blur-sm border-b border-ink-400/40"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
@@ -65,7 +72,7 @@ export default function Navbar() {
               <Link
                 key={href}
                 href={href}
-                className={`font-cinzel text-[11px] tracking-wide2 uppercase transition-colors duration-200 hover:text-gold relative pb-1 ${
+                className={`font-cinzel font-semibold text-[11px] tracking-wide2 uppercase transition-colors duration-200 hover:text-gold relative pb-1 ${
                   pathname === href ? "text-gold" : "text-white/90"
                 }`}
               >
@@ -98,7 +105,7 @@ export default function Navbar() {
         aria-modal="true"
         aria-label="Navigation menu"
         onClick={() => setOpen(false)}
-        className={`fixed inset-0 z-40 bg-ink flex flex-col items-center justify-center md:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 min-h-[100dvh] z-40 bg-ink flex flex-col items-center justify-center md:hidden transition-opacity duration-300 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
