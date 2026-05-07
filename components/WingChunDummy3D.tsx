@@ -7,7 +7,14 @@ import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import * as THREE from "three";
 
 function WoodenDummy({ activeArm }: { activeArm: number | null }) {
-  // Per-instance materials — no shared-object mutation across renders
+  const woodMat = useMemo(() => new THREE.MeshStandardMaterial({
+    color: "#7a3010",
+    metalness: 0.15,
+    roughness: 0.72,
+    emissive: "#3a1408",
+    emissiveIntensity: 0.35,
+  }), []);
+
   const goldMat = useMemo(() => new THREE.MeshStandardMaterial({
     color: "#C9A84C",
     metalness: 0.9,
@@ -17,22 +24,18 @@ function WoodenDummy({ activeArm }: { activeArm: number | null }) {
   }), []);
 
   const darkMat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: "#1a1000",
-    metalness: 0.6,
-    roughness: 0.5,
-  }), []);
-
-  const boardMat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: "#2a1a00",
+    color: "#4a1a08",
     metalness: 0.3,
-    roughness: 0.7,
+    roughness: 0.8,
+    emissive: "#3a1408",
+    emissiveIntensity: 0.2,
   }), []);
 
-  const group     = useRef<THREE.Group>(null);
-  const leftRef   = useRef<THREE.Group>(null);
-  const rightRef  = useRef<THREE.Group>(null);
-  const midRef    = useRef<THREE.Group>(null);
-  const legRef    = useRef<THREE.Group>(null);
+  const group    = useRef<THREE.Group>(null);
+  const leftRef  = useRef<THREE.Group>(null);
+  const rightRef = useRef<THREE.Group>(null);
+  const midRef   = useRef<THREE.Group>(null);
+  const legRef   = useRef<THREE.Group>(null);
 
   useFrame(({ clock }) => {
     if (!group.current) return;
@@ -43,7 +46,7 @@ function WoodenDummy({ activeArm }: { activeArm: number | null }) {
     armRefs.forEach((ref, i) => {
       if (!ref.current) return;
       const isActive = activeArm === i;
-      const pulse = isActive ? 0.8 + Math.sin(t * 3.5) * 0.4 : 0.55;
+      const pulse = isActive ? 0.8 + Math.sin(t * 3.5) * 0.4 : 0.35;
       ref.current.traverse((obj) => {
         const mesh = obj as THREE.Mesh;
         if (mesh.isMesh && (mesh.material as THREE.MeshStandardMaterial).emissive) {
@@ -53,85 +56,120 @@ function WoodenDummy({ activeArm }: { activeArm: number | null }) {
     });
   });
 
+  // Strut angle: from mount center (0, -1.32, 0) to beam end (0, -1.58, ±0.58)
+  // direction = (0, -0.26, 0.58), length ≈ 0.636
+  // rotation.x for front = acos(-0.26/0.636) ≈ 1.985 rad
+  const strutAngle = 1.985;
+  const strutLen   = 0.64;
+
   return (
     <group ref={group}>
-      {/* Wall mounting board */}
-      <mesh material={boardMat} position={[0, 1.55, -0.18]}>
-        <boxGeometry args={[1.1, 0.18, 0.12]} />
+      {/* ── MAIN TRUNK ─────────────────────────────────── */}
+      <mesh material={woodMat} castShadow>
+        <cylinderGeometry args={[0.092, 0.108, 2.55, 28]} />
       </mesh>
-      <mesh material={goldMat} position={[0, 1.62, -0.12]}>
-        <boxGeometry args={[1.0, 0.025, 0.015]} />
-      </mesh>
-      <mesh material={goldMat} position={[0, 1.48, -0.12]}>
-        <boxGeometry args={[1.0, 0.025, 0.015]} />
-      </mesh>
-      {[-0.38, 0.38].map((x, i) => (
-        <mesh key={i} material={goldMat} position={[x, 1.55, -0.12]}>
-          <cylinderGeometry args={[0.025, 0.025, 0.04, 10]} />
+
+      {/* Decorative ring connectors at arm insertion points */}
+      {[0.68, 0.05, -0.95].map((y, i) => (
+        <mesh key={i} material={goldMat} position={[0, y, 0]}>
+          <torusGeometry args={[0.118, 0.022, 12, 36]} />
         </mesh>
       ))}
 
-      {/* Main post */}
-      <mesh material={goldMat} castShadow>
-        <cylinderGeometry args={[0.09, 0.11, 2.6, 24]} />
-      </mesh>
-
-      {/* Ring connectors */}
-      {[0.75, 0.1, -0.85].map((y, i) => (
-        <mesh key={i} material={darkMat} position={[0, y, 0]}>
-          <torusGeometry args={[0.12, 0.028, 14, 36]} />
+      {/* ── UPPER LEFT ARM ─────────────────────────────── */}
+      {/* Horizontal, extends left, slight downward angle */}
+      <group ref={leftRef} position={[-0.11, 0.66, 0]} rotation={[0.12, 0, Math.PI / 2.05]}>
+        <mesh material={woodMat} castShadow>
+          <cylinderGeometry args={[0.036, 0.040, 0.72, 16]} />
         </mesh>
-      ))}
-
-      {/* Upper left arm */}
-      <group ref={leftRef} position={[-0.44, 0.65, 0]} rotation={[0, 0, Math.PI / 2.1]}>
-        <mesh material={goldMat}>
-          <cylinderGeometry args={[0.038, 0.038, 0.74, 16]} />
-        </mesh>
-        <mesh material={darkMat} position={[0, 0.39, 0]}>
-          <sphereGeometry args={[0.058, 14, 14]} />
+        <mesh material={darkMat} position={[0, 0.37, 0]}>
+          <sphereGeometry args={[0.054, 12, 12]} />
         </mesh>
       </group>
 
-      {/* Upper right arm */}
-      <group ref={rightRef} position={[0.44, 0.65, 0]} rotation={[0, 0, -Math.PI / 2.1]}>
-        <mesh material={goldMat}>
-          <cylinderGeometry args={[0.038, 0.038, 0.74, 16]} />
+      {/* ── UPPER RIGHT ARM ────────────────────────────── */}
+      {/* Mirror of left arm */}
+      <group ref={rightRef} position={[0.11, 0.66, 0]} rotation={[0.12, 0, -Math.PI / 2.05]}>
+        <mesh material={woodMat} castShadow>
+          <cylinderGeometry args={[0.036, 0.040, 0.72, 16]} />
         </mesh>
-        <mesh material={darkMat} position={[0, 0.39, 0]}>
-          <sphereGeometry args={[0.058, 14, 14]} />
-        </mesh>
-      </group>
-
-      {/* Middle (forward) arm */}
-      <group ref={midRef} position={[0, 0.08, 0.18]} rotation={[Math.PI / 2.4, 0, 0]}>
-        <mesh material={goldMat}>
-          <cylinderGeometry args={[0.038, 0.038, 0.65, 16]} />
-        </mesh>
-        <mesh material={darkMat} position={[0, 0.35, 0]}>
-          <sphereGeometry args={[0.058, 14, 14]} />
+        <mesh material={darkMat} position={[0, 0.37, 0]}>
+          <sphereGeometry args={[0.054, 12, 12]} />
         </mesh>
       </group>
 
-      {/* Leg */}
-      <group ref={legRef} position={[0, -1.08, 0.2]} rotation={[0.55, 0, 0]}>
-        <mesh material={goldMat}>
-          <cylinderGeometry args={[0.048, 0.034, 0.56, 16]} />
+      {/* ── MIDDLE ARM ─────────────────────────────────── */}
+      {/* Single arm, lower, slightly offset right, angled forward */}
+      <group ref={midRef} position={[0.06, 0.04, 0.1]} rotation={[Math.PI / 2.2, 0, -0.12]}>
+        <mesh material={woodMat} castShadow>
+          <cylinderGeometry args={[0.036, 0.040, 0.62, 16]} />
+        </mesh>
+        <mesh material={darkMat} position={[0, 0.33, 0]}>
+          <sphereGeometry args={[0.054, 12, 12]} />
+        </mesh>
+      </group>
+
+      {/* ── LEG ────────────────────────────────────────── */}
+      {/* Lower trunk, angled forward and down */}
+      <group ref={legRef} position={[0, -0.92, 0.14]} rotation={[0.52, 0, 0]}>
+        <mesh material={woodMat} castShadow>
+          <cylinderGeometry args={[0.046, 0.034, 0.58, 16]} />
         </mesh>
         <mesh material={darkMat} position={[0, -0.31, 0]}>
-          <sphereGeometry args={[0.062, 14, 14]} />
+          <sphereGeometry args={[0.058, 12, 12]} />
         </mesh>
       </group>
 
-      {/* Base */}
-      <mesh material={darkMat} position={[0, -1.44, 0]}>
-        <cylinderGeometry args={[0.46, 0.52, 0.12, 28]} />
+      {/* ── FREE-STANDING BASE ─────────────────────────── */}
+
+      {/* Floor cross beams — side-to-side and front-to-back */}
+      <mesh material={darkMat} position={[0, -1.62, 0]}>
+        <boxGeometry args={[1.28, 0.072, 0.095]} />
       </mesh>
-      <mesh material={goldMat} position={[0, -1.38, 0]}>
-        <torusGeometry args={[0.48, 0.018, 10, 36]} />
+      <mesh material={darkMat} position={[0, -1.62, 0]}>
+        <boxGeometry args={[0.095, 0.072, 1.28]} />
       </mesh>
-      <mesh material={goldMat} position={[0, -1.49, 0]}>
-        <torusGeometry args={[0.48, 0.008, 8, 36]} />
+
+      {/* Central vertical mounting socket */}
+      <mesh material={darkMat} position={[0, -1.46, 0]}>
+        <boxGeometry args={[0.175, 0.32, 0.175]} />
+      </mesh>
+
+      {/* Diagonal support struts — front, back, left, right */}
+      {/* Front strut */}
+      <group position={[0, -1.45, 0.29]} rotation={[strutAngle, 0, 0]}>
+        <mesh material={darkMat}>
+          <boxGeometry args={[0.062, strutLen, 0.062]} />
+        </mesh>
+      </group>
+      {/* Back strut */}
+      <group position={[0, -1.45, -0.29]} rotation={[-strutAngle, 0, 0]}>
+        <mesh material={darkMat}>
+          <boxGeometry args={[0.062, strutLen, 0.062]} />
+        </mesh>
+      </group>
+      {/* Left strut */}
+      <group position={[-0.29, -1.45, 0]} rotation={[0, 0, strutAngle]}>
+        <mesh material={darkMat}>
+          <boxGeometry args={[0.062, strutLen, 0.062]} />
+        </mesh>
+      </group>
+      {/* Right strut */}
+      <group position={[0.29, -1.45, 0]} rotation={[0, 0, -strutAngle]}>
+        <mesh material={darkMat}>
+          <boxGeometry args={[0.062, strutLen, 0.062]} />
+        </mesh>
+      </group>
+
+      {/* Gold bolt accents at beam ends */}
+      {([[0, -1.6, 0.6], [0, -1.6, -0.6], [-0.6, -1.6, 0], [0.6, -1.6, 0]] as [number, number, number][]).map((pos, i) => (
+        <mesh key={i} material={goldMat} position={pos}>
+          <cylinderGeometry args={[0.026, 0.026, 0.075, 10]} />
+        </mesh>
+      ))}
+      {/* Gold accent strip on mounting socket */}
+      <mesh material={goldMat} position={[0, -1.3, 0]}>
+        <torusGeometry args={[0.118, 0.016, 10, 32]} />
       </mesh>
     </group>
   );
@@ -140,15 +178,15 @@ function WoodenDummy({ activeArm }: { activeArm: number | null }) {
 export default function WingChunDummy3D({ activeArm = null }: { activeArm?: number | null }) {
   return (
     <Canvas
-      camera={{ position: [0, 0.3, 4.5], fov: 42 }}
+      camera={{ position: [0, 0.1, 4.8], fov: 42 }}
       gl={{ antialias: true, alpha: true }}
       style={{ background: "transparent" }}
       aria-label="Interactive 3D Wing Chun wooden dummy — drag to rotate"
     >
-      <ambientLight intensity={0.2} />
-      <pointLight position={[4, 6, 4]}  intensity={4}   color="#d4a847" castShadow />
-      <pointLight position={[-4, 2, 3]} intensity={1.5} color="#c8a030" />
-      <pointLight position={[0, -3, 2]} intensity={0.8} color="#ff8800" />
+      <ambientLight intensity={0.25} />
+      <pointLight position={[4, 6, 4]}  intensity={4.5} color="#d4a847" castShadow />
+      <pointLight position={[-4, 2, 3]} intensity={1.8} color="#c8a030" />
+      <pointLight position={[0, -3, 2]} intensity={0.9} color="#ff8800" />
 
       <Environment preset="warehouse" />
 
@@ -156,7 +194,7 @@ export default function WingChunDummy3D({ activeArm = null }: { activeArm?: numb
         <WoodenDummy activeArm={activeArm} />
       </Float>
 
-      <Sparkles count={70} scale={5.5} size={1.5} speed={0.3} color="#c8a030" opacity={0.4} />
+      <Sparkles count={60} scale={5.5} size={1.4} speed={0.3} color="#c8a030" opacity={0.35} />
 
       <OrbitControls
         enablePan={false}
