@@ -1,64 +1,78 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Phone, Instagram, Facebook, Youtube, Send, CheckCircle } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { toast } from "sonner";
+import { MapPin, Phone, Instagram, Facebook, Youtube, Send } from "lucide-react";
 
 const FORM_ENDPOINT = "https://formsubmit.co/ajax/FrancoLungWingChunAcademy@gmail.com";
 
+const schema = z.object({
+  name:     z.string().min(2, "Please enter your full name."),
+  email:    z.string().email("Please enter a valid email address."),
+  phone:    z.string().optional(),
+  interest: z.string(),
+  message:  z.string().min(10, "Message must be at least 10 characters.").max(1000, "Message is too long."),
+});
+
+type FormData = z.infer<typeof schema>;
+
 const INTEREST_LABELS: Record<string, string> = {
-  group: "Group Classes",
-  "private-1hr": "Private Lesson (1 hr)",
-  "private-90min": "Private Lesson (90 min)",
-  children: "Children's Program",
-  fma: "Filipino Stick Fighting",
-  general: "General Inquiry",
+  group:          "Group Classes",
+  "private-1hr":  "Private Lesson (60 min)",
+  "private-90min":"Private Lesson (90 min)",
+  children:       "Children's Program",
+  fma:            "Filipino Stick Fighting",
+  general:        "General Inquiry",
 };
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    interest: "group",
-    message: "",
+  const [sending, setSending] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+    defaultValues: { interest: "group" },
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("sending");
-
+  const onSubmit = async (data: FormData) => {
+    setSending(true);
     try {
       const res = await fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          Name: formData.name,
-          Email: formData.email,
-          Phone: formData.phone || "Not provided",
-          Interest: INTEREST_LABELS[formData.interest] ?? formData.interest,
-          Message: formData.message,
-          _subject: `Wing Chun Inquiry — ${formData.name}`,
-          _replyto: formData.email,
+          Name:     data.name,
+          Email:    data.email,
+          Phone:    data.phone || "Not provided",
+          Interest: INTEREST_LABELS[data.interest] ?? data.interest,
+          Message:  data.message,
+          _subject: `Wing Chun Inquiry — ${data.name}`,
+          _replyto: data.email,
           _captcha: "false",
         }),
       });
       if (res.ok) {
-        setStatus("sent");
-        setFormData({ name: "", email: "", phone: "", interest: "group", message: "" });
+        toast.success("Message sent — GM Lung will be in touch soon.");
+        reset();
       } else {
-        setStatus("error");
+        toast.error("Something went wrong. Please try again or call us directly.");
       }
     } catch {
-      setStatus("error");
+      toast.error("Network error. Please check your connection and try again.");
+    } finally {
+      setSending(false);
     }
   };
+
+  const inputClass = (hasError?: boolean) =>
+    `w-full bg-ink border ${hasError ? "border-red-500/60" : "border-ink-400"} focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/35`;
 
   return (
     <>
@@ -85,6 +99,7 @@ export default function ContactPage() {
       <section className="section-pad bg-ink-100">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-14">
+
             {/* Contact info */}
             <div className="lg:col-span-2">
               <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-6">
@@ -102,12 +117,9 @@ export default function ContactPage() {
                     <MapPin size={14} className="text-gold" />
                   </div>
                   <div>
-                    <p className="font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-1">
-                      Location
-                    </p>
+                    <p className="font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-1">Location</p>
                     <p className="text-sm text-white/75 group-hover:text-white/95 transition-colors leading-relaxed">
-                      5614 Rosemead Blvd<br />
-                      Temple City, CA 91780
+                      5614 Rosemead Blvd<br />Temple City, CA 91780
                     </p>
                   </div>
                 </a>
@@ -129,174 +141,114 @@ export default function ContactPage() {
                 Follow Us
               </p>
               <div className="space-y-4">
-                <a
-                  href="https://www.instagram.com/wingchunfrancolung"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 group"
-                >
-                  <div className="w-9 h-9 border border-gold/30 flex items-center justify-center group-hover:border-gold transition-colors">
-                    <Instagram size={14} className="text-gold" />
-                  </div>
-                  <span className="text-sm text-white/70 group-hover:text-gold transition-colors">
-                    @wingchunfrancolung
-                  </span>
-                </a>
-                <a
-                  href="https://www.facebook.com/FrancoLung"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 group"
-                >
-                  <div className="w-9 h-9 border border-gold/30 flex items-center justify-center group-hover:border-gold transition-colors">
-                    <Facebook size={14} className="text-gold" />
-                  </div>
-                  <span className="text-sm text-white/70 group-hover:text-gold transition-colors">
-                    Franco Lung
-                  </span>
-                </a>
-                <a
-                  href="https://www.youtube.com/@FrancoLungWingChun"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 group"
-                >
-                  <div className="w-9 h-9 border border-gold/30 flex items-center justify-center group-hover:border-gold transition-colors">
-                    <Youtube size={14} className="text-gold" />
-                  </div>
-                  <span className="text-sm text-white/70 group-hover:text-gold transition-colors">
-                    YouTube Channel
-                  </span>
-                </a>
+                {[
+                  { href: "https://www.instagram.com/wingchunfrancolung", icon: Instagram, label: "@wingchunfrancolung" },
+                  { href: "https://www.facebook.com/FrancoLung",          icon: Facebook,  label: "Franco Lung" },
+                  { href: "https://www.youtube.com/@FrancoLungWingChun",  icon: Youtube,   label: "YouTube Channel" },
+                ].map(({ href, icon: Icon, label }) => (
+                  <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                    <div className="w-9 h-9 border border-gold/30 flex items-center justify-center group-hover:border-gold transition-colors">
+                      <Icon size={14} className="text-gold" />
+                    </div>
+                    <span className="text-sm text-white/70 group-hover:text-gold transition-colors">{label}</span>
+                  </a>
+                ))}
               </div>
             </div>
 
-            {/* Contact form */}
+            {/* Form */}
             <div className="lg:col-span-3">
-              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-6">
                 Send a Message
               </p>
 
-              {status === "sent" ? (
-                <div className="border border-gold/30 bg-ink-200 p-10 text-center">
-                  <CheckCircle size={40} className="text-gold mx-auto mb-4" />
-                  <h3 className="font-cinzel text-lg text-white tracking-wide mb-2">
-                    Message Sent
-                  </h3>
-                  <p className="text-white/70 text-sm">
-                    Thank you for reaching out. GM Lung will get back to you soon.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <fieldset className="space-y-5">
-                    <legend className="font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-3">Your Information</legend>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <div>
-                        <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
-                          Your Name *
-                        </label>
-                        <input
-                          type="text"
-                          name="name"
-                          required
-                          value={formData.name}
-                          onChange={handleChange}
-                          className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/40"
-                          placeholder="Full name"
-                        />
-                      </div>
-                      <div>
-                        <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
-                          Email Address *
-                        </label>
-                        <input
-                          type="email"
-                          name="email"
-                          required
-                          value={formData.email}
-                          onChange={handleChange}
-                          className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/40"
-                          placeholder="your@email.com"
-                        />
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <div>
-                        <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
-                          Phone (optional)
-                        </label>
-                        <input
-                          type="tel"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/40"
-                          placeholder="(XXX) XXX-XXXX"
-                        />
-                      </div>
-                      <div>
-                      <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
-                        I&apos;m interested in
-                      </label>
-                      <select
-                        name="interest"
-                        value={formData.interest}
-                        onChange={handleChange}
-                        className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors"
-                      >
-                        <option value="group">Group Classes</option>
-                        <option value="private-1hr">Private Lesson (1 hr)</option>
-                        <option value="private-90min">Private Lesson (90 min)</option>
-                        <option value="children">Children&apos;s Program</option>
-                        <option value="fma">Filipino Stick Fighting</option>
-                        <option value="general">General Inquiry</option>
-                      </select>
-                      </div>
-                    </div>
-                  </fieldset>
-
+              <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
-                      Message *
+                      Your Name *
                     </label>
-                    <textarea
-                      name="message"
-                      required
-                      rows={6}
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="w-full bg-ink border border-ink-400 focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors resize-none placeholder:text-white/40"
-                      placeholder="Tell us about your experience level, goals, or any questions you have..."
+                    <input
+                      {...register("name")}
+                      type="text"
+                      placeholder="Full name"
+                      className={inputClass(!!errors.name)}
+                    />
+                    {errors.name && (
+                      <p className="text-red-400/80 text-xs mt-1">{errors.name.message}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      {...register("email")}
+                      type="email"
+                      placeholder="your@email.com"
+                      className={inputClass(!!errors.email)}
+                    />
+                    {errors.email && (
+                      <p className="text-red-400/80 text-xs mt-1">{errors.email.message}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
+                      Phone (optional)
+                    </label>
+                    <input
+                      {...register("phone")}
+                      type="tel"
+                      placeholder="(XXX) XXX-XXXX"
+                      className={inputClass()}
                     />
                   </div>
-
-                  {status === "error" && (
-                    <p className="text-red-400/70 text-xs">
-                      Something went wrong. Please try again or email us directly.
-                    </p>
-                  )}
-
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                    <button
-                      type="submit"
-                      disabled={status === "sending"}
-                      className="btn-gold flex items-center gap-3 disabled:opacity-50"
-                    >
-                      {status === "sending" ? (
-                        "Sending..."
-                      ) : (
-                        <>
-                          Send Message <Send size={13} />
-                        </>
-                      )}
-                    </button>
-                    <p className="text-white/60 text-xs">
-                      We typically respond within 24 hours.
-                    </p>
+                  <div>
+                    <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
+                      I&apos;m interested in
+                    </label>
+                    <select {...register("interest")} className={inputClass()}>
+                      <option value="group">Group Classes</option>
+                      <option value="private-1hr">Private Lesson (60 min)</option>
+                      <option value="private-90min">Private Lesson (90 min)</option>
+                      <option value="children">Children&apos;s Program</option>
+                      <option value="fma">Filipino Stick Fighting</option>
+                      <option value="general">General Inquiry</option>
+                    </select>
                   </div>
-                </form>
-              )}
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase">
+                      Message *
+                    </label>
+                  </div>
+                  <textarea
+                    {...register("message")}
+                    rows={6}
+                    placeholder="Tell us about your experience level, goals, or any questions you have..."
+                    className={`${inputClass(!!errors.message)} resize-none`}
+                  />
+                  {errors.message ? (
+                    <p className="text-red-400/80 text-xs mt-1">{errors.message.message}</p>
+                  ) : null}
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                  <button
+                    type="submit"
+                    disabled={sending}
+                    className="btn-gold flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {sending ? "Sending…" : <><span>Send Message</span><Send size={13} /></>}
+                  </button>
+                  <p className="text-white/50 text-xs">We typically respond within 24 hours.</p>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -306,15 +258,11 @@ export default function ContactPage() {
       <section className="bg-ink border-t border-ink-400">
         <div className="max-w-6xl mx-auto px-6 py-14">
           <div className="text-center mb-10">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-2">
-              Location
-            </p>
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-2">Location</p>
             <h2 className="font-cinzel text-2xl font-bold text-white tracking-wide">
               Find <span className="text-gold">Us</span>
             </h2>
-            <p className="text-white/70 text-sm mt-2">
-              5614 Rosemead Blvd, Temple City, CA 91780
-            </p>
+            <p className="text-white/70 text-sm mt-2">5614 Rosemead Blvd, Temple City, CA 91780</p>
           </div>
           <div className="border border-ink-400 overflow-hidden" style={{ height: "420px" }}>
             <iframe

@@ -13,10 +13,19 @@ export default function LineageScroll() {
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const ctx = gsap.context(() => {
       const nodes = gsap.utils.toArray<HTMLElement>(".lineage-node", container.current!);
       const lines = gsap.utils.toArray<HTMLElement>(".lineage-line", container.current!);
       const dots  = gsap.utils.toArray<HTMLElement>(".lineage-dot",  container.current!);
+
+      if (prefersReduced) {
+        gsap.set([...nodes, ...lines, ...dots], { autoAlpha: 1, y: 0, scaleY: 1, scale: 1 });
+        gsap.set(".lineage-branch", { scaleX: 1 });
+        gsap.set(".lineage-glow", { opacity: 1 });
+        return;
+      }
 
       // Set starting states
       gsap.set(nodes, { autoAlpha: 0, y: 28 });

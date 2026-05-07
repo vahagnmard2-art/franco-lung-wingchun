@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import LineageScroll from "@/components/LineageScroll";
+import HeroParallax from "@/components/HeroParallax";
 
 export const metadata: Metadata = {
   title: "Lineage",
@@ -54,6 +55,7 @@ export default function LineagePage() {
     <>
       {/* Header */}
       <div className="page-hero text-center px-6">
+        <HeroParallax />
         <div className="corner-tl" />
         <div className="corner-tr" />
         <div className="max-w-3xl mx-auto">

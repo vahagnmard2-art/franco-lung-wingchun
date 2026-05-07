@@ -8,6 +8,8 @@ import ScrollToTop from "@/components/ScrollToTop";
 import MobileCallBar from "@/components/MobileCallBar";
 import LenisProvider from "@/components/LenisProvider";
 import PageTransition from "@/components/PageTransition";
+import CustomCursor from "@/components/CustomCursor";
+import { Toaster } from "sonner";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -123,6 +125,20 @@ export default function RootLayout({
         </LenisProvider>
         <ScrollToTop />
         <MobileCallBar />
+        <CustomCursor />
+        <Toaster
+          position="bottom-center"
+          toastOptions={{
+            style: {
+              background: "#181818",
+              border: "1px solid #2a2a2a",
+              color: "#f0f0f0",
+              fontFamily: "var(--font-cinzel), serif",
+              fontSize: "0.7rem",
+              letterSpacing: "0.1em",
+            },
+          }}
+        />
         <Analytics />
       </body>
     </html>

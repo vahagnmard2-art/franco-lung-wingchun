@@ -9,6 +9,18 @@ export const metadata: Metadata = {
     "Wing Chun classes in Temple City, CA with Grandmaster Franco Lung. Private lessons from $50, group classes $30. Children's program, adult classes, Filipino Stick Fighting.",
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    { "@type": "Question", name: "Do I need any experience to start?", acceptedAnswer: { "@type": "Answer", text: "None at all. GM Lung's system is specifically designed to take complete beginners and guide them step by step." } },
+    { "@type": "Question", name: "What age can children start?", acceptedAnswer: { "@type": "Answer", text: "Children can join the Little Dragon Program from age 5." } },
+    { "@type": "Question", name: "Is Wing Chun effective for real self-defense?", acceptedAnswer: { "@type": "Answer", text: "Yes — Wing Chun was designed for close-range, practical confrontations. GM Lung's system develops the internal dimension, making techniques work regardless of size or strength." } },
+    { "@type": "Question", name: "What should I wear to class?", acceptedAnswer: { "@type": "Answer", text: "There is no formal uniform requirement to start. Flat-soled shoes are recommended." } },
+    { "@type": "Question", name: "What is the difference between group classes and private lessons?", acceptedAnswer: { "@type": "Answer", text: "Group classes develop Chi Sau with partners. Private lessons are one-on-one with GM Lung — faster progress and personal correction." } },
+  ],
+};
+
 const programs = [
   {
     title: "Children's Little Dragon Program",
@@ -99,6 +111,10 @@ const schedule = [
 export default function ClassesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* Header */}
       <div className="page-hero text-center px-6">
         <div className="corner-tl" />

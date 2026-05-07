@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PillarAccordion from "@/components/PillarAccordion";
+import HeroParallax from "@/components/HeroParallax";
 
 export const metadata: Metadata = {
   title: "The System",
@@ -38,6 +39,7 @@ export default function SystemPage() {
     <>
       {/* Header */}
       <div className="page-hero text-center px-6">
+        <HeroParallax />
         <div className="corner-tl" />
         <div className="corner-tr" />
         <div className="max-w-3xl mx-auto">

@@ -7,6 +7,7 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import { Play, ArrowUpRight, ImageOff } from "lucide-react";
+import HeroParallax from "@/components/HeroParallax";
 
 const photos = [
   {
@@ -99,6 +100,7 @@ export default function GalleryClient() {
     <>
       {/* Header */}
       <div className="page-hero text-center px-6">
+        <HeroParallax />
         <div className="corner-tl" />
         <div className="corner-tr" />
         <div className="max-w-3xl mx-auto">

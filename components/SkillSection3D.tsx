@@ -19,7 +19,7 @@ const skills = [
     name: "Siu Nim Tao",
     zh: "小念頭",
     desc: "The first form — cultivating the small idea and building the internal structure that all else rests on.",
-    armIndex: 2, // center/forward arm
+    armIndex: 2,
   },
   {
     name: "Chum Kiu",
@@ -68,7 +68,7 @@ export default function SkillSection3D() {
 
           {/* LEFT — 3D dummy */}
           <div className="relative order-2 lg:order-1">
-            <div className="relative h-[480px] lg:h-[560px] overflow-hidden border border-gold/10 bg-gradient-to-b from-[#0d0900] to-[#080808]">
+            <div className="relative h-[480px] lg:h-[560px] overflow-hidden border border-gold/10 bg-gradient-to-b from-[#0d0900] to-[#080808]" style={{ borderRadius: 0 }}>
               <WingChunDummy3D activeArm={activeArm} />
               <p className="absolute bottom-4 left-1/2 -translate-x-1/2 font-cinzel text-[9px] tracking-[0.3em] text-white/25 uppercase whitespace-nowrap pointer-events-none">
                 {activeSkill !== null ? `Highlighting: ${skills[activeSkill].name}` : "Drag to rotate · Hover a skill"}
