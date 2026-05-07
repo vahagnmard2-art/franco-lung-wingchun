@@ -18,7 +18,7 @@ export default function NotFound() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,_#1a1200_0%,_#080808_70%)]" />
 
       <div className="relative z-10 text-center max-w-xl mx-auto">
-        <p className="font-cinzel text-[10px] tracking-ultra text-gold/50 uppercase mb-6">
+        <p className="font-cinzel text-[10px] tracking-ultra text-gold/70 uppercase mb-6">
           404 · Not Found
         </p>
         <p className="font-cinzel text-[clamp(5rem,20vw,9rem)] font-black text-gold/8 leading-none mb-0 select-none" aria-hidden="true">
@@ -29,7 +29,7 @@ export default function NotFound() {
           <span className="text-gold">knocked out.</span>
         </h1>
         <div className="gold-line mx-auto w-24 my-8" />
-        <p className="text-white/65 text-sm leading-relaxed mb-10 max-w-sm mx-auto">
+        <p className="text-white/80 text-sm leading-relaxed mb-10 max-w-sm mx-auto">
           The page you&apos;re looking for doesn&apos;t exist or may have moved.
           Let&apos;s get you back on the mat.
         </p>

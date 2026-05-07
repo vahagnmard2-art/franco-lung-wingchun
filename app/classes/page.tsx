@@ -120,13 +120,13 @@ export default function ClassesPage() {
         <div className="corner-tl" />
         <div className="corner-tr" />
         <div className="max-w-3xl mx-auto">
-          <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+          <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
             Train with a Grandmaster
           </p>
           <h1 className="font-cinzel text-4xl md:text-6xl font-bold text-white tracking-wide mb-4">
             Classes &amp; <span className="text-gold">Schedule</span>
           </h1>
-          <p className="text-white/40 text-sm leading-relaxed max-w-lg mx-auto mt-6">
+          <p className="text-white/60 text-sm leading-relaxed max-w-lg mx-auto mt-6">
             Students of all ages and experience levels are welcome. Space is limited to ensure
             personal attention from GM Lung.
           </p>
@@ -138,13 +138,13 @@ export default function ClassesPage() {
       <section className="section-pad bg-ink-100">
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
               Availability
             </p>
             <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
               Class <span className="text-gold">Schedule</span>
             </h2>
-            <p className="text-white/40 text-xs mt-3 tracking-wide">
+            <p className="text-white/60 text-xs mt-3 tracking-wide">
               Times subject to change — contact us for the most current schedule.
             </p>
             <div className="gold-line mx-auto w-24 mt-6" />
@@ -167,12 +167,12 @@ export default function ClassesPage() {
                     <div className="flex items-start justify-between gap-2 sm:hidden">
                       <div>
                         {j === 0 && (
-                          <p className="font-cinzel text-[10px] text-gold/60 tracking-widest uppercase mb-1">
+                          <p className="font-cinzel text-[10px] text-gold tracking-widest uppercase mb-1">
                             {row.day}
                           </p>
                         )}
                         <p className="text-sm text-white/70">{cls.type}</p>
-                        <p className="text-xs text-gold/70 mt-0.5">{cls.time}</p>
+                        <p className="text-xs text-gold mt-0.5">{cls.time}</p>
                       </div>
                       {cls.age && (
                         <span className="font-cinzel text-[9px] text-white/25 tracking-wide border border-ink-400 px-2 py-0.5 whitespace-nowrap flex-shrink-0 mt-0.5">
@@ -199,7 +199,7 @@ export default function ClassesPage() {
             ))}
           </div>
 
-          <p className="text-white/50 text-xs text-center mt-6 leading-relaxed">
+          <p className="text-white/65 text-xs text-center mt-6 leading-relaxed">
             Private lessons are arranged directly with Sifu Lung and are available on a flexible
             schedule. Contact us to arrange.
           </p>
@@ -210,7 +210,7 @@ export default function ClassesPage() {
       <section className="section-pad bg-ink">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
               Investment
             </p>
             <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
@@ -225,9 +225,9 @@ export default function ClassesPage() {
               <h3 className="font-cinzel text-xl font-bold text-white mb-4">Group Class · 90 Min</h3>
               <div className="flex items-baseline gap-1 mb-2">
                 <span className="font-cinzel text-5xl text-gold font-black">$30</span>
-                <span className="text-white/55 text-sm">/ session</span>
+                <span className="text-white/70 text-sm">/ session</span>
               </div>
-              <p className="text-white/55 text-xs mb-6">Per class · Drop-in welcome</p>
+              <p className="text-white/70 text-xs mb-6">Per class · Drop-in welcome</p>
               <span className="gold-line-short mb-6" />
               <ul className="space-y-3 text-sm text-white/60 flex-1">
                 {[
@@ -238,7 +238,7 @@ export default function ClassesPage() {
                   "Supervised by GM Lung",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <CheckCircle2 size={14} className="text-gold/50 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 size={14} className="text-gold/70 mt-0.5 flex-shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -256,9 +256,9 @@ export default function ClassesPage() {
               </h3>
               <div className="flex items-baseline gap-1 mb-2">
                 <span className="font-cinzel text-5xl text-gold font-black">$50</span>
-                <span className="text-white/55 text-sm">/ session</span>
+                <span className="text-white/70 text-sm">/ session</span>
               </div>
-              <p className="text-white/55 text-xs mb-6">One-on-one · Flexible scheduling</p>
+              <p className="text-white/70 text-xs mb-6">One-on-one · Flexible scheduling</p>
               <span className="gold-line-short mb-6" />
               <ul className="space-y-3 text-sm text-white/60 flex-1">
                 {[
@@ -286,9 +286,9 @@ export default function ClassesPage() {
               </h3>
               <div className="flex items-baseline gap-1 mb-2">
                 <span className="font-cinzel text-5xl text-gold font-black">$70</span>
-                <span className="text-white/55 text-sm">/ session</span>
+                <span className="text-white/70 text-sm">/ session</span>
               </div>
-              <p className="text-white/55 text-xs mb-6">One-on-one · Flexible scheduling</p>
+              <p className="text-white/70 text-xs mb-6">One-on-one · Flexible scheduling</p>
               <span className="gold-line-short mb-6" />
               <ul className="space-y-3 text-sm text-white/60 flex-1">
                 {[
@@ -299,7 +299,7 @@ export default function ClassesPage() {
                   "Ideal for serious students",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <CheckCircle2 size={14} className="text-gold/50 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 size={14} className="text-gold/70 mt-0.5 flex-shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -313,7 +313,7 @@ export default function ClassesPage() {
           {/* Additional fees */}
           <div className="mt-14">
             <div className="text-center mb-8">
-              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-2">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-2">
                 Additional Training
               </p>
               <h3 className="font-cinzel text-xl font-bold text-white tracking-wide">
@@ -335,7 +335,7 @@ export default function ClassesPage() {
                 </div>
               ))}
             </div>
-            <p className="text-white/50 text-xs text-center mt-4">
+            <p className="text-white/65 text-xs text-center mt-4">
               Weapons training is available to qualifying students at GM Lung&apos;s discretion.
             </p>
           </div>
@@ -346,7 +346,7 @@ export default function ClassesPage() {
       <section className="section-pad bg-ink-100">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
               What We Offer
             </p>
             <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
@@ -362,7 +362,7 @@ export default function ClassesPage() {
                   <h3 className="font-cinzel text-base font-semibold text-white tracking-wide leading-snug">
                     {p.title}
                   </h3>
-                  <span className="font-cinzel text-[9px] tracking-wide text-gold/50 border border-gold/20 px-2 py-0.5 whitespace-nowrap flex-shrink-0">
+                  <span className="font-cinzel text-[9px] tracking-wide text-gold/70 border border-gold/20 px-2 py-0.5 whitespace-nowrap flex-shrink-0">
                     {p.age}
                   </span>
                 </div>
@@ -384,9 +384,9 @@ export default function ClassesPage() {
             <Link href="/contact" className="btn-gold">
               Contact to Enroll
             </Link>
-            <p className="text-white/50 text-xs mt-5">
+            <p className="text-white/65 text-xs mt-5">
               New to Wing Chun? You&apos;re welcome to{" "}
-              <Link href="/contact" className="text-gold/50 hover:text-gold transition-colors underline underline-offset-4">
+              <Link href="/contact" className="text-gold/70 hover:text-gold transition-colors underline underline-offset-4">
                 contact us to arrange a first visit
               </Link>{" "}
               before committing.
@@ -399,7 +399,7 @@ export default function ClassesPage() {
       <section className="section-pad bg-ink">
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-10">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
               Private Training
             </p>
             <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
@@ -411,7 +411,7 @@ export default function ClassesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Booking rules */}
             <div className="card-base p-8">
-              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
                 Reservation Rules
               </p>
               <ul className="space-y-4">
@@ -420,7 +420,7 @@ export default function ClassesPage() {
                   "Payment for private lessons is required one day before your scheduled training.",
                   "Sessions available Tuesday through Friday by appointment.",
                 ].map((rule, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-white/65 leading-relaxed">
+                  <li key={i} className="flex items-start gap-3 text-sm text-white/80 leading-relaxed">
                     <span className="w-1.5 h-1.5 bg-gold rounded-full mt-2 flex-shrink-0" />
                     {rule}
                   </li>
@@ -430,29 +430,29 @@ export default function ClassesPage() {
 
             {/* Cancellation policy */}
             <div className="card-base p-8">
-              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
                 Cancellation Policy
               </p>
               <div className="space-y-5">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 border border-gold/30 px-2 py-1 text-center min-w-[4.5rem]">
-                    <p className="font-cinzel text-[9px] tracking-wide text-gold/60 uppercase leading-tight">1 Day</p>
-                    <p className="font-cinzel text-[9px] tracking-wide text-white/40 uppercase leading-tight">Notice</p>
+                    <p className="font-cinzel text-[9px] tracking-wide text-gold uppercase leading-tight">1 Day</p>
+                    <p className="font-cinzel text-[9px] tracking-wide text-white/60 uppercase leading-tight">Notice</p>
                   </div>
                   <div>
                     <p className="font-cinzel text-sm text-white tracking-wide">No Charge</p>
-                    <p className="text-xs text-white/40 mt-0.5 leading-relaxed">Cancel at least one day before — no fee applied.</p>
+                    <p className="text-xs text-white/60 mt-0.5 leading-relaxed">Cancel at least one day before — no fee applied.</p>
                   </div>
                 </div>
                 <div className="gold-line-short" />
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 border border-gold/20 px-2 py-1 text-center min-w-[4.5rem]">
-                    <p className="font-cinzel text-[9px] tracking-wide text-white/40 uppercase leading-tight">Same</p>
-                    <p className="font-cinzel text-[9px] tracking-wide text-white/40 uppercase leading-tight">Day</p>
+                    <p className="font-cinzel text-[9px] tracking-wide text-white/60 uppercase leading-tight">Same</p>
+                    <p className="font-cinzel text-[9px] tracking-wide text-white/60 uppercase leading-tight">Day</p>
                   </div>
                   <div>
                     <p className="font-cinzel text-sm text-white tracking-wide">Full Fee Charged</p>
-                    <p className="text-xs text-white/40 mt-0.5 leading-relaxed">Same-day cancellations are charged the full session price.</p>
+                    <p className="text-xs text-white/60 mt-0.5 leading-relaxed">Same-day cancellations are charged the full session price.</p>
                   </div>
                 </div>
               </div>
@@ -465,7 +465,7 @@ export default function ClassesPage() {
       <section className="section-pad bg-ink-100">
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
               Questions
             </p>
             <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
@@ -476,7 +476,7 @@ export default function ClassesPage() {
           <FAQAccordion />
           <p className="text-center text-white/30 text-sm mt-10">
             Don&apos;t see your question?{" "}
-            <Link href="/contact" className="text-gold/60 hover:text-gold transition-colors underline underline-offset-4">
+            <Link href="/contact" className="text-gold hover:text-gold transition-colors underline underline-offset-4">
               Send us a message
             </Link>
           </p>

@@ -23,7 +23,7 @@ export default function HomePage() {
             fill
             sizes="100vw"
             className="object-cover object-center"
-            style={{ opacity: 0.28 }}
+            style={{ opacity: 0.38 }}
           />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,_#1e1400_0%,_#080808_65%)]" />
         </div>
@@ -68,7 +68,7 @@ export default function HomePage() {
 
             {/* Text */}
             <FadeIn direction="right" delay={0.15}>
-              <p className="font-cinzel text-[10px] tracking-ultra text-gold/70 uppercase mb-4">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
                 About the Grandmaster
               </p>
               <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-white tracking-wide leading-tight mb-6">
@@ -76,13 +76,13 @@ export default function HomePage() {
                 <span className="text-gold">Wing Chun</span>
               </h2>
               <span className="gold-line-short mb-8" />
-              <p className="text-white/65 leading-relaxed mb-6 mt-8">
+              <p className="text-white/80 leading-relaxed mb-6 mt-8">
                 Grandmaster Franco Lung began his Wing Chun journey in Hong Kong over fifty years
                 ago, training under two of the art&apos;s most celebrated figures — the same lineage
                 that shaped Bruce Lee before he left for America. In 2009, he brought his refined
                 system to Los Angeles.
               </p>
-              <p className="text-white/65 leading-relaxed mb-10">
+              <p className="text-white/80 leading-relaxed mb-10">
                 Through decades of practice, teaching, and deep exploration of Chinese internal
                 martial arts, GM Lung developed a structured three-level curriculum that guides
                 students from foundation to mastery with precision and depth.
@@ -99,7 +99,7 @@ export default function HomePage() {
       <section className="section-pad bg-ink">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
               What Sets Us Apart
             </p>
             <h2 className="font-cinzel text-3xl md:text-4xl font-bold text-white tracking-wide">
@@ -113,22 +113,22 @@ export default function HomePage() {
               {
                 icon: Shield,
                 title: "Direct Hong Kong Lineage",
-                desc: "GM Lung trained directly under Wong Shun Leung and Wan Kam Leung in Hong Kong — two of the most celebrated Wing Chun masters of the modern era.",
+                desc: "What you learn here traces directly to the masters who shaped Bruce Lee. An unbroken chain from Ip Man through Hong Kong's greatest fighters — to you.",
               },
               {
                 icon: Zap,
-                title: "Internal System",
-                desc: "Most schools teach only external mechanics. GM Lung's curriculum goes deeper — unlocking the energetic and structural intelligence that separates truly advanced practitioners.",
+                title: "The Internal Dimension",
+                desc: "You will not just learn to move — you will learn why it works. GM Lung's system develops the internal intelligence that makes Wing Chun effective regardless of size or strength.",
               },
               {
                 icon: Users,
-                title: "All Levels Welcome",
-                desc: "From children as young as five to experienced martial artists, every class is taught with the same depth and personal attention.",
+                title: "Any Age, Any Level",
+                desc: "Children from age five, adult beginners, and seasoned martial artists all train here. GM Lung's structured curriculum meets you exactly where you are.",
               },
               {
                 icon: Award,
-                title: "Small Class Sizes",
-                desc: "Classes are kept intentionally small so that every student receives real guidance from Grandmaster Lung himself — not just group observation.",
+                title: "Direct Instruction",
+                desc: "Classes are deliberately small. You get real-time correction from Grandmaster Lung in every session — not a curriculum video, not an assistant. The Grandmaster himself.",
               },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.1}>
@@ -137,7 +137,7 @@ export default function HomePage() {
                   <h3 className="font-cinzel text-sm font-semibold text-white tracking-wide mb-3 leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-white/65 text-sm leading-relaxed">{item.desc}</p>
+                  <p className="text-white/80 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -153,13 +153,13 @@ export default function HomePage() {
         <div className="absolute top-0 left-0 right-0 gold-line opacity-20" />
         <div className="absolute bottom-0 left-0 right-0 gold-line opacity-20" />
         <div className="max-w-2xl mx-auto px-6 text-center">
-          <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+          <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
             Begin Your Journey
           </p>
           <h2 className="font-cinzel text-3xl md:text-5xl font-bold text-white tracking-wide leading-tight mb-6">
             Train with a <span className="text-gold">Grandmaster</span>
           </h2>
-          <p className="text-white/55 text-sm leading-relaxed mb-10 max-w-md mx-auto">
+          <p className="text-white/70 text-sm leading-relaxed mb-10 max-w-md mx-auto">
             Whether you are a complete beginner or an experienced practitioner, Grandmaster Lung&apos;s
             door is open. Classes are kept intentionally small — reach out today.
           </p>

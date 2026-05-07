@@ -1,12 +1,14 @@
 "use client";
 import Link from "next/link";
 import { Phone } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export default function MobileCallBar() {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 sm:hidden bg-ink/95 backdrop-blur-md border-t border-ink-400 flex">
       <a
         href="tel:+16262332882"
+        onClick={() => trackEvent("phone_click", { source: "mobile_bar" })}
         className="flex-1 flex items-center justify-center gap-2 py-4 text-gold active:bg-ink-200 transition-colors"
       >
         <Phone size={14} aria-hidden="true" />

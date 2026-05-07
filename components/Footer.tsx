@@ -33,14 +33,14 @@ export default function Footer() {
             <p className="font-cinzel text-xs text-gold/80 tracking-widest mt-4 italic">
               &ldquo;Learning Has No Bounds&rdquo;
             </p>
-            <p className="font-cinzel text-2xl text-gold/30 tracking-widest mt-3" aria-hidden="true">
+            <p className="font-cinzel text-2xl text-gold/30 tracking-widest mt-3" aria-hidden="true" lang="zh-Hant">
               詠春
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-5">
+            <h4 className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-5">
               Navigation
             </h4>
             <ul className="space-y-3">
@@ -59,7 +59,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-5">
+            <h4 className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-5">
               Find Us
             </h4>
             <div className="space-y-4">
@@ -116,10 +116,10 @@ export default function Footer() {
         <div className="gold-line mb-6" />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-3">
-          <p className="text-white/55 text-xs tracking-widest">
+          <p className="text-white/70 text-xs tracking-widest">
             © {new Date().getFullYear()} Franco Lung Wing Chun. All rights reserved.
           </p>
-          <p className="text-white/50 text-xs tracking-wide">
+          <p className="text-white/65 text-xs tracking-wide">
             Temple City · Los Angeles, CA
           </p>
         </div>

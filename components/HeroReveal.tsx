@@ -41,8 +41,8 @@ export default function HeroReveal() {
 
   return (
     <div ref={containerRef} className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-      <p className="hero-tagline font-cinzel text-sm tracking-[0.3em] text-gold/70 uppercase mb-8">
-        Wing Chun · Los Angeles · Est. 2009
+      <p className="hero-tagline font-cinzel text-sm tracking-[0.3em] text-gold uppercase mb-8">
+        Grandmaster Franco Lung
       </p>
 
       <h1
@@ -63,8 +63,8 @@ export default function HeroReveal() {
 
       <div className="hero-line gold-line mx-auto w-32 mb-6" />
 
-      <p className="hero-subtitle font-cinzel text-sm tracking-[0.3em] text-white/60 uppercase mb-12">
-        Grandmaster · From the Lineage of Ip Man
+      <p className="hero-subtitle font-cinzel text-sm tracking-[0.3em] text-white/75 uppercase mb-12">
+        Wing Chun · Los Angeles · Since 2009
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">

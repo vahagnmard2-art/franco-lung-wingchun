@@ -104,13 +104,13 @@ export default function GalleryClient() {
         <div className="corner-tl" />
         <div className="corner-tr" />
         <div className="max-w-3xl mx-auto">
-          <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+          <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
             Media
           </p>
           <h1 className="font-cinzel text-4xl md:text-6xl font-bold text-white tracking-wide mb-4">
             <span className="text-gold">Gallery</span>
           </h1>
-          <p className="text-white/40 text-sm leading-relaxed max-w-md mx-auto mt-6">
+          <p className="text-white/60 text-sm leading-relaxed max-w-md mx-auto mt-6">
             A glimpse into life at Franco Lung Wing Chun. Click any photo to view full size.
           </p>
           <div className="gold-line mx-auto w-24 mt-8" />
@@ -128,10 +128,10 @@ export default function GalleryClient() {
 
           {/* Social links */}
           <div className="mt-16 text-center">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-5">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-5">
               Follow Along
             </p>
-            <p className="text-white/40 text-sm mb-8 leading-relaxed">
+            <p className="text-white/60 text-sm mb-8 leading-relaxed">
               For the latest photos and videos, follow Grandmaster Lung on social media.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -160,7 +160,7 @@ export default function GalleryClient() {
       <section className="section-pad bg-ink">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-10">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
               Video
             </p>
             <h2 className="font-cinzel text-2xl font-bold text-white tracking-wide">
@@ -196,7 +196,7 @@ export default function GalleryClient() {
                 <p className="font-cinzel text-white tracking-wide text-sm mb-1">
                   Franco Lung Wing Chun
                 </p>
-                <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase">
+                <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase">
                   Watch on YouTube ↗
                 </p>
               </div>
@@ -226,13 +226,13 @@ export default function GalleryClient() {
         <div className="absolute top-0 left-0 right-0 gold-line opacity-20" />
         <div className="absolute bottom-0 left-0 right-0 gold-line opacity-20" />
         <div className="max-w-xl mx-auto">
-          <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+          <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
             Begin Your Journey
           </p>
           <h2 className="font-cinzel text-2xl md:text-3xl font-bold text-white tracking-wide mb-4">
             Ready to <span className="text-gold">Train?</span>
           </h2>
-          <p className="text-white/40 text-sm leading-relaxed mb-10 max-w-sm mx-auto">
+          <p className="text-white/60 text-sm leading-relaxed mb-10 max-w-sm mx-auto">
             Classes are open to all levels. Reach out to arrange a first visit with Grandmaster Lung.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

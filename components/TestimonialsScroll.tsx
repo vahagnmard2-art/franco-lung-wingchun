@@ -34,13 +34,31 @@ export default function TestimonialsScroll() {
     <section className="section-pad bg-ink-100 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+          <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
             Students Speak
           </p>
           <h2 className="font-cinzel text-3xl md:text-4xl font-bold text-white tracking-wide">
             <span className="text-gold">Testimonials</span>
           </h2>
-          <div className="gold-line mx-auto w-24 mt-6" />
+          {/* Aggregate rating — update reviewCount to match your live Google review total */}
+          <div className="flex items-center justify-center gap-2 mt-5">
+            <div className="flex gap-0.5" aria-label="5 out of 5 stars">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} size={14} className="text-gold fill-gold" aria-hidden="true" />
+              ))}
+            </div>
+            <span className="font-cinzel text-xs text-white/80 tracking-wide">5.0</span>
+            <span className="text-white/40 text-xs">·</span>
+            <a
+              href="https://www.google.com/search?q=Franco+Lung+Wing+Chun+Temple+City+reviews"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-cinzel text-[10px] text-gold/70 hover:text-gold transition-colors tracking-wide uppercase"
+            >
+              Google Reviews
+            </a>
+          </div>
+          <div className="gold-line mx-auto w-24 mt-5" />
         </div>
       </div>
 
@@ -60,18 +78,17 @@ export default function TestimonialsScroll() {
             <div
               key={i}
               className="w-[85vw] sm:w-[440px] flex-shrink-0 card-base p-8 flex flex-col pointer-events-none"
-              // pointer-events:none so drag doesn't get intercepted by card children
             >
               <div className="flex gap-1 mb-5">
                 {Array.from({ length: t.stars }).map((_, j) => (
                   <Star key={j} size={13} className="text-gold fill-gold" />
                 ))}
               </div>
-              <p className="text-white/75 text-sm leading-relaxed flex-1 mb-6 italic">
+              <p className="text-white/80 text-sm leading-relaxed flex-1 mb-6 italic pointer-events-auto select-text">
                 &ldquo;{t.text}&rdquo;
               </p>
               <span className="gold-line-short !w-8 mb-3" />
-              <span className="font-cinzel text-[9px] tracking-ultra text-gold/50 uppercase">
+              <span className="font-cinzel text-[9px] tracking-ultra text-gold/70 uppercase pointer-events-auto select-text">
                 {t.attribution}
               </span>
             </div>
@@ -88,7 +105,7 @@ export default function TestimonialsScroll() {
             href="https://www.google.com/search?q=Franco+Lung+Wing+Chun+Temple+City+reviews"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 font-cinzel text-[11px] tracking-wide text-gold/60 hover:text-gold transition-colors uppercase"
+            className="inline-flex items-center gap-1.5 font-cinzel text-[11px] tracking-wide text-gold hover:text-gold transition-colors uppercase"
           >
             See all reviews on Google <ArrowUpRight size={12} aria-hidden="true" />
           </a>

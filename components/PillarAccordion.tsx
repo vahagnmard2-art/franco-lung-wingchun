@@ -67,7 +67,7 @@ export default function PillarAccordion() {
             </span>
             <ChevronDown
               size={16}
-              className={`text-gold/50 flex-shrink-0 transition-transform duration-300 ${
+              className={`text-gold/70 flex-shrink-0 transition-transform duration-300 ${
                 open === i ? "rotate-180 text-gold" : ""
               }`}
             />
@@ -79,9 +79,9 @@ export default function PillarAccordion() {
           >
             <div className="px-8 pb-6">
               <span className="gold-line-short mb-4" />
-              <p className="text-white/65 text-sm leading-relaxed mt-4 mb-5">{p.desc}</p>
+              <p className="text-white/80 text-sm leading-relaxed mt-4 mb-5">{p.desc}</p>
               <div className="border-l-2 border-gold/30 pl-4">
-                <p className="text-white/55 text-sm italic leading-relaxed">{p.insight}</p>
+                <p className="text-white/70 text-sm italic leading-relaxed">{p.insight}</p>
               </div>
             </div>
           </div>

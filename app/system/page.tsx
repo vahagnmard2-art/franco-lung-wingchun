@@ -43,13 +43,13 @@ export default function SystemPage() {
         <div className="corner-tl" />
         <div className="corner-tr" />
         <div className="max-w-3xl mx-auto">
-          <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+          <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
             Curriculum
           </p>
           <h1 className="font-cinzel text-4xl md:text-6xl font-bold text-white tracking-wide mb-4">
             The 3-Level <span className="text-gold">System</span>
           </h1>
-          <p className="text-white/40 text-sm leading-relaxed max-w-lg mx-auto mt-6">
+          <p className="text-white/60 text-sm leading-relaxed max-w-lg mx-auto mt-6">
             A structured, principle-based curriculum developed over five decades — guiding students
             from first contact to genuine mastery.
           </p>
@@ -63,19 +63,19 @@ export default function SystemPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Pull quote */}
             <div className="border-l-2 border-gold pl-8">
-              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-5">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-5">
                 The Art
               </p>
-              <p className="font-cinzel text-6xl text-gold/10 leading-none mb-4" aria-hidden="true">詠春</p>
+              <p className="font-cinzel text-6xl text-gold/10 leading-none mb-4" aria-hidden="true" lang="zh-Hant">詠春</p>
               <blockquote className="font-cinzel text-2xl md:text-3xl font-bold text-white tracking-wide leading-snug">
                 A system built for the smaller to defeat the larger. For intelligence to overcome force.
               </blockquote>
               <div className="gold-line-short mt-8" />
             </div>
             {/* Explanation */}
-            <div className="space-y-5 text-white/65 text-[15px] leading-relaxed">
+            <div className="space-y-5 text-white/80 text-[15px] leading-relaxed">
               <p>
-                Wing Chun (詠春) is a southern Chinese martial art developed roughly 300 years ago.
+                Wing Chun (<span lang="zh-Hant">詠春</span>) is a southern Chinese martial art developed roughly 300 years ago.
                 Unlike strength-based fighting systems, Wing Chun was designed around one core
                 principle: <span className="text-white/80">economy of structure over economy of effort</span>.
                 Every technique is built to work regardless of the practitioner&apos;s size, speed, or
@@ -101,7 +101,7 @@ export default function SystemPage() {
       <section className="section-pad bg-ink-100">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
               The Path
             </p>
             <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
@@ -121,7 +121,7 @@ export default function SystemPage() {
                 <h3 className="font-cinzel text-xl font-bold text-white tracking-wide mb-1">
                   {l.title}
                 </h3>
-                <p className="font-cinzel text-[10px] text-gold/60 tracking-widest uppercase mb-4">
+                <p className="font-cinzel text-[10px] text-gold tracking-widest uppercase mb-4">
                   {l.subtitle}
                 </p>
                 <span className="gold-line-short mb-5" />
@@ -144,13 +144,13 @@ export default function SystemPage() {
       <section className="section-pad bg-ink">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
               Core Principles
             </p>
             <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
               Seven <span className="text-gold">Pillars</span> of the System
             </h2>
-            <p className="text-white/40 text-sm max-w-md mx-auto mt-4 leading-relaxed">
+            <p className="text-white/60 text-sm max-w-md mx-auto mt-4 leading-relaxed">
               These seven principles form the conceptual spine of GM Lung&apos;s curriculum.
               Together they define what makes his Wing Chun unique.
             </p>
@@ -163,13 +163,13 @@ export default function SystemPage() {
 
       {/* CTA */}
       <section className="py-16 sm:py-24 bg-ink-100 text-center px-6">
-        <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+        <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
           Experience it First-Hand
         </p>
         <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide mb-4">
           Ready to Begin?
         </h2>
-        <p className="text-white/40 text-sm max-w-md mx-auto leading-relaxed mb-10">
+        <p className="text-white/60 text-sm max-w-md mx-auto leading-relaxed mb-10">
           No prior martial arts experience is necessary. GM Lung&apos;s system is designed to
           meet students exactly where they are.
         </p>

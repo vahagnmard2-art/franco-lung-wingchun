@@ -60,7 +60,7 @@ export default function SkillSection3D() {
       </div>
 
       <div className="relative max-w-6xl mx-auto px-6">
-        <p className="font-cinzel text-xs tracking-[0.35em] text-gold/60 uppercase mb-16 text-center">
+        <p className="font-cinzel text-xs tracking-[0.35em] text-gold uppercase mb-16 text-center">
           The Complete System
         </p>
 
@@ -85,7 +85,7 @@ export default function SkillSection3D() {
               <br />
               <span className="text-shimmer">Wing Chun Mastery</span>
             </h2>
-            <p className="text-white/55 text-sm leading-relaxed mb-10">
+            <p className="text-white/70 text-sm leading-relaxed mb-10">
               Grandmaster Franco Lung teaches the complete Ip Man lineage — a
               logical, scientific system that anyone can learn regardless of size
               or strength.
@@ -109,7 +109,7 @@ export default function SkillSection3D() {
                   }`}
                 >
                   <span className={`font-cinzel text-sm mt-0.5 w-5 shrink-0 transition-colors duration-300 ${
-                    activeSkill === i ? "text-gold" : "text-gold/40 group-hover:text-gold/70"
+                    activeSkill === i ? "text-gold" : "text-gold/40 group-hover:text-gold"
                   }`}>
                     {skill.zh}
                   </span>

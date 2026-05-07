@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cinzel, Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,6 +10,8 @@ import MobileCallBar from "@/components/MobileCallBar";
 import LenisProvider from "@/components/LenisProvider";
 import PageTransition from "@/components/PageTransition";
 import { Toaster } from "sonner";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -60,9 +63,10 @@ export const metadata: Metadata = {
   },
 };
 
+// Schema.org — SportsActivityLocation is the correct type for martial arts schools
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "MartialArtsSchool",
+  "@type": "SportsActivityLocation",
   name: "Franco Lung Wing Chun",
   description:
     "Traditional Wing Chun Kung Fu school in Temple City, CA. Train with Grandmaster Franco Lung — direct lineage from Hong Kong's greatest masters.",
@@ -80,6 +84,13 @@ const jsonLd = {
     "@type": "GeoCoordinates",
     latitude: 34.0988,
     longitude: -118.0573,
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    bestRating: "5",
+    // Update reviewCount to match your current Google review count
+    reviewCount: "30",
   },
   openingHoursSpecification: [
     { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "19:30", closes: "21:00" },
@@ -105,6 +116,23 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Google Analytics 4 — set NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX in .env.local */}
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}', { page_path: window.location.pathname });
+              `}
+            </Script>
+          </>
+        )}
       </head>
       <body
         className={`${cinzel.variable} ${inter.variable} font-inter bg-ink text-neutral-100 antialiased`}

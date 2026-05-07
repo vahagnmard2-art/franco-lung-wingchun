@@ -82,7 +82,7 @@ export default function LineageScroll() {
 
           {/* Ip Man */}
           <div className="lineage-node border border-gold/30 bg-ink-200 px-4 sm:px-8 py-4 text-center w-full max-w-xs">
-            <p className="font-cinzel text-[9px] tracking-ultra text-gold/50 uppercase mb-1">Origin</p>
+            <p className="font-cinzel text-[9px] tracking-ultra text-gold/70 uppercase mb-1">Origin</p>
             <p className="font-cinzel text-sm font-semibold text-white tracking-wide">
               Grandmaster Ip Man 葉問
             </p>
@@ -137,7 +137,7 @@ export default function LineageScroll() {
 
           {/* Disciples label */}
           <div className="lineage-node border border-gold/20 bg-ink-200 px-6 py-3 text-center w-full max-w-xs">
-            <p className="font-cinzel text-[9px] tracking-ultra text-gold/50 uppercase">
+            <p className="font-cinzel text-[9px] tracking-ultra text-gold/70 uppercase">
               Disciples · Temple City
             </p>
           </div>

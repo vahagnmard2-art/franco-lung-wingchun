@@ -59,13 +59,13 @@ export default function LineagePage() {
         <div className="corner-tl" />
         <div className="corner-tr" />
         <div className="max-w-3xl mx-auto">
-          <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+          <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
             Heritage &amp; Tradition
           </p>
           <h1 className="font-cinzel text-4xl md:text-6xl font-bold text-white tracking-wide mb-4">
             The <span className="text-gold">Lineage</span>
           </h1>
-          <p className="text-white/40 text-sm leading-relaxed max-w-lg mx-auto mt-6">
+          <p className="text-white/60 text-sm leading-relaxed max-w-lg mx-auto mt-6">
             Wing Chun is passed teacher to student across generations. Grandmaster Lung&apos;s art
             traces a direct line to the greatest names in the history of the system.
           </p>
@@ -80,7 +80,7 @@ export default function LineagePage() {
       <section className="section-pad bg-ink-100">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
               The Teachers
             </p>
             <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
@@ -106,17 +106,17 @@ export default function LineagePage() {
                   {/* Header */}
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-3 mb-1">
-                      <span className="font-cinzel text-[9px] tracking-ultra text-gold/50 uppercase border border-gold/20 px-2 py-0.5">
+                      <span className="font-cinzel text-[9px] tracking-ultra text-gold/70 uppercase border border-gold/20 px-2 py-0.5">
                         {m.label}
                       </span>
                     </div>
                     <h3 className="font-cinzel text-xl md:text-2xl font-bold text-white tracking-wide">
                       {m.name}
                     </h3>
-                    <p className="font-cinzel text-xs text-gold/40 tracking-widest mt-1">
+                    <p className="font-cinzel text-xs text-gold/40 tracking-widest mt-1" lang="zh-Hant">
                       {m.chineseName}
                     </p>
-                    <p className="font-cinzel text-[10px] tracking-widest text-gold/50 uppercase mt-2">
+                    <p className="font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mt-2">
                       {m.period}
                     </p>
                   </div>
@@ -124,7 +124,7 @@ export default function LineagePage() {
                 <span className="gold-line-short mb-6" />
                 <div className="space-y-4 mt-6">
                   {m.desc.map((para, i) => (
-                    <p key={i} className="text-white/65 text-sm leading-relaxed">
+                    <p key={i} className="text-white/80 text-sm leading-relaxed">
                       {para}
                     </p>
                   ))}
@@ -139,13 +139,13 @@ export default function LineagePage() {
       <section className="section-pad bg-ink">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-3">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
               Carrying It Forward
             </p>
             <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
               GM Lung&apos;s <span className="text-gold">Disciples</span>
             </h2>
-            <p className="text-white/40 text-sm max-w-md mx-auto mt-4 leading-relaxed">
+            <p className="text-white/60 text-sm max-w-md mx-auto mt-4 leading-relaxed">
               These students have dedicated themselves to the study and preservation of GM Lung&apos;s system.
               Those marked as coaches actively teach under his guidance.
             </p>
@@ -180,13 +180,13 @@ export default function LineagePage() {
       <section className="py-16 sm:py-24 bg-ink text-center px-6 relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 gold-line opacity-20" />
         <div className="max-w-xl mx-auto">
-          <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+          <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
             The Living Tradition
           </p>
           <h2 className="font-cinzel text-2xl md:text-3xl font-bold text-white tracking-wide mb-4">
             Experience the <span className="text-gold">System</span>
           </h2>
-          <p className="text-white/40 text-sm leading-relaxed mb-10 max-w-sm mx-auto">
+          <p className="text-white/60 text-sm leading-relaxed mb-10 max-w-sm mx-auto">
             This lineage lives on at GM Lung&apos;s school in Temple City. Explore the structured
             curriculum he has built from five decades of study.
           </p>

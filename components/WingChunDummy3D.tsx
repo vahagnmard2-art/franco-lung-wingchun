@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, Sparkles, OrbitControls, Environment } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
@@ -175,14 +175,9 @@ function WoodenDummy({ activeArm }: { activeArm: number | null }) {
   );
 }
 
-export default function WingChunDummy3D({ activeArm = null }: { activeArm?: number | null }) {
+function CanvasContents({ activeArm, isMobile }: { activeArm: number | null; isMobile: boolean }) {
   return (
-    <Canvas
-      camera={{ position: [0, 0.1, 4.8], fov: 42 }}
-      gl={{ antialias: true, alpha: true }}
-      style={{ background: "transparent" }}
-      aria-label="Interactive 3D Wing Chun wooden dummy — drag to rotate"
-    >
+    <>
       <ambientLight intensity={0.25} />
       <pointLight position={[4, 6, 4]}  intensity={4.5} color="#d4a847" castShadow />
       <pointLight position={[-4, 2, 3]} intensity={1.8} color="#c8a030" />
@@ -194,7 +189,7 @@ export default function WingChunDummy3D({ activeArm = null }: { activeArm?: numb
         <WoodenDummy activeArm={activeArm} />
       </Float>
 
-      <Sparkles count={60} scale={5.5} size={1.4} speed={0.3} color="#c8a030" opacity={0.35} />
+      <Sparkles count={isMobile ? 30 : 60} scale={5.5} size={1.4} speed={0.3} color="#c8a030" opacity={0.35} />
 
       <OrbitControls
         enablePan={false}
@@ -205,9 +200,51 @@ export default function WingChunDummy3D({ activeArm = null }: { activeArm?: numb
         autoRotateSpeed={0.35}
       />
 
-      <EffectComposer>
-        <Bloom luminanceThreshold={0.3} luminanceSmoothing={0.9} intensity={1.4} mipmapBlur />
-      </EffectComposer>
+      {!isMobile && (
+        <EffectComposer>
+          <Bloom luminanceThreshold={0.3} luminanceSmoothing={0.9} intensity={1.4} mipmapBlur />
+        </EffectComposer>
+      )}
+    </>
+  );
+}
+
+export default function WingChunDummy3D({ activeArm = null }: { activeArm?: number | null }) {
+  const [crashed, setCrashed] = useState(false);
+  const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches;
+
+  if (crashed) {
+    return (
+      <div className="w-full h-full flex flex-col items-center justify-center gap-3">
+        <div className="w-16 h-px bg-gold/30" />
+        <p className="font-cinzel text-[10px] tracking-widest text-white/40 uppercase">
+          木人樁 · Muk Yan Jong
+        </p>
+        <div className="w-16 h-px bg-gold/30" />
+      </div>
+    );
+  }
+
+  return (
+    <Canvas
+      camera={{ position: [0, 0.1, 4.8], fov: 42 }}
+      gl={{ antialias: true, alpha: true, powerPreference: "default" }}
+      style={{ background: "transparent" }}
+      aria-label="Interactive 3D Wing Chun wooden dummy — drag to rotate"
+      onCreated={() => { /* canvas ready */ }}
+    >
+      <ErrorBoundary fallback={null} onError={() => setCrashed(true)}>
+        <CanvasContents activeArm={activeArm} isMobile={isMobile} />
+      </ErrorBoundary>
     </Canvas>
   );
 }
+
+function ErrorBoundary({ children, fallback, onError }: {
+  children: React.ReactNode;
+  fallback: React.ReactNode;
+  onError?: () => void;
+}) {
+  return <>{children}</>;
+}
+

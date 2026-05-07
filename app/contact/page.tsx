@@ -6,8 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
 import { MapPin, Phone, Instagram, Facebook, Youtube, Send } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/FrancoLungWingChunAcademy@gmail.com";
+const FORM_ENDPOINT = "/api/contact";
 
 const schema = z.object({
   name:     z.string().min(2, "Please enter your full name."),
@@ -55,11 +56,13 @@ export default function ContactPage() {
           Message:  data.message,
           _subject: `Wing Chun Inquiry — ${data.name}`,
           _replyto: data.email,
+          _honey:   "",
           _captcha: "false",
         }),
       });
       if (res.ok) {
         toast.success("Message sent — GM Lung will be in touch soon.");
+        trackEvent("form_submit", { form_name: "contact", interest: data.interest });
         reset();
       } else {
         toast.error("Something went wrong. Please try again or call us directly.");
@@ -81,7 +84,7 @@ export default function ContactPage() {
         <div className="corner-tl" />
         <div className="corner-tr" />
         <div className="max-w-3xl mx-auto">
-          <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-4">
+          <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
             Reach Out
           </p>
           <h1 className="font-cinzel text-4xl md:text-6xl font-bold text-white tracking-wide mb-4">
@@ -102,7 +105,7 @@ export default function ContactPage() {
 
             {/* Contact info */}
             <div className="lg:col-span-2">
-              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-6">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-6">
                 Information
               </p>
 
@@ -117,7 +120,7 @@ export default function ContactPage() {
                     <MapPin size={14} className="text-gold" />
                   </div>
                   <div>
-                    <p className="font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-1">Location</p>
+                    <p className="font-cinzel text-[10px] tracking-widest text-gold uppercase mb-1">Location</p>
                     <p className="text-sm text-white/75 group-hover:text-white/95 transition-colors leading-relaxed">
                       5614 Rosemead Blvd<br />Temple City, CA 91780
                     </p>
@@ -129,7 +132,7 @@ export default function ContactPage() {
                     <Phone size={14} className="text-gold" />
                   </div>
                   <div>
-                    <p className="font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-1">Phone</p>
+                    <p className="font-cinzel text-[10px] tracking-widest text-gold uppercase mb-1">Phone</p>
                     <p className="text-sm text-white/75 group-hover:text-white/95 transition-colors">(626) 233-2882</p>
                   </div>
                 </a>
@@ -137,7 +140,7 @@ export default function ContactPage() {
 
               <span className="gold-line-short mb-8" />
 
-              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-5 mt-8">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-5 mt-8">
                 Follow Us
               </p>
               <div className="space-y-4">
@@ -158,14 +161,14 @@ export default function ContactPage() {
 
             {/* Form */}
             <div className="lg:col-span-3">
-              <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-6">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-6">
                 Send a Message
               </p>
 
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
+                    <label className="block font-cinzel text-[10px] tracking-widest text-gold uppercase mb-2">
                       Your Name *
                     </label>
                     <input
@@ -179,7 +182,7 @@ export default function ContactPage() {
                     )}
                   </div>
                   <div>
-                    <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
+                    <label className="block font-cinzel text-[10px] tracking-widest text-gold uppercase mb-2">
                       Email Address *
                     </label>
                     <input
@@ -196,7 +199,7 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
+                    <label className="block font-cinzel text-[10px] tracking-widest text-gold uppercase mb-2">
                       Phone (optional)
                     </label>
                     <input
@@ -207,7 +210,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase mb-2">
+                    <label className="block font-cinzel text-[10px] tracking-widest text-gold uppercase mb-2">
                       I&apos;m interested in
                     </label>
                     <select {...register("interest")} className={inputClass()}>
@@ -223,7 +226,7 @@ export default function ContactPage() {
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <label className="block font-cinzel text-[10px] tracking-widest text-gold/70 uppercase">
+                    <label className="block font-cinzel text-[10px] tracking-widest text-gold uppercase">
                       Message *
                     </label>
                   </div>
@@ -246,7 +249,7 @@ export default function ContactPage() {
                   >
                     {sending ? "Sending…" : <><span>Send Message</span><Send size={13} /></>}
                   </button>
-                  <p className="text-white/50 text-xs">We typically respond within 24 hours.</p>
+                  <p className="text-white/65 text-xs">We typically respond within 24 hours.</p>
                 </div>
               </form>
             </div>
@@ -258,7 +261,7 @@ export default function ContactPage() {
       <section className="bg-ink border-t border-ink-400">
         <div className="max-w-6xl mx-auto px-6 py-14">
           <div className="text-center mb-10">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold/60 uppercase mb-2">Location</p>
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-2">Location</p>
             <h2 className="font-cinzel text-2xl font-bold text-white tracking-wide">
               Find <span className="text-gold">Us</span>
             </h2>

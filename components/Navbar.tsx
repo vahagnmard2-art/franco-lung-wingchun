@@ -7,9 +7,9 @@ import { Menu, X, Phone } from "lucide-react";
 
 const links = [
   { href: "/about",   label: "About" },
+  { href: "/classes", label: "Classes" },
   { href: "/system",  label: "System" },
   { href: "/lineage", label: "Lineage" },
-  { href: "/classes", label: "Classes" },
   { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
 ];
@@ -60,7 +60,7 @@ export default function Navbar() {
               <span className="font-cinzel text-lg tracking-ultra text-white group-hover:text-gold transition-colors duration-200">
                 FRANCO <span className="text-gold">LUNG</span>
               </span>
-              <span className="font-inter text-[9px] tracking-[0.45em] text-white/40 uppercase group-hover:text-gold/60 transition-colors duration-200">
+              <span className="font-inter text-[9px] tracking-[0.45em] text-white/60 uppercase group-hover:text-gold transition-colors duration-200">
                 Wing Chun
               </span>
             </div>
@@ -127,7 +127,7 @@ export default function Navbar() {
           <div className="gold-line w-24 mt-10 mb-6" />
           <a
             href="tel:+16262332882"
-            className="flex items-center gap-2 font-cinzel text-sm tracking-widest text-white/40 hover:text-gold transition-colors mb-6"
+            className="flex items-center gap-2 font-cinzel text-sm tracking-widest text-white/60 hover:text-gold transition-colors mb-6"
             onClick={() => setOpen(false)}
           >
             <Phone size={13} aria-hidden="true" />
