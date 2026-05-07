@@ -56,7 +56,7 @@ export default function HeroReveal() {
     return () => ctx.revert();
   }, []);
 
-  const francoChars = "FRANCO".split("");
+  const francoChars = "SIFU".split("");
   const lungChars   = "LUNG".split("");
 
   return (
