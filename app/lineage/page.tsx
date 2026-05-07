@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import LineageScroll from "@/components/LineageScroll";
 
 export const metadata: Metadata = {
   title: "Lineage",
@@ -70,68 +71,8 @@ export default function LineagePage() {
         </div>
       </div>
 
-      {/* Lineage tree */}
-      <section className="py-16 bg-ink">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="flex flex-col items-center gap-0">
-            {/* Ip Man */}
-            <div className="border border-gold/30 bg-ink-200 px-4 sm:px-8 py-4 text-center w-full max-w-xs">
-              <p className="font-cinzel text-[9px] tracking-ultra text-gold/50 uppercase mb-1">Origin</p>
-              <p className="font-cinzel text-sm font-semibold text-white tracking-wide">
-                Grandmaster Ip Man 葉問
-              </p>
-              <p className="font-inter text-xs text-white/30 mt-1">Founder of Modern Wing Chun</p>
-            </div>
-            {/* Connector */}
-            <div className="w-px h-8 bg-gold/20" />
-            <div className="w-2 h-2 rounded-full bg-gold/40" />
-            <div className="w-px h-8 bg-gold/20" />
-
-            {/* 2 branches */}
-            <div className="grid grid-cols-2 gap-2 w-full max-w-sm mx-auto relative">
-              <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gold/20" />
-              {["Wong Shun Leung", "Wan Kam Leung"].map((name) => (
-                <div key={name} className="flex flex-col items-center gap-0">
-                  <div className="w-px h-6 bg-gold/20" />
-                  <div className="border border-gold/20 bg-ink-200 p-2 text-center w-full">
-                    <p className="font-cinzel text-[9px] sm:text-[10px] text-white/70 tracking-wide leading-snug">
-                      {name}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Connector down */}
-            <div className="w-px h-8 bg-gold/20" />
-            <div className="w-2 h-2 rounded-full bg-gold" />
-            <div className="w-px h-8 bg-gold/20" />
-
-            {/* Franco Lung */}
-            <div className="border border-gold bg-ink-200 px-6 sm:px-10 py-5 text-center shadow-[0_0_30px_rgba(201,168,76,0.12)] w-full max-w-xs">
-              <p className="font-cinzel text-[9px] tracking-ultra text-gold uppercase mb-1">
-                Grandmaster
-              </p>
-              <p className="font-cinzel text-base font-bold text-white tracking-wide">
-                Franco Lung
-              </p>
-              <p className="font-inter text-xs text-white/30 mt-1">Temple City, CA · Est. 2009</p>
-            </div>
-
-            {/* Connector to disciples */}
-            <div className="w-px h-8 bg-gold/20" />
-            <div className="w-2 h-2 rounded-full bg-gold/40" />
-            <div className="w-px h-8 bg-gold/20" />
-
-            {/* Disciples label */}
-            <div className="border border-gold/20 bg-ink-200 px-6 py-3 text-center w-full max-w-xs">
-              <p className="font-cinzel text-[9px] tracking-ultra text-gold/50 uppercase">
-                Disciples · Temple City
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Lineage tree — animated */}
+      <LineageScroll />
 
       {/* Master profiles */}
       <section className="section-pad bg-ink-100">

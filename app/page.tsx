@@ -2,6 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight, Star, Shield, Zap, Users, Award } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
+import SkillSection3D from "@/components/SkillSection3D";
+import HeroReveal from "@/components/HeroReveal";
+import TrustStrip from "@/components/TrustStrip";
 
 const testimonials = [
   {
@@ -45,27 +48,7 @@ export default function HomePage() {
         <div className="corner-bl" />
         <div className="corner-br" />
 
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-          <p className="fade-up font-cinzel text-sm tracking-[0.3em] text-gold/70 uppercase mb-8">
-            Wing Chun · Los Angeles · Est. 2009
-          </p>
-          <h1 className="fade-up delay-200 font-cinzel text-[clamp(3.5rem,12vw,7.5rem)] font-black tracking-ultra leading-none mb-8">
-            <span className="text-white block mb-2">FRANCO</span>
-            <span className="text-shimmer block">LUNG</span>
-          </h1>
-          <div className="gold-line mx-auto w-32 mb-6" />
-          <p className="fade-up delay-400 font-cinzel text-sm tracking-[0.3em] text-white/60 uppercase mb-12">
-            Grandmaster · From the Lineage of Ip Man
-          </p>
-          <div className="fade-up delay-500 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/classes" className="btn-gold w-full sm:w-auto text-center">
-              View Classes
-            </Link>
-            <Link href="/system" className="btn-outline w-full sm:w-auto text-center">
-              Explore the System
-            </Link>
-          </div>
-        </div>
+        <HeroReveal />
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
           <span className="font-cinzel text-[9px] tracking-ultra text-white/25 uppercase">Scroll</span>
@@ -76,23 +59,10 @@ export default function HomePage() {
       </section>
 
       {/* ─── TRUST STRIP ──────────────────────────────────────────────────── */}
-      <section className="py-6 bg-ink border-b border-ink-400">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="flex flex-wrap justify-center gap-x-10 gap-y-3">
-            {[
-              "50+ Years of Wing Chun Experience",
-              "Direct Hong Kong Lineage",
-              "Children & Adult Programs",
-              "Temple City · Los Angeles",
-            ].map((item) => (
-              <span key={item} className="font-cinzel text-[10px] tracking-widest text-white/70 uppercase flex items-center gap-2">
-                <span className="w-1 h-1 rounded-full bg-gold/50 flex-shrink-0" aria-hidden="true" />
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TrustStrip />
+
+      {/* ─── 3D SKILL SECTION ─────────────────────────────────────────────── */}
+      <SkillSection3D />
 
       {/* ─── ABOUT TEASER ─────────────────────────────────────────────────── */}
       <section className="section-pad bg-ink-100">

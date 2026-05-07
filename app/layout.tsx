@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/react";
 import ScrollToTop from "@/components/ScrollToTop";
 import MobileCallBar from "@/components/MobileCallBar";
+import LenisProvider from "@/components/LenisProvider";
+import PageTransition from "@/components/PageTransition";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -112,9 +114,13 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <Navbar />
-        <main id="main-content">{children}</main>
-        <Footer />
+        <LenisProvider>
+          <Navbar />
+          <main id="main-content">
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <Footer />
+        </LenisProvider>
         <ScrollToTop />
         <MobileCallBar />
         <Analytics />
