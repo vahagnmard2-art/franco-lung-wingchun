@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 export default function HeroReveal() {
-  const sifuChars = "SIFU".split("");
+  const francoChars = "FRANCO".split("");
   const lungChars = "LUNG".split("");
 
   return (
@@ -12,7 +12,7 @@ export default function HeroReveal() {
         className="font-cinzel text-sm tracking-[0.3em] text-gold uppercase mb-8"
         style={{ opacity: 0, animation: "heroFadeSlideUp 0.7s cubic-bezier(0.25,0.1,0.25,1) 0.15s both" }}
       >
-        Hong Kong Lineage · Temple City · Los Angeles
+        Grandmaster · Temple City · Est. 2009
       </p>
 
       <h1
@@ -20,7 +20,7 @@ export default function HeroReveal() {
         style={{ fontSize: "clamp(3.5rem, 12vw, 7.5rem)" }}
       >
         <span className="text-white block mb-2 whitespace-nowrap">
-          {sifuChars.map((ch, i) => (
+          {francoChars.map((ch, i) => (
             <span
               key={i}
               className="inline-block"
@@ -62,7 +62,7 @@ export default function HeroReveal() {
         className="font-cinzel text-sm tracking-[0.3em] text-white/75 uppercase mb-12"
         style={{ opacity: 0, animation: "heroFadeSlideUp 0.6s cubic-bezier(0.25,0.1,0.25,1) 1.0s both" }}
       >
-        Wing Chun · Los Angeles · Since 2009
+        Wing Chun · Direct Hong Kong Lineage
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
