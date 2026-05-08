@@ -26,6 +26,24 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,_#1e1400_0%,_#080808_65%)]" />
         </div>
+        {/* Oversized LUNG watermark — typographic depth layer */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-[1]"
+          style={{ opacity: 0, animation: "fadeInOpacity 2.5s ease-out 0s both" }}
+        >
+          <span
+            className="font-cinzel font-black leading-none whitespace-nowrap"
+            style={{
+              fontSize: "clamp(10rem, 38vw, 28rem)",
+              letterSpacing: "0.2em",
+              color: "rgba(201, 168, 76, 0.07)",
+            }}
+          >
+            LUNG
+          </span>
+        </div>
+
         <div className="corner-tl" />
         <div className="corner-tr" />
         <div className="corner-bl" />
