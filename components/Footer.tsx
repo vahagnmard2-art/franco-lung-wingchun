@@ -4,9 +4,9 @@ import { MapPin, Phone, Instagram, Facebook, Youtube } from "lucide-react";
 const navLinks = [
   { href: "/",        label: "Home" },
   { href: "/about",   label: "About" },
-  { href: "/classes", label: "Classes" },
-  { href: "/system",  label: "The System" },
   { href: "/lineage", label: "Lineage" },
+  { href: "/system",  label: "The System" },
+  { href: "/classes", label: "Classes" },
   { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
 ];

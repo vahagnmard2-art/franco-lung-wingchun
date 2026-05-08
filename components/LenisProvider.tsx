@@ -56,7 +56,14 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
 
   useEffect(() => {
     try {
-      if (lenisRef.current) lenisRef.current.scrollTo(0, { immediate: true });
+      if (!lenisRef.current) return;
+      lenisRef.current.scrollTo(0, { immediate: true });
+      // Recalculate scroll limit after the page transition animation completes
+      // (PageTransition takes 0.2s; 350ms ensures the entering page has fully rendered)
+      const id = setTimeout(() => {
+        try { lenisRef.current?.resize(); } catch {}
+      }, 350);
+      return () => clearTimeout(id);
     } catch (err) {
       console.error("[LenisProvider] scrollTo top error:", err);
     }

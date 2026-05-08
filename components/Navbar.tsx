@@ -7,9 +7,9 @@ import { Menu, X, Phone } from "lucide-react";
 
 const links = [
   { href: "/about",   label: "About" },
-  { href: "/classes", label: "Classes" },
-  { href: "/system",  label: "System" },
   { href: "/lineage", label: "Lineage" },
+  { href: "/system",  label: "System" },
+  { href: "/classes", label: "Classes" },
   { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
 ];

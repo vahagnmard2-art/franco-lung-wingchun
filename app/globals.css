@@ -22,6 +22,7 @@
 
 html {
   overflow-x: clip; /* clip instead of hidden — doesn't break position:fixed on iOS */
+  overscroll-behavior: none; /* prevent rubber-band scroll past footer */
 }
 
 body {
