@@ -4,7 +4,6 @@ import Link from "next/link";
 
 export default function HeroReveal() {
   const francoChars = "FRANCO".split("");
-  const lungChars = "LUNG".split("");
 
   return (
     <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
@@ -33,19 +32,14 @@ export default function HeroReveal() {
             </span>
           ))}
         </span>
-        <span className="text-shimmer block whitespace-nowrap">
-          {lungChars.map((ch, i) => (
-            <span
-              key={i}
-              className="inline-block"
-              style={{
-                opacity: 0,
-                animation: `heroCharUp 0.55s cubic-bezier(0.25,0.1,0.25,1) ${0.58 + i * 0.06}s both`,
-              }}
-            >
-              {ch}
-            </span>
-          ))}
+        <span
+          className="text-shimmer block whitespace-nowrap"
+          style={{
+            opacity: 0,
+            animation: "heroCharUp 0.55s cubic-bezier(0.25,0.1,0.25,1) 0.58s both",
+          }}
+        >
+          LUNG
         </span>
       </h1>
 
