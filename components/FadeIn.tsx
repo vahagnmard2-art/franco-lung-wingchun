@@ -16,31 +16,35 @@ export default function FadeIn({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    try {
+      const el = ref.current;
+      if (!el) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const rect = el.getBoundingClientRect();
-    const alreadyVisible = rect.top < window.innerHeight - 60;
+      const rect = el.getBoundingClientRect();
+      const alreadyVisible = rect.top < window.innerHeight - 60;
 
-    if (alreadyVisible) return;
+      if (alreadyVisible) return;
 
-    el.classList.add("fade-in-hidden", `fade-in-${direction}`);
-    if (delay > 0) el.style.animationDelay = `${delay}s`;
+      el.classList.add("fade-in-hidden", `fade-in-${direction}`);
+      if (delay > 0) el.style.animationDelay = `${delay}s`;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.remove("fade-in-hidden");
-          el.classList.add("fade-in-visible");
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "-60px 0px" }
-    );
-    observer.observe(el);
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            el.classList.remove("fade-in-hidden");
+            el.classList.add("fade-in-visible");
+            observer.disconnect();
+          }
+        },
+        { rootMargin: "-60px 0px" }
+      );
+      observer.observe(el);
 
-    return () => observer.disconnect();
+      return () => observer.disconnect();
+    } catch (err) {
+      console.error("[FadeIn] useEffect error:", err);
+    }
   }, [direction, delay]);
 
   return (

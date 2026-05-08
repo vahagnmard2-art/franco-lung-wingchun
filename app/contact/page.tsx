@@ -67,7 +67,8 @@ export default function ContactPage() {
       } else {
         toast.error("Something went wrong. Please try again or call us directly.");
       }
-    } catch {
+    } catch (err) {
+      console.error("[ContactForm] Submission error:", err);
       toast.error("Network error. Please check your connection and try again.");
     } finally {
       setSending(false);

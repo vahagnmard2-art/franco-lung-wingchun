@@ -8,38 +8,42 @@ export default function HeroParallax() {
   const lenis = useLenis();
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    try {
+      const el = ref.current;
+      if (!el) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const hero = el.parentElement;
-    if (!hero) return;
+      const hero = el.parentElement;
+      if (!hero) return;
 
-    el.style.willChange = "transform";
+      el.style.willChange = "transform";
 
-    function update() {
-      if (!el || !hero) return;
-      const rect = hero.getBoundingClientRect();
-      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-      const progress = -rect.top / hero.offsetHeight;
-      el.style.transform = `translateY(${Math.min(Math.max(progress * 25, 0), 25)}%)`;
-    }
+      function update() {
+        if (!el || !hero) return;
+        const rect = hero.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+        const progress = -rect.top / hero.offsetHeight;
+        el.style.transform = `translateY(${Math.min(Math.max(progress * 25, 0), 25)}%)`;
+      }
 
-    if (lenis) {
-      lenis.on("scroll", update);
+      if (lenis) {
+        lenis.on("scroll", update);
+        update();
+        return () => {
+          lenis.off("scroll", update);
+          if (el) el.style.willChange = "";
+        };
+      }
+
+      window.addEventListener("scroll", update, { passive: true });
       update();
       return () => {
-        lenis.off("scroll", update);
+        window.removeEventListener("scroll", update);
         if (el) el.style.willChange = "";
       };
+    } catch (err) {
+      console.error("[HeroParallax] useEffect error:", err);
     }
-
-    window.addEventListener("scroll", update, { passive: true });
-    update();
-    return () => {
-      window.removeEventListener("scroll", update);
-      if (el) el.style.willChange = "";
-    };
   }, [lenis]);
 
   return (

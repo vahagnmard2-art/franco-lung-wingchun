@@ -4,7 +4,8 @@ export async function POST(req: Request) {
   let data: unknown;
   try {
     data = await req.json();
-  } catch {
+  } catch (err) {
+    console.error("[contact/route] Failed to parse request body:", err);
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
 
@@ -27,6 +28,7 @@ export async function POST(req: Request) {
     if (res.ok) return NextResponse.json({ success: true });
     return NextResponse.json({ success: false }, { status: 502 });
   } catch (err) {
+    console.error("[contact/route] Fetch to formsubmit failed:", err);
     const isTimeout = err instanceof Error && err.name === "AbortError";
     return NextResponse.json(
       { error: isTimeout ? "Request timed out" : "Failed to send" },

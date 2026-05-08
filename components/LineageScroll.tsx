@@ -31,16 +31,22 @@ export default function LineageScroll() {
   const lenis = useLenis();
 
   useEffect(() => {
-    if (!lenis) return;
-    lenis.on("scroll", ScrollTrigger.update);
-    return () => lenis.off("scroll", ScrollTrigger.update);
+    try {
+      if (!lenis) return;
+      lenis.on("scroll", ScrollTrigger.update);
+      return () => lenis.off("scroll", ScrollTrigger.update);
+    } catch (err) {
+      console.error("[LineageScroll] Lenis/ScrollTrigger sync error:", err);
+    }
   }, [lenis]);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let safetyTimer: ReturnType<typeof setTimeout>;
+    let ctx: ReturnType<typeof gsap.context>;
 
-    const ctx = gsap.context(() => {
+    try {
+    ctx = gsap.context(() => {
       const nodes = gsap.utils.toArray<HTMLElement>(".lineage-node", container.current!);
       const lines = gsap.utils.toArray<HTMLElement>(".lineage-line", container.current!);
       const dots  = gsap.utils.toArray<HTMLElement>(".lineage-dot",  container.current!);
@@ -101,10 +107,14 @@ export default function LineageScroll() {
       // Disciples label
       tl.to(nodes[4], { autoAlpha: 1, y: 0, duration: 0.8 }, "-=0.2");
     }, container);
+    } catch (err) {
+      console.error("[LineageScroll] GSAP context error:", err);
+      if (container.current) revealAll(container.current);
+    }
 
     return () => {
       clearTimeout(safetyTimer);
-      ctx.revert();
+      ctx?.revert();
     };
   }, []);
 
