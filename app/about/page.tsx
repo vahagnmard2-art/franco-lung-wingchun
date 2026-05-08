@@ -74,6 +74,7 @@ export default function AboutPage() {
                   src="/images/sifu-portrait.jpg"
                   alt="Grandmaster Franco Lung"
                   fill
+                  priority
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover object-top"
                 />

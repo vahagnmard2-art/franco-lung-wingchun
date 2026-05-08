@@ -10,7 +10,14 @@ import { Play, ArrowUpRight, ImageOff } from "lucide-react";
 import HeroParallax from "@/components/HeroParallax";
 
 // Load lightbox JS only when first opened — not part of the initial page bundle
-const Lightbox = dynamic(() => import("yet-another-react-lightbox"), { ssr: false });
+const Lightbox = dynamic(() => import("yet-another-react-lightbox"), {
+  ssr: false,
+  loading: () => (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/95">
+      <div className="w-8 h-8 border-2 border-gold/30 border-t-gold rounded-full animate-spin" />
+    </div>
+  ),
+});
 
 const photos = [
   {
