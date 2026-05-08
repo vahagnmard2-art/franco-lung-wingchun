@@ -38,9 +38,9 @@ const timeline = [
     desc: "Grandmaster Lung immigrates to the United States and establishes his school in Temple City, CA, bringing authentic Hong Kong Wing Chun to Los Angeles.",
   },
   {
-    year: "Present",
-    title: "Continuing the Legacy",
-    desc: "GM Lung continues to teach, refine, and share his system with students of all backgrounds — children, adults, and advanced practitioners.",
+    year: "Today",
+    title: "A Living System",
+    desc: "GM Lung teaches daily at his Temple City school with nine certified disciples now carrying the tradition forward. His structured three-level curriculum continues to deepen — integrating over five decades of refinement into a living, evolving art.",
   },
 ];
 

@@ -275,7 +275,7 @@ export default function ContactPage() {
               style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.85) contrast(0.9)" }}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              src="https://maps.google.com/maps?q=5614+Rosemead+Blvd+Temple+City+CA+91780&output=embed&z=15"
+              src="https://maps.google.com/maps?q=5614+Rosemead+Blvd%2C+Temple+City%2C+CA+91780&z=15&output=embed&hl=en"
             />
           </div>
         </div>

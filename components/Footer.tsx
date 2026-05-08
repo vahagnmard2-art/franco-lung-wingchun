@@ -4,9 +4,9 @@ import { MapPin, Phone, Instagram, Facebook, Youtube } from "lucide-react";
 const navLinks = [
   { href: "/",        label: "Home" },
   { href: "/about",   label: "About" },
-  { href: "/lineage", label: "Lineage" },
-  { href: "/system",  label: "The System" },
   { href: "/classes", label: "Classes" },
+  { href: "/system",  label: "The System" },
+  { href: "/lineage", label: "Lineage" },
   { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
 ];
@@ -14,17 +14,27 @@ const navLinks = [
 export default function Footer() {
   return (
     <footer className="bg-ink-100 border-t border-ink-400">
-      <div className="max-w-7xl mx-auto px-6 pt-16 pb-20 sm:pb-8">
+      <div className="max-w-7xl mx-auto px-6 pt-16 pb-mobile-safe">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-14">
           {/* Brand */}
           <div>
-            <Link href="/" className="inline-block mb-4">
-              <span className="font-cinzel text-xl tracking-ultra text-white">
-                FRANCO <span className="text-gold">LUNG</span>
-              </span>
-              <span className="block text-[10px] tracking-[0.45em] text-white/70 uppercase mt-1">
-                Wing Chun
-              </span>
+            <Link href="/" className="inline-flex items-center gap-3 mb-4 group">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/logo.png"
+                alt=""
+                width={40}
+                height={40}
+                className="rounded-full opacity-80 group-hover:opacity-100 transition-opacity duration-200"
+              />
+              <div>
+                <span className="font-cinzel text-xl tracking-ultra text-white group-hover:text-gold transition-colors duration-200">
+                  FRANCO <span className="text-gold">LUNG</span>
+                </span>
+                <span className="block text-[10px] tracking-[0.45em] text-white/70 uppercase mt-1">
+                  Wing Chun
+                </span>
+              </div>
             </Link>
             <p className="text-white/70 text-sm leading-relaxed max-w-xs">
               Over five decades of Wing Chun mastery. Training in Los Angeles

@@ -13,7 +13,7 @@ export default function HeroReveal() {
         className="font-cinzel text-sm tracking-[0.3em] text-gold uppercase mb-8"
         style={{ opacity: 0, animation: "heroFadeSlideUp 0.7s cubic-bezier(0.25,0.1,0.25,1) 0.15s both" }}
       >
-        Grandmaster Franco Lung
+        Hong Kong Lineage · Temple City · Los Angeles
       </p>
 
       <h1

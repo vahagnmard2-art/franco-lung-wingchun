@@ -23,7 +23,7 @@ export default function HomePage() {
             fill
             sizes="100vw"
             className="object-cover object-center"
-            style={{ opacity: 0.38 }}
+            style={{ opacity: 0.42 }}
           />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,_#1e1400_0%,_#080808_65%)]" />
         </div>

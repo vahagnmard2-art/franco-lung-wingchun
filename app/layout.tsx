@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cinzel, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -54,6 +54,14 @@ export const metadata: Metadata = {
       "Over 50 years of Wing Chun mastery. Direct lineage from Hong Kong's greatest masters.",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/images/sifu-portrait.jpg",
+        width: 1012,
+        height: 1405,
+        alt: "Grandmaster Franco Lung — Wing Chun Temple City, CA",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -61,6 +69,12 @@ export const metadata: Metadata = {
     description:
       "Train with Grandmaster Franco Lung — over 50 years of Wing Chun mastery. Classes in Temple City, CA.",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 // Schema.org — SportsActivityLocation is the correct type for martial arts schools
@@ -85,17 +99,18 @@ const jsonLd = {
     latitude: 34.0988,
     longitude: -118.0573,
   },
+  priceRange: "$30-$70",
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "5",
     bestRating: "5",
-    // Update reviewCount to match your current Google review count
     reviewCount: "30",
   },
   openingHoursSpecification: [
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "19:30", closes: "21:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "11:00", closes: "17:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "14:30", closes: "17:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Wednesday", opens: "15:30", closes: "17:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday",    opens: "19:30", closes: "21:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday",  opens: "11:00", closes: "17:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday",    opens: "14:00", closes: "17:00" },
   ],
   sameAs: [
     "https://www.instagram.com/wingchunfrancolung",

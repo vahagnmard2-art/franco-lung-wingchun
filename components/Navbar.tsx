@@ -104,6 +104,7 @@ export default function Navbar() {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
+        aria-hidden={!open}
         onClick={() => setOpen(false)}
         className={`fixed inset-0 min-h-[100dvh] z-40 bg-ink flex flex-col items-center justify-center md:hidden transition-opacity duration-300 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"

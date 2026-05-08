@@ -41,8 +41,10 @@ export default function FAQAccordion() {
       {faqs.map((item, i) => (
         <div key={i} className="card-base overflow-hidden">
           <button
+            id={`faq-btn-${i}`}
             onClick={() => setOpen(open === i ? null : i)}
             aria-expanded={open === i}
+            aria-controls={`faq-panel-${i}`}
             className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left group"
           >
             <span className="font-cinzel text-sm text-white/80 group-hover:text-white tracking-wide leading-snug transition-colors">
@@ -53,9 +55,14 @@ export default function FAQAccordion() {
               className={`text-gold flex-shrink-0 transition-transform duration-300 ${
                 open === i ? "rotate-180" : ""
               }`}
+              aria-hidden="true"
             />
           </button>
           <div
+            id={`faq-panel-${i}`}
+            role="region"
+            aria-labelledby={`faq-btn-${i}`}
+            aria-hidden={open !== i}
             className={`overflow-hidden transition-all duration-300 ${
               open === i ? "max-h-96" : "max-h-0"
             }`}

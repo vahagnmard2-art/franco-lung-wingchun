@@ -36,9 +36,9 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 }
 
 const stats = [
-  { label: "Years of Wing Chun Experience", prefix: "", value: 50, suffix: "+" },
+  { label: "Years of Mastery", prefix: "", value: 50, suffix: "+" },
   { label: "Direct Hong Kong Lineage", prefix: "", value: null, suffix: null, static: "Direct Hong Kong Lineage" },
-  { label: "Children & Adult Programs", prefix: "", value: null, suffix: null, static: "Children & Adult Programs" },
+  { label: "Ages 5 &amp; Up Welcome", prefix: "", value: null, suffix: null, static: "Ages 5 & Up Welcome" },
   { label: "Temple City · Los Angeles", prefix: "", value: null, suffix: null, static: "Temple City · Los Angeles" },
 ];
 

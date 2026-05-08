@@ -55,8 +55,10 @@ export default function PillarAccordion() {
       {pillars.map((p, i) => (
         <div key={p.num} className="card-base overflow-hidden group">
           <button
+            id={`pillar-btn-${i}`}
             onClick={() => setOpen(open === i ? null : i)}
             aria-expanded={open === i}
+            aria-controls={`pillar-panel-${i}`}
             className="w-full flex items-center gap-6 px-8 py-5 text-left"
           >
             <span className="font-cinzel text-3xl font-black text-gold/15 group-hover:text-gold/25 transition-colors leading-none flex-shrink-0 w-10">
@@ -70,9 +72,14 @@ export default function PillarAccordion() {
               className={`text-gold/70 flex-shrink-0 transition-transform duration-300 ${
                 open === i ? "rotate-180 text-gold" : ""
               }`}
+              aria-hidden="true"
             />
           </button>
           <div
+            id={`pillar-panel-${i}`}
+            role="region"
+            aria-labelledby={`pillar-btn-${i}`}
+            aria-hidden={open !== i}
             className={`overflow-hidden transition-all duration-400 ${
               open === i ? "max-h-80" : "max-h-0"
             }`}

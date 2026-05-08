@@ -9,11 +9,28 @@ gsap.registerPlugin(ScrollTrigger);
 const connectorClass =
   "w-px bg-gradient-to-b from-gold/40 to-gold/10 origin-top";
 
+function revealAll(container: HTMLDivElement) {
+  container.querySelectorAll<HTMLElement>(".lineage-node, .lineage-dot, .lineage-glow").forEach(el => {
+    el.style.opacity = "1";
+    el.style.visibility = "visible";
+    el.style.transform = "none";
+  });
+  container.querySelectorAll<HTMLElement>(".lineage-line").forEach(el => {
+    el.style.transform = "scaleY(1)";
+    el.style.opacity = "1";
+    el.style.visibility = "visible";
+  });
+  container.querySelectorAll<HTMLElement>(".lineage-branch").forEach(el => {
+    el.style.transform = "scaleX(1)";
+  });
+}
+
 export default function LineageScroll() {
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let safetyTimer: ReturnType<typeof setTimeout>;
 
     const ctx = gsap.context(() => {
       const nodes = gsap.utils.toArray<HTMLElement>(".lineage-node", container.current!);
@@ -26,6 +43,11 @@ export default function LineageScroll() {
         gsap.set(".lineage-glow", { opacity: 1 });
         return;
       }
+
+      // Safety net: if GSAP/ScrollTrigger stalls, force-reveal after 5s
+      safetyTimer = setTimeout(() => {
+        if (container.current) revealAll(container.current);
+      }, 5000);
 
       // Set starting states
       gsap.set(nodes, { autoAlpha: 0, y: 28 });
@@ -72,7 +94,10 @@ export default function LineageScroll() {
       tl.to(nodes[4], { autoAlpha: 1, y: 0, duration: 0.8 }, "-=0.2");
     }, container);
 
-    return () => ctx.revert();
+    return () => {
+      clearTimeout(safetyTimer);
+      ctx.revert();
+    };
   }, []);
 
   return (
