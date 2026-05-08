@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { toast } from "sonner";
+import { toast, Toaster } from "sonner";
 import { MapPin, Phone, Instagram, Facebook, Youtube, Send } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
@@ -79,6 +79,19 @@ export default function ContactPage() {
 
   return (
     <>
+      <Toaster
+        position="bottom-center"
+        toastOptions={{
+          style: {
+            background: "#181818",
+            border: "1px solid #2a2a2a",
+            color: "#f0f0f0",
+            fontFamily: "var(--font-cinzel), serif",
+            fontSize: "0.7rem",
+            letterSpacing: "0.1em",
+          },
+        }}
+      />
       {/* Header */}
       <div className="page-hero text-center px-6">
         <div className="corner-tl" />

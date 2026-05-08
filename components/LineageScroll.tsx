@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLenis } from "@/components/LenisProvider";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,6 +28,13 @@ function revealAll(container: HTMLDivElement) {
 
 export default function LineageScroll() {
   const container = useRef<HTMLDivElement>(null);
+  const lenis = useLenis();
+
+  useEffect(() => {
+    if (!lenis) return;
+    lenis.on("scroll", ScrollTrigger.update);
+    return () => lenis.off("scroll", ScrollTrigger.update);
+  }, [lenis]);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

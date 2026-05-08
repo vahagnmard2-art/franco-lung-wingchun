@@ -30,14 +30,16 @@ body {
   font-weight: 500; /* base medium weight for readability on mobile */
 }
 
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 999; /* below canvas bloom stack, above content */
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+@media (min-width: 768px) {
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
 }
 
 input:focus-visible,
@@ -231,4 +233,38 @@ select:focus-visible {
   background: var(--gold);
   color: #080808;
   transform: translateY(-1px);
+}
+
+/* FadeIn scroll-reveal — IntersectionObserver adds these classes, no SSR opacity:0 */
+.fade-in-hidden {
+  opacity: 0;
+}
+.fade-in-hidden.fade-in-up    { transform: translateY(30px); }
+.fade-in-hidden.fade-in-left  { transform: translateX(-30px); }
+.fade-in-hidden.fade-in-right { transform: translateX(30px); }
+.fade-in-hidden.fade-in-none  { transform: none; }
+
+.fade-in-visible.fade-in-up    { animation: fadeInUp    0.65s cubic-bezier(0.25, 0.1, 0.25, 1) both; }
+.fade-in-visible.fade-in-left  { animation: fadeInLeft  0.65s cubic-bezier(0.25, 0.1, 0.25, 1) both; }
+.fade-in-visible.fade-in-right { animation: fadeInRight 0.65s cubic-bezier(0.25, 0.1, 0.25, 1) both; }
+.fade-in-visible.fade-in-none  { animation: fadeInOpacity 0.65s cubic-bezier(0.25, 0.1, 0.25, 1) both; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInOpacity {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-hidden { opacity: 1; transform: none; }
 }

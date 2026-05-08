@@ -1,47 +1,51 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Lenis from "lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+const LenisContext = createContext<Lenis | null>(null);
+
+export function useLenis() {
+  return useContext(LenisContext);
+}
 
 export default function LenisProvider({ children }: { children: React.ReactNode }) {
+  const [lenis, setLenis] = useState<Lenis | null>(null);
   const lenisRef = useRef<Lenis | null>(null);
+  const rafRef = useRef<number | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
-    const lenis = new Lenis({
+    const instance = new Lenis({
       duration: 1.25,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
+    lenisRef.current = instance;
+    setLenis(instance);
 
-    lenisRef.current = lenis;
-
-    // Keep GSAP ScrollTrigger in sync with Lenis scroll position
-    lenis.on("scroll", ScrollTrigger.update);
-
-    // Store reference so cleanup can remove the exact same function
-    const onFrame = (time: number) => lenis.raf(time * 1000);
-    gsap.ticker.add(onFrame);
-    gsap.ticker.lagSmoothing(0);
+    function raf(time: number) {
+      instance.raf(time);
+      rafRef.current = requestAnimationFrame(raf);
+    }
+    rafRef.current = requestAnimationFrame(raf);
 
     return () => {
-      lenis.destroy();
-      gsap.ticker.remove(onFrame); // removes the exact same reference — no leak
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+      instance.destroy();
       lenisRef.current = null;
+      setLenis(null);
     };
   }, []);
 
-  // Scroll to top on every route change
   useEffect(() => {
-    if (lenisRef.current) {
-      lenisRef.current.scrollTo(0, { immediate: true });
-    }
+    if (lenisRef.current) lenisRef.current.scrollTo(0, { immediate: true });
   }, [pathname]);
 
-  return <>{children}</>;
+  return (
+    <LenisContext.Provider value={lenis}>
+      {children}
+    </LenisContext.Provider>
+  );
 }

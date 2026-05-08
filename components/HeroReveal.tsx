@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import MagneticButton from "@/components/MagneticButton";
 
 export default function HeroReveal() {
   const sifuChars = "SIFU".split("");
@@ -20,7 +19,6 @@ export default function HeroReveal() {
         className="font-cinzel font-black tracking-ultra leading-none mb-8"
         style={{ fontSize: "clamp(3.5rem, 12vw, 7.5rem)" }}
       >
-        {/* SIFU — drops in from above */}
         <span className="text-white block mb-2 whitespace-nowrap">
           {sifuChars.map((ch, i) => (
             <span
@@ -35,7 +33,6 @@ export default function HeroReveal() {
             </span>
           ))}
         </span>
-        {/* LUNG — rises from below, always rendered */}
         <span className="text-shimmer block whitespace-nowrap">
           {lungChars.map((ch, i) => (
             <span
@@ -70,18 +67,14 @@ export default function HeroReveal() {
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <div style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 1.1s both" }}>
-          <MagneticButton className="w-full sm:w-auto">
-            <Link href="/classes" className="btn-gold block text-center">
-              View Classes
-            </Link>
-          </MagneticButton>
+          <Link href="/classes" className="btn-gold block text-center w-full sm:w-auto">
+            View Classes
+          </Link>
         </div>
         <div style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 1.2s both" }}>
-          <MagneticButton className="w-full sm:w-auto">
-            <Link href="/system" className="btn-outline block text-center">
-              Explore the System
-            </Link>
-          </MagneticButton>
+          <Link href="/system" className="btn-outline block text-center w-full sm:w-auto">
+            Explore the System
+          </Link>
         </div>
       </div>
     </div>

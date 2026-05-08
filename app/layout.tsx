@@ -9,15 +9,13 @@ import ScrollToTop from "@/components/ScrollToTop";
 import MobileCallBar from "@/components/MobileCallBar";
 import LenisProvider from "@/components/LenisProvider";
 import PageTransition from "@/components/PageTransition";
-import { Toaster } from "sonner";
-
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 const cinzel = Cinzel({
   subsets: ["latin"],
   variable: "--font-cinzel",
   display: "swap",
-  weight: ["400", "600", "700", "900"],
+  weight: ["400", "700", "900"],
 });
 
 const inter = Inter({
@@ -125,7 +123,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <head>
         <script
           type="application/ld+json"
@@ -167,19 +165,6 @@ export default function RootLayout({
         </LenisProvider>
         <ScrollToTop />
         <MobileCallBar />
-        <Toaster
-          position="bottom-center"
-          toastOptions={{
-            style: {
-              background: "#181818",
-              border: "1px solid #2a2a2a",
-              color: "#f0f0f0",
-              fontFamily: "var(--font-cinzel), serif",
-              fontSize: "0.7rem",
-              letterSpacing: "0.1em",
-            },
-          }}
-        />
         <Analytics />
       </body>
     </html>
