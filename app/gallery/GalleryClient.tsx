@@ -1,13 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/styles.css";
 import { Play, ArrowUpRight, ImageOff } from "lucide-react";
 import HeroParallax from "@/components/HeroParallax";
+
+// Load lightbox JS only when first opened — not part of the initial page bundle
+const Lightbox = dynamic(() => import("yet-another-react-lightbox"), { ssr: false });
 
 const photos = [
   {
@@ -69,6 +72,10 @@ function PhotoCard({
       }`}
       style={{ aspectRatio: photo.wide ? "2/1" : "1/1" }}
     >
+      {/* Fallback icon — renders first so image paints on top when loaded */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <ImageOff size={28} className="text-gold/10" aria-hidden="true" />
+      </div>
       <Image
         src={photo.src}
         alt={photo.alt}
@@ -76,10 +83,6 @@ function PhotoCard({
         sizes={photo.wide ? "(max-width: 640px) 100vw, (max-width: 1280px) 66vw, 800px" : "(max-width: 640px) 100vw, (max-width: 1280px) 33vw, 400px"}
         className="object-cover group-hover:scale-105 transition-transform duration-500"
       />
-      {/* Fallback */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <ImageOff size={28} className="text-gold/10" aria-hidden="true" />
-      </div>
       {/* Caption overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 z-10">
         <span className="font-cinzel text-[10px] tracking-widest text-gold uppercase">
@@ -209,17 +212,19 @@ export default function GalleryClient() {
         </div>
       </section>
 
-      {/* Lightbox */}
-      <Lightbox
-        open={lightboxIndex >= 0}
-        index={lightboxIndex}
-        close={() => setLightboxIndex(-1)}
-        slides={photos.map((p) => ({ src: p.src, alt: p.alt }))}
-        plugins={[Zoom]}
-        styles={{
-          container: { backgroundColor: "rgba(8,8,8,0.97)" },
-        }}
-      />
+      {/* Lightbox — only mounted when a photo is clicked */}
+      {lightboxIndex >= 0 && (
+        <Lightbox
+          open={true}
+          index={lightboxIndex}
+          close={() => setLightboxIndex(-1)}
+          slides={photos.map((p) => ({ src: p.src, alt: p.alt }))}
+          plugins={[Zoom]}
+          styles={{
+            container: { backgroundColor: "rgba(8,8,8,0.97)" },
+          }}
+        />
+      )}
 
       {/* CTA */}
       <section className="py-16 sm:py-24 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,_#1e1400_0%,_#080808_70%)] relative overflow-hidden text-center px-6">
