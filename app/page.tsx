@@ -26,23 +26,6 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,_#1e1400_0%,_#080808_65%)]" />
         </div>
-        {/* Logo watermark — brand mark as depth layer behind hero content */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-[1]"
-          style={{ opacity: 0, animation: "fadeInOpacity 2.5s ease-out 0s both" }}
-        >
-          <div style={{ width: "clamp(280px, 62vh, 580px)", height: "clamp(280px, 62vh, 580px)", opacity: 0.08, position: "relative" }}>
-            <Image
-              src="/images/logo-watermark.png"
-              alt=""
-              fill
-              sizes="580px"
-              className="object-contain"
-            />
-          </div>
-        </div>
-
         <div className="corner-tl" />
         <div className="corner-tr" />
         <div className="corner-bl" />
