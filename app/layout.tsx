@@ -148,7 +148,7 @@ export default function RootLayout({
         )}
       </head>
       <body
-        className={`${cinzel.variable} ${inter.variable} font-inter bg-ink text-neutral-100 antialiased`}
+        className={`${cinzel.variable} ${inter.variable} font-inter bg-ink text-neutral-100 antialiased flex flex-col min-h-dvh`}
       >
         <a
           href="#main-content"
@@ -158,7 +158,7 @@ export default function RootLayout({
         </a>
         <LenisProvider>
           <Navbar />
-          <main id="main-content">
+          <main id="main-content" className="flex-1 relative">
             <PageTransition>{children}</PageTransition>
           </main>
           <Footer />

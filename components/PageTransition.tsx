@@ -11,13 +11,13 @@ export default function PageTransition({ children }: { children: React.ReactNode
   useEffect(() => { setMounted(true); }, []);
 
   return (
-    <AnimatePresence mode="popLayout" initial={false}>
+    <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={pathname}
         initial={mounted ? { opacity: 0 } : false}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 1 }}
-        transition={{ duration: 0.2 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.15 }}
       >
         {children}
       </motion.div>

@@ -29,6 +29,14 @@ body {
   background-color: var(--ink);
   color: #f0f0f0;
   font-weight: 500; /* base medium weight for readability on mobile */
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+main {
+  flex: 1;
+  position: relative;
 }
 
 @media (min-width: 768px) {
