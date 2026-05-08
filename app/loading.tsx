@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-ink flex flex-col items-center justify-center gap-8 px-6">
+    <div className="min-h-[calc(100dvh-72px)] bg-ink flex flex-col items-center justify-center gap-8 px-6">
       {/* Logo mark skeleton */}
       <div className="flex flex-col items-center gap-3">
         <div className="w-10 h-10 rounded-full bg-ink-400 animate-pulse" />

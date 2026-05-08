@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <section className="min-h-screen bg-ink flex items-center justify-center px-6 relative overflow-hidden">
+    <section className="min-h-[calc(100dvh-72px)] bg-ink flex items-center justify-center px-6 relative overflow-hidden">
       {/* Corner accents */}
       <div className="corner-tl" />
       <div className="corner-tr" />

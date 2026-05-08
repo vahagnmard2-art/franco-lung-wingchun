@@ -82,7 +82,7 @@ export default function Navbar() {
                 )}
               </Link>
             ))}
-            <Link href="/classes" className="btn-gold text-[10px] ml-2">
+            <Link href="/contact" className="btn-gold text-[10px] ml-2">
               Book a Class
             </Link>
           </div>
@@ -134,7 +134,7 @@ export default function Navbar() {
             <Phone size={13} aria-hidden="true" />
             (626) 233-2882
           </a>
-          <Link href="/classes" className="btn-gold" onClick={() => setOpen(false)}>
+          <Link href="/contact" className="btn-gold" onClick={() => setOpen(false)}>
             Book a Class
           </Link>
         </div>

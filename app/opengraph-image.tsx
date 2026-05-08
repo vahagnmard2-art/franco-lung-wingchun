@@ -88,7 +88,7 @@ export default async function Image() {
           </div>
 
           <div style={{ fontSize: 92, fontWeight: 900, color: "#ffffff", letterSpacing: "0.1em", lineHeight: 1, marginBottom: 2 }}>
-            SIFU
+            FRANCO
           </div>
           <div style={{ fontSize: 92, fontWeight: 900, color: "#C9A84C", letterSpacing: "0.1em", lineHeight: 1, marginBottom: 32 }}>
             LUNG

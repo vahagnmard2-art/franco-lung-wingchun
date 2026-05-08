@@ -80,7 +80,7 @@ export default function PillarAccordion() {
             role="region"
             aria-labelledby={`pillar-btn-${i}`}
             aria-hidden={open !== i}
-            className={`overflow-hidden transition-all duration-400 ${
+            className={`overflow-hidden transition-all duration-300 ${
               open === i ? "max-h-80" : "max-h-0"
             }`}
           >

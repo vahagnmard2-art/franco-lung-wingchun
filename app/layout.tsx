@@ -73,6 +73,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: "#080808",
 };
 
 // Schema.org — SportsActivityLocation is the correct type for martial arts schools
