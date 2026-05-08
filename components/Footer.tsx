@@ -26,7 +26,6 @@ export default function Footer() {
                 width={40}
                 height={40}
                 className="rounded-full opacity-80 group-hover:opacity-100 transition-opacity duration-200"
-                onError={(e) => { e.currentTarget.style.display = "none"; }}
               />
               <div>
                 <span className="font-cinzel text-xl tracking-ultra text-white group-hover:text-gold transition-colors duration-200">
