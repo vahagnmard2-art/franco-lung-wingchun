@@ -29,19 +29,34 @@ export default function FadeIn({
       el.classList.add("fade-in-hidden", `fade-in-${direction}`);
       if (delay > 0) el.style.animationDelay = `${delay}s`;
 
+      const reveal = () => {
+        el.classList.remove("fade-in-hidden");
+        el.classList.add("fade-in-visible");
+      };
+
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            el.classList.remove("fade-in-hidden");
-            el.classList.add("fade-in-visible");
+            reveal();
             observer.disconnect();
+            clearTimeout(safety);
           }
         },
         { rootMargin: "-60px 0px" }
       );
       observer.observe(el);
 
-      return () => observer.disconnect();
+      // If the observer never fires (fast scroll past, rootMargin edge case,
+      // deferred IO callback on low-power devices), force-reveal after 4s
+      const safety = setTimeout(() => {
+        if (el.classList.contains("fade-in-hidden")) reveal();
+        observer.disconnect();
+      }, 4000);
+
+      return () => {
+        observer.disconnect();
+        clearTimeout(safety);
+      };
     } catch (err) {
       console.error("[FadeIn] useEffect error:", err);
     }
