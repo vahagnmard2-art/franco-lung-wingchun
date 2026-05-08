@@ -1,83 +1,88 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
 import Link from "next/link";
 import MagneticButton from "@/components/MagneticButton";
 
 export default function HeroReveal() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    const ctx = gsap.context(() => {
-      // With no [opacity:0] on elements, SSR renders everything visible.
-      // We hide-then-animate only when JS runs — no permanent invisible state.
-      if (prefersReduced) return; // already visible, nothing to do
-
-      gsap.set(".hero-tagline",      { autoAlpha: 0, y: 18 });
-      gsap.set(".hero-f .hero-char", { autoAlpha: 0, y: -40, rotateX: 90 });
-      gsap.set(".hero-l .hero-char", { autoAlpha: 0, y: 40,  rotateX: -90 });
-      gsap.set(".hero-line",         { scaleX: 0, transformOrigin: "center" });
-      gsap.set(".hero-subtitle",     { autoAlpha: 0, y: 12 });
-      gsap.set(".hero-cta",          { autoAlpha: 0, y: 16 });
-
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-      tl.to(".hero-tagline",      { autoAlpha: 1, y: 0, duration: 0.7 });
-      tl.to(".hero-f .hero-char", { autoAlpha: 1, y: 0, rotateX: 0, duration: 0.55, stagger: 0.04 }, "-=0.2");
-      tl.to(".hero-l .hero-char", { autoAlpha: 1, y: 0, rotateX: 0, duration: 0.55, stagger: 0.06 }, "-=0.3");
-      tl.to(".hero-line",         { scaleX: 1, duration: 0.6 }, "-=0.2");
-      tl.to(".hero-subtitle",     { autoAlpha: 1, y: 0, duration: 0.6 }, "-=0.3");
-      tl.to(".hero-cta",          { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.1 }, "-=0.2");
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const sifuChars = "SIFU".split("");
   const lungChars = "LUNG".split("");
 
   return (
-    <div ref={containerRef} className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-      <p className="hero-tagline font-cinzel text-sm tracking-[0.3em] text-gold uppercase mb-8">
+    <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
+      <p
+        className="font-cinzel text-sm tracking-[0.3em] text-gold uppercase mb-8"
+        style={{ opacity: 0, animation: "heroFadeSlideUp 0.7s cubic-bezier(0.25,0.1,0.25,1) 0.15s both" }}
+      >
         Grandmaster Franco Lung
       </p>
 
       <h1
         className="font-cinzel font-black tracking-ultra leading-none mb-8"
-        style={{ fontSize: "clamp(3.5rem, 12vw, 7.5rem)", perspective: "600px" }}
+        style={{ fontSize: "clamp(3.5rem, 12vw, 7.5rem)" }}
       >
-        <span className="hero-f text-white block mb-2 whitespace-nowrap" style={{ perspective: "600px" }}>
+        {/* SIFU — drops in from above */}
+        <span className="text-white block mb-2 whitespace-nowrap">
           {sifuChars.map((ch, i) => (
-            <span key={i} className="hero-char inline-block">{ch}</span>
+            <span
+              key={i}
+              className="inline-block"
+              style={{
+                opacity: 0,
+                animation: `heroCharDown 0.55s cubic-bezier(0.25,0.1,0.25,1) ${0.38 + i * 0.05}s both`,
+              }}
+            >
+              {ch}
+            </span>
           ))}
         </span>
-        <span className="hero-l text-shimmer block whitespace-nowrap" style={{ perspective: "600px" }}>
+        {/* LUNG — rises from below, always rendered */}
+        <span className="text-shimmer block whitespace-nowrap">
           {lungChars.map((ch, i) => (
-            <span key={i} className="hero-char inline-block">{ch}</span>
+            <span
+              key={i}
+              className="inline-block"
+              style={{
+                opacity: 0,
+                animation: `heroCharUp 0.55s cubic-bezier(0.25,0.1,0.25,1) ${0.58 + i * 0.06}s both`,
+              }}
+            >
+              {ch}
+            </span>
           ))}
         </span>
       </h1>
 
-      <div className="hero-line gold-line mx-auto w-32 mb-6" />
+      <div
+        className="gold-line mx-auto w-32 mb-6"
+        style={{
+          transform: "scaleX(0)",
+          transformOrigin: "center",
+          animation: "heroLineExpand 0.6s cubic-bezier(0.25,0.1,0.25,1) 0.88s both",
+        }}
+      />
 
-      <p className="hero-subtitle font-cinzel text-sm tracking-[0.3em] text-white/75 uppercase mb-12">
+      <p
+        className="font-cinzel text-sm tracking-[0.3em] text-white/75 uppercase mb-12"
+        style={{ opacity: 0, animation: "heroFadeSlideUp 0.6s cubic-bezier(0.25,0.1,0.25,1) 1.0s both" }}
+      >
         Wing Chun · Los Angeles · Since 2009
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <MagneticButton className="hero-cta w-full sm:w-auto">
-          <Link href="/classes" className="btn-gold block text-center">
-            View Classes
-          </Link>
-        </MagneticButton>
-        <MagneticButton className="hero-cta w-full sm:w-auto">
-          <Link href="/system" className="btn-outline block text-center">
-            Explore the System
-          </Link>
-        </MagneticButton>
+        <div style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 1.1s both" }}>
+          <MagneticButton className="w-full sm:w-auto">
+            <Link href="/classes" className="btn-gold block text-center">
+              View Classes
+            </Link>
+          </MagneticButton>
+        </div>
+        <div style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 1.2s both" }}>
+          <MagneticButton className="w-full sm:w-auto">
+            <Link href="/system" className="btn-outline block text-center">
+              Explore the System
+            </Link>
+          </MagneticButton>
+        </div>
       </div>
     </div>
   );

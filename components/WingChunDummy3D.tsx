@@ -1,10 +1,20 @@
 "use client";
 
-import { useRef, useMemo, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { useRef, useMemo, useState, Suspense } from "react";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { Float, Sparkles, OrbitControls, Environment } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import * as THREE from "three";
+
+function LogoDisc() {
+  const texture = useLoader(THREE.TextureLoader, "/images/logo.png");
+  return (
+    <mesh position={[0, 0.98, 0.098]}>
+      <circleGeometry args={[0.13, 48]} />
+      <meshBasicMaterial map={texture} transparent alphaTest={0.05} depthWrite={false} />
+    </mesh>
+  );
+}
 
 function WoodenDummy({ activeArm }: { activeArm: number | null }) {
   const woodMat = useMemo(() => new THREE.MeshStandardMaterial({
@@ -68,6 +78,11 @@ function WoodenDummy({ activeArm }: { activeArm: number | null }) {
       <mesh material={woodMat} castShadow>
         <cylinderGeometry args={[0.092, 0.108, 2.55, 28]} />
       </mesh>
+
+      {/* School logo on upper trunk face */}
+      <Suspense fallback={null}>
+        <LogoDisc />
+      </Suspense>
 
       {/* Decorative ring connectors at arm insertion points */}
       {[0.68, 0.05, -0.95].map((y, i) => (
