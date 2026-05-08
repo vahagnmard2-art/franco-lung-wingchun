@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Shield, Zap, Users, Award } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
-import SkillSection3D from "@/components/SkillSection3D";
 import HeroReveal from "@/components/HeroReveal";
 import TrustStrip from "@/components/TrustStrip";
 import TestimonialsScroll from "@/components/TestimonialsScroll";
@@ -44,9 +43,6 @@ export default function HomePage() {
 
       {/* ─── TRUST STRIP ──────────────────────────────────────────────────── */}
       <TrustStrip />
-
-      {/* ─── 3D SKILL SECTION ─────────────────────────────────────────────── */}
-      <SkillSection3D />
 
       {/* ─── ABOUT TEASER ─────────────────────────────────────────────────── */}
       <section className="section-pad bg-ink-100">
