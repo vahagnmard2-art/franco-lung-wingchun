@@ -136,6 +136,45 @@ export default function ClassesPage() {
         </div>
       </div>
 
+      {/* First Visit */}
+      <section className="section-pad bg-ink">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
+              New Students
+            </p>
+            <h2 className="font-cinzel text-2xl font-bold text-white tracking-wide">
+              What to <span className="text-gold">Expect</span>
+            </h2>
+            <div className="gold-line mx-auto w-24 mt-6" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              {
+                title: "What to Wear",
+                body: "No uniform required to start. Comfortable clothes and flat-soled shoes — or bare feet. Just bring water.",
+              },
+              {
+                title: "No Experience Needed",
+                body: "Arrive as you are. GM Lung's system is designed to take complete beginners step by step from day one. No prior martial arts required.",
+              },
+              {
+                title: "Class Format",
+                body: "Classes run 90 minutes. Expect forms practice, structural drills, and supervised partner work under GM Lung's direct instruction.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="card-base p-6 text-center">
+                <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
+                  {item.title}
+                </p>
+                <span className="gold-line-short mb-3" />
+                <p className="text-white/60 text-sm leading-relaxed mt-3">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Schedule — shown first so visitors confirm a time exists before seeing price */}
       <section className="section-pad bg-ink-100">
         <div className="max-w-3xl mx-auto px-6">

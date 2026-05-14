@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import type { SlideImage } from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Play, ArrowUpRight, ImageOff } from "lucide-react";
 import HeroParallax from "@/components/HeroParallax";
@@ -43,7 +44,7 @@ const photos = [
     src: "/images/certificate-ceremony.jpg",
     alt: "Student certificate ceremony",
     wide: false,
-    caption: "Student Achievement",
+    caption: "Certificate Ceremony",
   },
   {
     src: "/images/student-certificate.jpg",
@@ -208,7 +209,7 @@ export default function GalleryClient() {
             target="_blank"
             rel="noopener noreferrer"
             className="group relative block overflow-hidden border border-ink-400 hover:border-gold/40 transition-colors duration-300"
-            style={{ aspectRatio: "16/7" }}
+            style={{ aspectRatio: "16/9" }}
           >
             {/* Background photo */}
             <Image
@@ -252,6 +253,24 @@ export default function GalleryClient() {
           close={() => setLightboxIndex(-1)}
           slides={photos.map((p) => ({ src: p.src, alt: p.alt }))}
           plugins={[Zoom]}
+          render={{
+            slide: ({ slide, rect }) => {
+              const s = slide as SlideImage;
+              return (
+                <div style={{ position: "relative", width: rect.width, height: rect.height }}>
+                  <Image
+                    fill
+                    alt={s.alt ?? ""}
+                    src={s.src}
+                    loading="eager"
+                    draggable={false}
+                    sizes={`${rect.width}px`}
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+              );
+            },
+          }}
           styles={{
             container: { backgroundColor: "rgba(8,8,8,0.97)" },
           }}

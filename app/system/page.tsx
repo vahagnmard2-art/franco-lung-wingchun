@@ -157,6 +157,14 @@ export default function SystemPage() {
             <div className="gold-line mx-auto w-24 mt-6" />
           </div>
 
+          <div className="mb-10 max-w-2xl mx-auto text-center">
+            <p className="text-white/55 text-sm leading-relaxed">
+              Each pillar names a principle that cannot be grasped from the outside. They must be
+              trained into the body over time — and together, they explain why GM Lung&apos;s Wing
+              Chun is different from what most students have encountered before.
+            </p>
+          </div>
+
           <PillarAccordion />
         </div>
       </section>
