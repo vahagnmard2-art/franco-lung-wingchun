@@ -20,6 +20,25 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validatePayload(data: unknown): string | null {
+  if (typeof data !== "object" || data === null) return "Invalid payload";
+  const d = data as Record<string, unknown>;
+
+  if (typeof d.Name    !== "string" || d.Name.trim().length    === 0) return "Name is required";
+  if (typeof d.Email   !== "string" || d.Email.trim().length   === 0) return "Email is required";
+  if (typeof d.Message !== "string" || d.Message.trim().length === 0) return "Message is required";
+
+  if (!EMAIL_RE.test(d.Email as string)) return "Invalid email address";
+
+  if ((d.Name    as string).length > 200)  return "Name too long";
+  if ((d.Email   as string).length > 200)  return "Email too long";
+  if ((d.Message as string).length > 2000) return "Message too long";
+
+  return null;
+}
+
 export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   if (isRateLimited(ip)) {
@@ -34,8 +53,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
 
+  const validationError = validatePayload(data);
+  if (validationError) {
+    return NextResponse.json({ error: validationError }, { status: 400 });
+  }
+
   const email = process.env.CONTACT_EMAIL;
-  if (!email) {
+  if (!email || !EMAIL_RE.test(email)) {
     return NextResponse.json({ error: "Not configured" }, { status: 500 });
   }
 
@@ -43,7 +67,7 @@ export async function POST(req: NextRequest) {
   const timeout = setTimeout(() => controller.abort(), 8000);
 
   try {
-    const res = await fetch(`https://formsubmit.co/ajax/${email}`, {
+    const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(email)}`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify(data),

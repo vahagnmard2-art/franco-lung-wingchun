@@ -10,6 +10,10 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 
   useEffect(() => {
     if (!inView) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setCount(to);
+      return;
+    }
     let start = 0;
     const duration = 1400;
     const step = 16;

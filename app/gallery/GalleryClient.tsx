@@ -73,7 +73,12 @@ function PhotoCard({
       role="button"
       tabIndex={0}
       onClick={() => onOpen(index)}
-      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onOpen(index)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onOpen(index);
+        }
+      }}
       aria-label={`View ${photo.caption} full size`}
       className={`group relative bg-ink-200 border border-ink-400 hover:border-gold/40 transition-all duration-300 overflow-hidden cursor-zoom-in ${
         photo.wide ? "sm:col-span-2" : ""
@@ -88,6 +93,7 @@ function PhotoCard({
         src={photo.src}
         alt={photo.alt}
         fill
+        priority={index < 2}
         sizes={photo.wide ? "(max-width: 640px) 100vw, (max-width: 1280px) 66vw, 800px" : "(max-width: 640px) 100vw, (max-width: 1280px) 33vw, 400px"}
         className="object-cover group-hover:scale-105 transition-transform duration-500"
       />

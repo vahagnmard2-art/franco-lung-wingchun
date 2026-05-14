@@ -288,7 +288,7 @@ export default function ContactPage() {
               height="100%"
               style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.85) contrast(0.9)" }}
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              referrerPolicy="strict-origin-when-cross-origin"
               src={site.address.embedSrc}
             />
           </div>

@@ -81,7 +81,7 @@ export default function PillarAccordion() {
             aria-labelledby={`pillar-btn-${i}`}
             aria-hidden={open !== i}
             className={`overflow-hidden transition-all duration-300 ${
-              open === i ? "max-h-80" : "max-h-0"
+              open === i ? "max-h-[32rem]" : "max-h-0"
             }`}
           >
             <div className="px-8 pb-6">

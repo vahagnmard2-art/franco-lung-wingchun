@@ -1,9 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { ChevronUp } from "lucide-react";
+import { useLenis } from "@/components/LenisProvider";
 
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);
+  const lenis = useLenis();
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 500);
@@ -15,7 +17,11 @@ export default function ScrollToTop() {
 
   return (
     <button
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      onClick={() =>
+        lenis
+          ? lenis.scrollTo(0, { duration: 1.2 })
+          : window.scrollTo({ top: 0, behavior: "smooth" })
+      }
       aria-label="Scroll to top"
       className="fixed bottom-20 sm:bottom-8 right-6 z-50 w-11 h-11 border border-gold/40 bg-ink/90 backdrop-blur-sm flex items-center justify-center hover:border-gold hover:bg-ink transition-all duration-200 group"
     >

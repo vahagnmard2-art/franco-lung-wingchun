@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
@@ -16,18 +16,20 @@ const links = [
 ];
 
 export default function Navbar() {
-  const [open, setOpen]       = useState(false);
+  const [open, setOpen]         = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname              = usePathname();
+  const pathname                = usePathname();
+  const hamburgerRef            = useRef<HTMLButtonElement>(null);
+  const firstMenuItemRef        = useRef<HTMLAnchorElement>(null);
+  const menuWasOpenRef          = useRef(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
-    onScroll(); // set initial state on mount
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open (prevents iOS background scroll-through)
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -35,6 +37,16 @@ export default function Navbar() {
 
   // Close mobile menu on route change
   useEffect(() => { setOpen(false); }, [pathname]);
+
+  // Focus management: move focus into menu on open, back to hamburger on close
+  useEffect(() => {
+    if (open) {
+      menuWasOpenRef.current = true;
+      setTimeout(() => firstMenuItemRef.current?.focus(), 50);
+    } else if (menuWasOpenRef.current) {
+      hamburgerRef.current?.focus();
+    }
+  }, [open]);
 
   return (
     <>
@@ -73,6 +85,7 @@ export default function Navbar() {
               <Link
                 key={href}
                 href={href}
+                aria-current={pathname === href ? "page" : undefined}
                 className={`font-cinzel font-semibold text-[11px] tracking-wide2 uppercase transition-colors duration-200 hover:text-gold relative pb-1 ${
                   pathname === href ? "text-gold" : "text-white/90"
                 }`}
@@ -90,10 +103,12 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
+            ref={hamburgerRef}
             onClick={() => setOpen((v) => !v)}
             className="md:hidden text-white/80 hover:text-gold transition-colors p-2 -mr-2"
             aria-label="Toggle navigation"
             aria-expanded={open}
+            aria-controls="mobile-nav-menu"
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -102,6 +117,7 @@ export default function Navbar() {
 
       {/* Mobile full-screen menu */}
       <div
+        id="mobile-nav-menu"
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
@@ -116,7 +132,9 @@ export default function Navbar() {
           {links.map(({ href, label }, i) => (
             <Link
               key={href}
+              ref={i === 0 ? firstMenuItemRef : undefined}
               href={href}
+              aria-current={pathname === href ? "page" : undefined}
               onClick={() => setOpen(false)}
               className={`font-cinzel text-2xl tracking-ultra py-5 transition-colors duration-200 hover:text-gold fade-up ${
                 pathname === href ? "text-gold" : "text-white/70"
