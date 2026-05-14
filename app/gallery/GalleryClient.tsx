@@ -28,9 +28,15 @@ const photos = [
     caption: "Grandmaster Lung",
   },
   {
+    src: "/images/partner-training.jpg",
+    alt: "GM Franco Lung training with a student",
+    wide: true,
+    caption: "Partner Training",
+  },
+  {
     src: "/images/class-training.jpg",
     alt: "Wing Chun class training",
-    wide: true,
+    wide: false,
     caption: "Wing Chun Class in Action",
   },
   {
@@ -38,6 +44,18 @@ const photos = [
     alt: "Student certificate ceremony",
     wide: false,
     caption: "Student Achievement",
+  },
+  {
+    src: "/images/student-certificate.jpg",
+    alt: "Student receiving Wing Chun certificate from GM Lung",
+    wide: false,
+    caption: "Student Achievement",
+  },
+  {
+    src: "/images/weapons-demo.jpg",
+    alt: "GM Franco Lung demonstrating weapons technique",
+    wide: false,
+    caption: "Weapons Training",
   },
   {
     src: "/images/team-group.jpg",
