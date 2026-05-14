@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
+import { site } from "@/lib/site";
 
 const links = [
   { href: "/about",   label: "About" },
@@ -90,7 +91,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden text-white/80 hover:text-gold transition-colors"
+            className="md:hidden text-white/80 hover:text-gold transition-colors p-2 -mr-2"
             aria-label="Toggle navigation"
             aria-expanded={open}
           >
@@ -127,12 +128,12 @@ export default function Navbar() {
           ))}
           <div className="gold-line w-24 mt-10 mb-6" />
           <a
-            href="tel:+16262332882"
+            href={site.phone.href}
             className="flex items-center gap-2 font-cinzel text-sm tracking-widest text-white/60 hover:text-gold transition-colors mb-6"
             onClick={() => setOpen(false)}
           >
             <Phone size={13} aria-hidden="true" />
-            (626) 233-2882
+            {site.phone.display}
           </a>
           <Link href="/contact" className="btn-gold" onClick={() => setOpen(false)}>
             Book a Class

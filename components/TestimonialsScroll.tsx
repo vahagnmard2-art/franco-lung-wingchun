@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Star, ArrowUpRight } from "lucide-react";
+import { site } from "@/lib/site";
 
 const testimonials = [
   {
@@ -50,7 +51,7 @@ export default function TestimonialsScroll() {
             <span className="font-cinzel text-xs text-white/80 tracking-wide">5.0</span>
             <span className="text-white/40 text-xs">·</span>
             <a
-              href="https://www.google.com/search?q=Franco+Lung+Wing+Chun+Temple+City+reviews"
+              href="{site.reviews.url}"
               target="_blank"
               rel="noopener noreferrer"
               className="font-cinzel text-[10px] text-gold/70 hover:text-gold transition-colors tracking-wide uppercase"
@@ -102,7 +103,7 @@ export default function TestimonialsScroll() {
             ← Drag to explore
           </p>
           <a
-            href="https://www.google.com/search?q=Franco+Lung+Wing+Chun+Temple+City+reviews"
+            href="{site.reviews.url}"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 font-cinzel text-[11px] tracking-wide text-gold hover:text-gold transition-colors uppercase"

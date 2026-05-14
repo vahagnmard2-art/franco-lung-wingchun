@@ -48,7 +48,7 @@ export default function GlobalError({
               Digest: {error.digest}
             </p>
           )}
-          {error.stack && (
+          {process.env.NODE_ENV !== "production" && error.stack && (
             <pre style={{
               color: "#888",
               fontSize: "0.65rem",

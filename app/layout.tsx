@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { site } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/react";
 import ScrollToTop from "@/components/ScrollToTop";
 import MobileCallBar from "@/components/MobileCallBar";
@@ -52,14 +53,6 @@ export const metadata: Metadata = {
       "Over 50 years of Wing Chun mastery. Direct lineage from Hong Kong's greatest masters.",
     type: "website",
     locale: "en_US",
-    images: [
-      {
-        url: "/images/sifu-portrait.jpg",
-        width: 1012,
-        height: 1405,
-        alt: "Grandmaster Franco Lung — Wing Chun Temple City, CA",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -83,14 +76,14 @@ const jsonLd = {
   name: "Franco Lung Wing Chun",
   description:
     "Traditional Wing Chun Kung Fu school in Temple City, CA. Train with Grandmaster Franco Lung — direct lineage from Hong Kong's greatest masters.",
-  url: "https://francolungwingchun.com",
-  telephone: "+16262332882",
+  url: site.url,
+  telephone: site.phone.raw,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "5614 Rosemead Blvd",
-    addressLocality: "Temple City",
-    addressRegion: "CA",
-    postalCode: "91780",
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.state,
+    postalCode: site.address.zip,
     addressCountry: "US",
   },
   geo: {
@@ -101,9 +94,9 @@ const jsonLd = {
   priceRange: "$30-$70",
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "5",
-    bestRating: "5",
-    reviewCount: "30",
+    ratingValue: 5,
+    bestRating: 5,
+    reviewCount: site.reviews.count,
   },
   openingHoursSpecification: [
     { "@type": "OpeningHoursSpecification", dayOfWeek: "Wednesday", opens: "15:30", closes: "17:00" },
@@ -112,9 +105,9 @@ const jsonLd = {
     { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday",    opens: "14:00", closes: "17:00" },
   ],
   sameAs: [
-    "https://www.instagram.com/wingchunfrancolung",
-    "https://www.facebook.com/FrancoLung",
-    "https://www.youtube.com/@FrancoLungWingChun",
+    site.social.instagram.href,
+    site.social.facebook.href,
+    site.social.youtube.href,
   ],
 };
 
@@ -158,7 +151,9 @@ export default function RootLayout({
           Skip to main content
         </a>
         <LenisProvider>
-          <Navbar />
+          <header>
+            <Navbar />
+          </header>
           <main id="main-content" className="relative">
             <PageTransition>{children}</PageTransition>
           </main>

@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-// Simple in-memory rate limiter: 5 submissions per IP per 15 minutes
+// NOTE: This in-memory rate limiter works in development but is non-functional on Vercel
+// serverless — each cold start gets a fresh Map with no shared state across invocations.
+// Replace with Upstash Redis (or Vercel KV) for production rate limiting.
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT = 5;
 const WINDOW_MS = 15 * 60 * 1000;

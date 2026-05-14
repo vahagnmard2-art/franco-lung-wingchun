@@ -8,6 +8,7 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import { Play, ArrowUpRight, ImageOff } from "lucide-react";
 import HeroParallax from "@/components/HeroParallax";
+import { site } from "@/lib/site";
 
 // Load lightbox JS only when first opened — not part of the initial page bundle
 const Lightbox = dynamic(() => import("yet-another-react-lightbox"), {
@@ -146,20 +147,20 @@ export default function GalleryClient() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://www.instagram.com/wingchunfrancolung"
+                href={site.social.instagram.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-gold inline-flex items-center gap-2"
               >
-                Instagram @wingchunfrancolung <ArrowUpRight size={13} aria-hidden="true" />
+                Instagram {site.social.instagram.handle} <ArrowUpRight size={13} aria-hidden="true" />
               </a>
               <a
-                href="https://www.facebook.com/FrancoLung"
+                href={site.social.facebook.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline inline-flex items-center gap-2"
               >
-                Facebook Franco Lung <ArrowUpRight size={13} aria-hidden="true" />
+                Facebook {site.social.facebook.label} <ArrowUpRight size={13} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -179,7 +180,7 @@ export default function GalleryClient() {
           </div>
 
           <a
-            href="https://www.youtube.com/@FrancoLungWingChun"
+            href={site.social.youtube.href}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative block overflow-hidden border border-ink-400 hover:border-gold/40 transition-colors duration-300"

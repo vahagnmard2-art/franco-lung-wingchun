@@ -18,6 +18,8 @@ const faqSchema = {
     { "@type": "Question", name: "Is Wing Chun effective for real self-defense?", acceptedAnswer: { "@type": "Answer", text: "Yes — Wing Chun was designed for close-range, practical confrontations. GM Lung's system develops the internal dimension, making techniques work regardless of size or strength." } },
     { "@type": "Question", name: "What should I wear to class?", acceptedAnswer: { "@type": "Answer", text: "There is no formal uniform requirement to start. Flat-soled shoes are recommended." } },
     { "@type": "Question", name: "What is the difference between group classes and private lessons?", acceptedAnswer: { "@type": "Answer", text: "Group classes develop Chi Sau with partners. Private lessons are one-on-one with GM Lung — faster progress and personal correction." } },
+    { "@type": "Question", name: "Can I join if I already train in another Wing Chun lineage or martial art?", acceptedAnswer: { "@type": "Answer", text: "Absolutely. GM Lung regularly works with students from other lineages and backgrounds. His system is designed to meet you where you are — prior training often accelerates how quickly you access the deeper principles." } },
+    { "@type": "Question", name: "How long until I can defend myself?", acceptedAnswer: { "@type": "Answer", text: "Practical self-defense awareness begins almost immediately. Most students feel a meaningful shift in their awareness and structure within the first few months of consistent training." } },
   ],
 };
 

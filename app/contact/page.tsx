@@ -7,6 +7,7 @@ import { z } from "zod";
 import { toast, Toaster } from "sonner";
 import { MapPin, Phone, Instagram, Facebook, Youtube, Send } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { site } from "@/lib/site";
 
 const FORM_ENDPOINT = "/api/contact";
 
@@ -57,7 +58,6 @@ export default function ContactPage() {
           _subject: `Wing Chun Inquiry — ${data.name}`,
           _replyto: data.email,
           _honey:   "",
-          _captcha: "false",
         }),
       });
       if (res.ok) {
@@ -125,7 +125,7 @@ export default function ContactPage() {
 
               <div className="space-y-6 mb-10">
                 <a
-                  href="https://maps.google.com/?q=5614+Rosemead+Blvd+Temple+City+CA+91780"
+                  href={site.address.mapsHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 group"
@@ -136,18 +136,18 @@ export default function ContactPage() {
                   <div>
                     <p className="font-cinzel text-[10px] tracking-widest text-gold uppercase mb-1">Location</p>
                     <p className="text-sm text-white/75 group-hover:text-white/95 transition-colors leading-relaxed">
-                      5614 Rosemead Blvd<br />Temple City, CA 91780
+                      {site.address.street}<br />{site.address.city}, {site.address.state} {site.address.zip}
                     </p>
                   </div>
                 </a>
 
-                <a href="tel:+16262332882" className="flex items-start gap-4 group">
+                <a href={site.phone.href} className="flex items-start gap-4 group">
                   <div className="w-9 h-9 border border-gold/30 flex items-center justify-center flex-shrink-0 group-hover:border-gold transition-colors">
                     <Phone size={14} className="text-gold" />
                   </div>
                   <div>
                     <p className="font-cinzel text-[10px] tracking-widest text-gold uppercase mb-1">Phone</p>
-                    <p className="text-sm text-white/75 group-hover:text-white/95 transition-colors">(626) 233-2882</p>
+                    <p className="text-sm text-white/75 group-hover:text-white/95 transition-colors">{site.phone.display}</p>
                   </div>
                 </a>
               </div>
@@ -159,9 +159,9 @@ export default function ContactPage() {
               </p>
               <div className="space-y-4">
                 {[
-                  { href: "https://www.instagram.com/wingchunfrancolung", icon: Instagram, label: "@wingchunfrancolung" },
-                  { href: "https://www.facebook.com/FrancoLung",          icon: Facebook,  label: "Franco Lung" },
-                  { href: "https://www.youtube.com/@FrancoLungWingChun",  icon: Youtube,   label: "YouTube Channel" },
+                  { href: site.social.instagram.href, icon: Instagram, label: site.social.instagram.handle },
+                  { href: site.social.facebook.href,  icon: Facebook,  label: site.social.facebook.label },
+                  { href: site.social.youtube.href,   icon: Youtube,   label: site.social.youtube.label },
                 ].map(({ href, icon: Icon, label }) => (
                   <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                     <div className="w-9 h-9 border border-gold/30 flex items-center justify-center group-hover:border-gold transition-colors">
@@ -279,7 +279,7 @@ export default function ContactPage() {
             <h2 className="font-cinzel text-2xl font-bold text-white tracking-wide">
               Find <span className="text-gold">Us</span>
             </h2>
-            <p className="text-white/70 text-sm mt-2">5614 Rosemead Blvd, Temple City, CA 91780</p>
+            <p className="text-white/70 text-sm mt-2">{site.address.street}, {site.address.city}, {site.address.state} {site.address.zip}</p>
           </div>
           <div className="border border-ink-400 overflow-hidden" style={{ height: "420px" }}>
             <iframe
@@ -289,7 +289,7 @@ export default function ContactPage() {
               style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.85) contrast(0.9)" }}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              src="https://maps.google.com/maps?q=5614+Rosemead+Blvd%2C+Temple+City%2C+CA+91780&z=15&output=embed&hl=en"
+              src={site.address.embedSrc}
             />
           </div>
         </div>

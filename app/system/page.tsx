@@ -178,7 +178,7 @@ export default function SystemPage() {
             View Classes &amp; Schedule
           </Link>
           <Link href="/contact" className="btn-outline">
-            Ask a Question
+            Contact Us
           </Link>
         </div>
       </section>
