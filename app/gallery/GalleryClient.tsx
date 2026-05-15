@@ -59,6 +59,12 @@ const photos = [
     caption: "Weapons Training",
   },
   {
+    src: "/images/wooden-dummy.jpg",
+    alt: "Students training with the wooden dummy at Franco Lung Wing Chun",
+    wide: false,
+    caption: "Wooden Dummy Training",
+  },
+  {
     src: "/images/team-group.jpg",
     alt: "Franco Lung Wing Chun team",
     wide: false,
@@ -264,7 +270,8 @@ export default function GalleryClient() {
                     src={s.src}
                     loading="eager"
                     draggable={false}
-                    sizes={`${rect.width}px`}
+                    quality={90}
+                    sizes="(min-width: 1920px) 1920px, 100vw"
                     style={{ objectFit: "contain" }}
                   />
                 </div>
