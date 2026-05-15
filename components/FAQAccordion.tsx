@@ -39,7 +39,7 @@ export default function FAQAccordion() {
   return (
     <div className="space-y-2">
       {faqs.map((item, i) => (
-        <div key={i} className="card-base overflow-hidden">
+        <div key={item.q} className="card-base overflow-hidden">
           <button
             id={`faq-btn-${i}`}
             onClick={() => setOpen(open === i ? null : i)}

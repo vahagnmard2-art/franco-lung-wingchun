@@ -20,7 +20,7 @@ export default function PrivacyPage() {
           <h1 className="font-cinzel text-4xl md:text-5xl font-bold text-white tracking-wide mb-4">
             Privacy <span className="text-gold">Policy</span>
           </h1>
-          <p className="text-white/60 text-sm mt-6">Last updated: May 2025</p>
+          <p className="text-white/60 text-sm mt-6">Last updated: May 2026</p>
           <div className="gold-line mx-auto w-24 mt-8" />
         </div>
       </div>

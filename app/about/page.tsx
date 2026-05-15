@@ -194,7 +194,7 @@ export default function AboutPage() {
 
             <div className="space-y-10">
               {timeline.map((item, i) => (
-                <FadeIn key={i} delay={i * 0.08}>
+                <FadeIn key={item.year} delay={i * 0.08}>
                 <div className="flex gap-0 md:gap-8 flex-col md:flex-row">
                   {/* Year */}
                   <div className="w-28 flex-shrink-0 text-right hidden md:block">
