@@ -17,7 +17,7 @@ export default function HomePage() {
         {/* Background — isolated so overflow:hidden here can't trap fixed elements */}
         <div className="absolute inset-0 overflow-hidden">
           <HeroVideo />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,_#1e1400_0%,_#080808_65%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,_rgba(30,20,0,0.72)_0%,_rgba(8,8,8,0.88)_65%)]" />
         </div>
         <div className="corner-tl" />
         <div className="corner-tr" />

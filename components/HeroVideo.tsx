@@ -21,10 +21,11 @@ export default function HeroVideo() {
       loop
       muted
       playsInline
+      preload="auto"
       aria-hidden="true"
       poster="/images/sifu-action.jpg"
       className="absolute inset-0 w-full h-full object-cover object-center"
-      style={{ opacity: 0.45 }}
+      style={{ opacity: 0.6 }}
     >
       <source src="/videos/hero-bg.mp4" type="video/mp4" />
     </video>
