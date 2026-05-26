@@ -9,7 +9,7 @@ export default function HeroReveal() {
     <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
       <p
         className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-8"
-        style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 0.05s both" }}
+        style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 0.45s both" }}
       >
         Grandmaster · Temple City, CA
       </p>
@@ -24,7 +24,7 @@ export default function HeroReveal() {
               className="inline-block"
               style={{
                 opacity: 0,
-                animation: `heroCharDown 0.55s cubic-bezier(0.25,0.1,0.25,1) ${0.18 + i * 0.05}s both`,
+                animation: `heroCharDown 0.55s cubic-bezier(0.25,0.1,0.25,1) ${i * 0.05}s both`,
               }}
             >
               {ch}
@@ -35,7 +35,7 @@ export default function HeroReveal() {
           className="text-shimmer block whitespace-nowrap"
           style={{
             opacity: 0,
-            animation: "heroCharUp 0.55s cubic-bezier(0.25,0.1,0.25,1) 0.38s both",
+            animation: "heroCharUp 0.55s cubic-bezier(0.25,0.1,0.25,1) 0.2s both",
           }}
         >
           LUNG
@@ -47,24 +47,24 @@ export default function HeroReveal() {
         style={{
           transform: "scaleX(0)",
           transformOrigin: "center",
-          animation: "heroLineExpand 0.6s cubic-bezier(0.25,0.1,0.25,1) 0.68s both",
+          animation: "heroLineExpand 0.6s cubic-bezier(0.25,0.1,0.25,1) 0.5s both",
         }}
       />
 
       <p
         className="font-cinzel text-sm tracking-[0.25em] text-white/70 uppercase mb-12"
-        style={{ opacity: 0, animation: "heroFadeSlideUp 0.6s cubic-bezier(0.25,0.1,0.25,1) 0.82s both" }}
+        style={{ opacity: 0, animation: "heroFadeSlideUp 0.6s cubic-bezier(0.25,0.1,0.25,1) 0.65s both" }}
       >
         Wing Chun — Martial Arts Academy
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <div style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 0.95s both" }}>
+        <div style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 0.78s both" }}>
           <Link href="/classes" className="btn-gold block text-center w-full sm:w-auto">
             View Classes
           </Link>
         </div>
-        <div style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 1.05s both" }}>
+        <div style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 0.88s both" }}>
           <Link href="/system" className="btn-outline block text-center w-full sm:w-auto">
             Our System
           </Link>
@@ -72,7 +72,7 @@ export default function HeroReveal() {
       </div>
       <p
         className="font-cinzel text-[9px] tracking-widest text-white/28 uppercase mt-7"
-        style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 1.18s both" }}
+        style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 1.0s both" }}
       >
         Classes forming now &mdash; ages 5 through adult
       </p>
