@@ -6,8 +6,6 @@ export default function HeroVideo() {
   const ref = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // React doesn't reliably write the `muted` attribute into server-rendered
-    // HTML — setting it as a DOM property here ensures autoplay is never blocked.
     if (ref.current) {
       ref.current.muted = true;
       ref.current.play().catch(() => {});
@@ -23,9 +21,11 @@ export default function HeroVideo() {
       playsInline
       preload="auto"
       aria-hidden="true"
-      poster="/images/sifu-action.jpg"
-      className="absolute inset-0 w-full h-full object-cover object-center"
-      style={{ opacity: 0.6 }}
+      className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000"
+      style={{ opacity: 0 }}
+      onCanPlay={() => {
+        if (ref.current) ref.current.style.opacity = "0.6";
+      }}
     >
       <source src="/videos/hero-bg.mp4" type="video/mp4" />
     </video>
