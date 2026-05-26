@@ -5,7 +5,6 @@ import { site } from "@/lib/site";
 import FadeIn from "@/components/FadeIn";
 import HeroReveal from "@/components/HeroReveal";
 import HeroVideo from "@/components/HeroVideo";
-import TrustStrip from "@/components/TrustStrip";
 import TestimonialsScroll from "@/components/TestimonialsScroll";
 
 
@@ -26,16 +25,7 @@ export default function HomePage() {
 
         <HeroReveal />
 
-        <div className="absolute bottom-24 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
-          <span className="font-cinzel text-[9px] tracking-ultra text-white/25 uppercase">Scroll</span>
-          <div className="w-px h-14 overflow-hidden">
-            <div className="w-full h-full bg-gradient-to-b from-gold/60 to-transparent animate-scrollLine" />
-          </div>
-        </div>
       </section>
-
-      {/* ─── TRUST STRIP ──────────────────────────────────────────────────── */}
-      <TrustStrip />
 
       {/* ─── ABOUT TEASER ─────────────────────────────────────────────────── */}
       <section className="section-pad bg-ink-100">

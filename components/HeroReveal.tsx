@@ -70,12 +70,6 @@ export default function HeroReveal() {
           </Link>
         </div>
       </div>
-      <p
-        className="font-cinzel text-[9px] tracking-widest text-white/28 uppercase mt-7"
-        style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 1.0s both" }}
-      >
-        Classes forming now &mdash; ages 5 through adult
-      </p>
     </div>
   );
 }
