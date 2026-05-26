@@ -15,16 +15,18 @@ export default function HomePage() {
       <section className="relative min-h-[100svh] flex items-center justify-center">
         {/* Background — isolated so overflow:hidden here can't trap fixed elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <Image
-            src="/images/sifu-action.jpg"
-            alt=""
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             aria-hidden="true"
-            priority
-            fill
-            sizes="100vw"
-            className="object-cover object-center"
-            style={{ opacity: 0.42 }}
-          />
+            poster="/images/sifu-action.jpg"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            style={{ opacity: 0.45 }}
+          >
+            <source src="/videos/hero-bg.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,_#1e1400_0%,_#080808_65%)]" />
         </div>
         <div className="corner-tl" />
