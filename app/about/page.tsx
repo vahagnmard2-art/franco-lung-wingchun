@@ -54,13 +54,26 @@ export default function AboutPage() {
         <div className="corner-tl" />
         <div className="corner-tr" />
         <div className="max-w-3xl mx-auto">
+          <Image
+            src="/images/logo.png"
+            alt="Franco Lung Wing Chun"
+            width={128}
+            height={128}
+            quality={100}
+            priority
+            className="mx-auto mb-6 drop-shadow-[0_0_20px_rgba(201,168,76,0.25)]"
+          />
           <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
             The Grandmaster
           </p>
           <h1 className="font-cinzel text-4xl md:text-6xl font-bold text-white tracking-wide mb-4">
             About <span className="text-gold">Franco Lung</span>
           </h1>
-          <div className="gold-line mx-auto w-24 mt-6" />
+          <p className="text-white/60 text-sm leading-relaxed max-w-lg mx-auto mt-6">
+            Discover the journey, philosophy, and mastery behind one of Wing Chun&apos;s most
+            dedicated grandmasters — over fifty years in the art.
+          </p>
+          <div className="gold-line mx-auto w-24 mt-8" />
         </div>
       </div>
 

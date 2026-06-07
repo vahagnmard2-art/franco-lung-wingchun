@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
 import FAQAccordion from "@/components/FAQAccordion";
+import HeroParallax from "@/components/HeroParallax";
 
 export const metadata: Metadata = {
   title: "Classes & Schedule",
@@ -120,9 +122,19 @@ export default function ClassesPage() {
       />
       {/* Header */}
       <div className="page-hero text-center px-6">
+        <HeroParallax />
         <div className="corner-tl" />
         <div className="corner-tr" />
         <div className="max-w-3xl mx-auto">
+          <Image
+            src="/images/logo.png"
+            alt="Franco Lung Wing Chun"
+            width={128}
+            height={128}
+            quality={100}
+            priority
+            className="mx-auto mb-6 drop-shadow-[0_0_20px_rgba(201,168,76,0.25)]"
+          />
           <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
             Train with a Grandmaster
           </p>
