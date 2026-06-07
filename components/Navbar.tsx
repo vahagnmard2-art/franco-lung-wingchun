@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { site } from "@/lib/site";
 
 const links = [
@@ -145,14 +145,6 @@ export default function Navbar() {
             </Link>
           ))}
           <div className="gold-line w-24 mt-10 mb-6" />
-          <a
-            href={site.phone.href}
-            className="flex items-center gap-2 font-cinzel text-sm tracking-widest text-white/60 hover:text-gold transition-colors mb-6"
-            onClick={() => setOpen(false)}
-          >
-            <Phone size={13} aria-hidden="true" />
-            {site.phone.display}
-          </a>
           <Link href="/contact" className="btn-gold" onClick={() => setOpen(false)}>
             Book a Class
           </Link>
