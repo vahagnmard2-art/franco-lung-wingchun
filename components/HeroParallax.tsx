@@ -49,19 +49,20 @@ export default function HeroParallax() {
 
   return (
     <div ref={ref} className="absolute inset-0" aria-hidden="true">
-      {/* Full-hero logo — circular clip removes solid background corners */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="relative h-full aspect-square rounded-full overflow-hidden">
-          <Image
-            src="/images/logo.png"
-            alt=""
-            fill
-            quality={100}
-            priority
-            sizes="100vw"
-            className="object-contain opacity-[0.35]"
-          />
-        </div>
+      {/* Logo sized to 100% of hero height, square, centered, clipped to circle */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 rounded-full overflow-hidden pointer-events-none"
+        style={{ height: "100%", aspectRatio: "1 / 1" }}
+      >
+        <Image
+          src="/images/logo.png"
+          alt=""
+          fill
+          quality={100}
+          priority
+          sizes="100vw"
+          className="object-contain opacity-50"
+        />
       </div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(201,168,76,0.06)_0%,transparent_70%)]" />
     </div>
