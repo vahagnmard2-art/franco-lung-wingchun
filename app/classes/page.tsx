@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
 import FAQAccordion from "@/components/FAQAccordion";
 
@@ -245,9 +246,9 @@ export default function ClassesPage() {
                   </li>
                 ))}
               </ul>
-              <Link href="/contact" className="btn-outline mt-8 text-center text-[10px]">
-                Book a Class
-              </Link>
+              <Button asChild variant="outline" className="mt-8 w-full">
+                <Link href="/contact">Book a Class</Link>
+              </Button>
             </div>
 
             {/* Private 1hr — FEATURED */}
@@ -276,9 +277,9 @@ export default function ClassesPage() {
                   </li>
                 ))}
               </ul>
-              <Link href="/contact" className="btn-gold mt-8 text-center text-[10px]">
-                Book Private Lesson
-              </Link>
+              <Button asChild className="mt-8 w-full">
+                <Link href="/contact">Book Private Lesson</Link>
+              </Button>
             </div>
 
             {/* Private 90min */}
@@ -306,9 +307,9 @@ export default function ClassesPage() {
                   </li>
                 ))}
               </ul>
-              <Link href="/contact" className="btn-outline mt-8 text-center text-[10px]">
-                Book Private Lesson
-              </Link>
+              <Button asChild variant="outline" className="mt-8 w-full">
+                <Link href="/contact">Book Private Lesson</Link>
+              </Button>
             </div>
           </div>
 
@@ -383,9 +384,7 @@ export default function ClassesPage() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/contact" className="btn-gold">
-              Contact to Enroll
-            </Link>
+            <Button asChild><Link href="/contact">Contact to Enroll</Link></Button>
             <p className="text-white/65 text-xs mt-5">
               New to Wing Chun? You&apos;re welcome to{" "}
               <Link href="/contact" className="text-gold/70 hover:text-gold transition-colors underline underline-offset-4">

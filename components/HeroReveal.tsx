@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function HeroReveal() {
   const francoChars = "FRANCO".split("");
@@ -60,14 +61,14 @@ export default function HeroReveal() {
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <div style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 0.78s both" }}>
-          <Link href="/classes" className="btn-gold block text-center w-full sm:w-auto">
-            View Classes
-          </Link>
+          <Button asChild className="w-full sm:w-auto">
+            <Link href="/classes">View Classes</Link>
+          </Button>
         </div>
         <div style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 0.88s both" }}>
-          <Link href="/system" className="btn-outline block text-center w-full sm:w-auto">
-            Our System
-          </Link>
+          <Button asChild variant="outline" className="w-full sm:w-auto">
+            <Link href="/system">Our System</Link>
+          </Button>
         </div>
       </div>
     </div>

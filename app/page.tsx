@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Shield, Zap, Users, Award, Play } from "lucide-react";
 import { site } from "@/lib/site";
+import { Button } from "@/components/ui/button";
 import FadeIn from "@/components/FadeIn";
 import HeroReveal from "@/components/HeroReveal";
 import HeroVideo from "@/components/HeroVideo";
@@ -66,9 +67,9 @@ export default function HomePage() {
                 martial arts, GM Lung developed a structured three-level curriculum that guides
                 students from foundation to mastery with precision and depth.
               </p>
-              <Link href="/about" className="btn-outline inline-flex items-center gap-3">
-                Full Biography <ArrowRight size={14} />
-              </Link>
+              <Button asChild variant="outline">
+                <Link href="/about">Full Biography <ArrowRight size={14} /></Link>
+              </Button>
             </FadeIn>
           </div>
         </div>
@@ -191,12 +192,8 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="btn-gold">
-              Contact Us
-            </Link>
-            <Link href="/classes" className="btn-outline">
-              View Classes
-            </Link>
+            <Button asChild><Link href="/contact">Contact Us</Link></Button>
+            <Button asChild variant="outline"><Link href="/classes">View Classes</Link></Button>
           </div>
         </div>
       </section>

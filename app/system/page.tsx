@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import PillarAccordion from "@/components/PillarAccordion";
 import HeroParallax from "@/components/HeroParallax";
 
@@ -182,12 +183,8 @@ export default function SystemPage() {
           meet students exactly where they are.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/classes" className="btn-gold">
-            View Classes &amp; Schedule
-          </Link>
-          <Link href="/contact" className="btn-outline">
-            Contact Us
-          </Link>
+          <Button asChild><Link href="/classes">View Classes &amp; Schedule</Link></Button>
+          <Button asChild variant="outline"><Link href="/contact">Contact Us</Link></Button>
         </div>
       </section>
     </>

@@ -7,6 +7,7 @@ import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import { Play, ArrowUpRight, ImageOff, ZoomIn } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import HeroParallax from "@/components/HeroParallax";
 import { site } from "@/lib/site";
 
@@ -168,22 +169,16 @@ export default function GalleryClient() {
               For the latest photos and videos, follow Grandmaster Lung on social media.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={site.social.instagram.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gold inline-flex items-center gap-2"
-              >
-                Instagram {site.social.instagram.handle} <ArrowUpRight size={13} aria-hidden="true" />
-              </a>
-              <a
-                href={site.social.facebook.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline inline-flex items-center gap-2"
-              >
-                Facebook {site.social.facebook.label} <ArrowUpRight size={13} aria-hidden="true" />
-              </a>
+              <Button asChild>
+                <a href={site.social.instagram.href} target="_blank" rel="noopener noreferrer">
+                  Instagram {site.social.instagram.handle} <ArrowUpRight size={13} aria-hidden="true" />
+                </a>
+              </Button>
+              <Button asChild variant="outline">
+                <a href={site.social.facebook.href} target="_blank" rel="noopener noreferrer">
+                  Facebook {site.social.facebook.label} <ArrowUpRight size={13} aria-hidden="true" />
+                </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -277,12 +272,8 @@ export default function GalleryClient() {
             Classes are open to all levels. Reach out to arrange a first visit with Grandmaster Lung.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="btn-gold">
-              Contact Us to Get Started
-            </Link>
-            <Link href="/classes" className="btn-outline">
-              View Classes &amp; Schedule
-            </Link>
+            <Button asChild><Link href="/contact">Contact Us to Get Started</Link></Button>
+            <Button asChild variant="outline"><Link href="/classes">View Classes &amp; Schedule</Link></Button>
           </div>
         </div>
       </section>

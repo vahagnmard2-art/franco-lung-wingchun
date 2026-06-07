@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { site } from "@/lib/site";
+import { Button } from "@/components/ui/button";
 
 const links = [
   { href: "/about",   label: "About" },
@@ -96,9 +97,9 @@ export default function Navbar() {
                 )}
               </Link>
             ))}
-            <Link href="/contact" className="btn-gold text-[10px] ml-2">
-              Book a Class
-            </Link>
+            <Button asChild size="sm" className="ml-2">
+              <Link href="/contact">Book a Class</Link>
+            </Button>
           </div>
 
           {/* Mobile hamburger */}
@@ -145,9 +146,9 @@ export default function Navbar() {
             </Link>
           ))}
           <div className="gold-line w-24 mt-10 mb-6" />
-          <Link href="/contact" className="btn-gold" onClick={() => setOpen(false)}>
-            Book a Class
-          </Link>
+          <Button asChild onClick={() => setOpen(false)}>
+            <Link href="/contact">Book a Class</Link>
+          </Button>
         </div>
       </div>
     </>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Page Not Found",
@@ -34,15 +35,9 @@ export default function NotFound() {
           Let&apos;s get you back on the mat.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/" className="btn-gold">
-            Return Home
-          </Link>
-          <Link href="/classes" className="btn-outline">
-            View Classes
-          </Link>
-          <Link href="/contact" className="btn-outline">
-            Contact Us
-          </Link>
+          <Button asChild><Link href="/">Return Home</Link></Button>
+          <Button asChild variant="outline"><Link href="/classes">View Classes</Link></Button>
+          <Button asChild variant="outline"><Link href="/contact">Contact Us</Link></Button>
         </div>
       </div>
     </section>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import FadeIn from "@/components/FadeIn";
 import HeroParallax from "@/components/HeroParallax";
 
@@ -163,12 +164,12 @@ export default function AboutPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 mt-12">
-                <Link href="/lineage" className="btn-outline inline-flex items-center gap-3">
-                  His Teachers <ArrowRight size={14} />
-                </Link>
-                <Link href="/system" className="btn-gold inline-flex items-center gap-3">
-                  The 3-Level System <ArrowRight size={14} />
-                </Link>
+                <Button asChild variant="outline">
+                  <Link href="/lineage">His Teachers <ArrowRight size={14} /></Link>
+                </Button>
+                <Button asChild>
+                  <Link href="/system">The 3-Level System <ArrowRight size={14} /></Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -235,12 +236,8 @@ export default function AboutPage() {
             Classes are open to all ages and experience levels in Temple City, CA.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/classes" className="btn-gold">
-              View Classes &amp; Schedule
-            </Link>
-            <Link href="/contact" className="btn-outline">
-              Contact Us
-            </Link>
+            <Button asChild><Link href="/classes">View Classes &amp; Schedule</Link></Button>
+            <Button asChild variant="outline"><Link href="/contact">Contact Us</Link></Button>
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import LineageScroll from "@/components/LineageScroll";
 import HeroParallax from "@/components/HeroParallax";
 
@@ -191,12 +192,12 @@ export default function LineagePage() {
             curriculum he has built from five decades of study.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/system" className="btn-gold inline-flex items-center gap-3">
-              Explore GM Lung&apos;s System <ArrowRight size={14} />
-            </Link>
-            <Link href="/classes" className="btn-outline">
-              View Classes &amp; Schedule
-            </Link>
+            <Button asChild>
+              <Link href="/system">Explore GM Lung&apos;s System <ArrowRight size={14} /></Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/classes">View Classes &amp; Schedule</Link>
+            </Button>
           </div>
         </div>
       </section>

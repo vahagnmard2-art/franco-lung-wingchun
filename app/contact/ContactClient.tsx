@@ -8,6 +8,7 @@ import { toast, Toaster } from "sonner";
 import { MapPin, Phone, Instagram, Facebook, Youtube, Send } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { site } from "@/lib/site";
+import { Button } from "@/components/ui/button";
 
 const FORM_ENDPOINT = "/api/contact";
 
@@ -261,13 +262,9 @@ export default function ContactClient() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                  <button
-                    type="submit"
-                    disabled={sending}
-                    className="btn-gold flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
+                  <Button type="submit" disabled={sending}>
                     {sending ? "Sending…" : <><span>Send Message</span><Send size={13} /></>}
-                  </button>
+                  </Button>
                   <p className="text-white/65 text-xs">We typically respond within 24 hours.</p>
                 </div>
               </form>
