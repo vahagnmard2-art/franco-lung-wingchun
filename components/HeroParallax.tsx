@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { useLenis } from "@/components/LenisProvider";
 
 export default function HeroParallax() {
@@ -48,6 +49,20 @@ export default function HeroParallax() {
 
   return (
     <div ref={ref} className="absolute inset-0" aria-hidden="true">
+      {/* Full-hero logo — circular clip removes solid background corners */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="relative h-full aspect-square rounded-full overflow-hidden">
+          <Image
+            src="/images/logo.png"
+            alt=""
+            fill
+            quality={100}
+            priority
+            sizes="100vw"
+            className="object-contain opacity-[0.35]"
+          />
+        </div>
+      </div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(201,168,76,0.06)_0%,transparent_70%)]" />
     </div>
   );
