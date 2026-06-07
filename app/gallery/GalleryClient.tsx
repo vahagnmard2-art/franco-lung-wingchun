@@ -7,7 +7,7 @@ import Image from "next/image";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import type { SlideImage } from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import { Play, ArrowUpRight, ImageOff } from "lucide-react";
+import { Play, ArrowUpRight, ImageOff, ZoomIn } from "lucide-react";
 import HeroParallax from "@/components/HeroParallax";
 import { site } from "@/lib/site";
 
@@ -119,14 +119,16 @@ function PhotoCard({
         alt={photo.alt}
         fill
         priority={index < 2}
+        quality={90}
         sizes={photo.wide ? "(max-width: 640px) 100vw, (max-width: 1280px) 66vw, 800px" : "(max-width: 640px) 100vw, (max-width: 1280px) 33vw, 400px"}
         className="object-cover group-hover:scale-105 transition-transform duration-500"
       />
-      {/* Caption overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 z-10">
+      {/* Caption + zoom overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4 z-10">
         <span className="font-cinzel text-[10px] tracking-widest text-gold uppercase">
           {photo.caption}
         </span>
+        <ZoomIn size={16} className="text-gold/80" aria-hidden="true" />
       </div>
       {/* Corner accents */}
       <div className="absolute top-0 left-0 w-5 h-5 border-t border-l border-gold/0 group-hover:border-gold/60 transition-colors duration-300 z-10" />
@@ -259,6 +261,12 @@ export default function GalleryClient() {
           close={() => setLightboxIndex(-1)}
           slides={photos.map((p) => ({ src: p.src, alt: p.alt }))}
           plugins={[Zoom]}
+          zoom={{
+            scrollToZoom: true,
+            maxZoomPixelRatio: 4,
+            zoomInMultiplier: 2,
+            doubleClickMaxStops: 2,
+          }}
           render={{
             slide: ({ slide, rect }) => {
               const s = slide as SlideImage;
