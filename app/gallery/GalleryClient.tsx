@@ -1,24 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
+import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import { Play, ArrowUpRight, ImageOff, ZoomIn } from "lucide-react";
 import HeroParallax from "@/components/HeroParallax";
 import { site } from "@/lib/site";
-
-// Load lightbox JS only when first opened — not part of the initial page bundle
-const Lightbox = dynamic(() => import("yet-another-react-lightbox"), {
-  ssr: false,
-  loading: () => (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/95">
-      <div className="w-8 h-8 border-2 border-gold/30 border-t-gold rounded-full animate-spin" />
-    </div>
-  ),
-});
 
 const photos = [
   {
