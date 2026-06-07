@@ -210,12 +210,8 @@ a[class*="btn"] {
 
 /* Page header hero common style */
 .page-hero {
-  padding-top: 8rem;
-  padding-bottom: 6rem;
-  min-height: 420px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding-top: 10rem;
+  padding-bottom: 7rem;
   background: radial-gradient(ellipse at top, #1a1200 0%, var(--ink) 60%);
   border-bottom: 1px solid var(--ink-400);
   position: relative;

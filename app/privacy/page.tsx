@@ -16,7 +16,7 @@ export default function PrivacyPage() {
         <HeroParallax />
         <div className="corner-tl" />
         <div className="corner-tr" />
-        <div className="max-w-3xl mx-auto">
+        <div className="relative z-10 max-w-3xl mx-auto">
           <Image
             src="/images/logo.png"
             alt="Franco Lung Wing Chun"
@@ -24,7 +24,7 @@ export default function PrivacyPage() {
             height={128}
             quality={100}
             priority
-            className="mx-auto mb-6 drop-shadow-[0_0_20px_rgba(201,168,76,0.25)]"
+            className="block mx-auto mb-6 drop-shadow-[0_0_20px_rgba(201,168,76,0.25)]"
           />
           <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-4">
             Legal
