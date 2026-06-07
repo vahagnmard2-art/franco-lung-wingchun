@@ -96,13 +96,6 @@ export default function Navbar() {
                 )}
               </Link>
             ))}
-            <a
-              href={site.phone.href}
-              className="hidden lg:flex items-center gap-1.5 font-cinzel text-[10px] tracking-widest text-white/45 hover:text-gold transition-colors duration-200"
-            >
-              <Phone size={11} aria-hidden="true" />
-              {site.phone.display}
-            </a>
             <Link href="/contact" className="btn-gold text-[10px] ml-2">
               Book a Class
             </Link>
