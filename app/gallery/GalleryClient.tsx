@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
-import type { SlideImage } from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Play, ArrowUpRight, ImageOff, ZoomIn } from "lucide-react";
 import HeroParallax from "@/components/HeroParallax";
@@ -266,25 +265,6 @@ export default function GalleryClient() {
             maxZoomPixelRatio: 4,
             zoomInMultiplier: 2,
             doubleClickMaxStops: 2,
-          }}
-          render={{
-            slide: ({ slide, rect }) => {
-              const s = slide as SlideImage;
-              return (
-                <div style={{ position: "relative", width: rect.width, height: rect.height }}>
-                  <Image
-                    fill
-                    alt={s.alt ?? ""}
-                    src={s.src}
-                    loading="eager"
-                    draggable={false}
-                    quality={90}
-                    sizes="(min-width: 1920px) 1920px, 100vw"
-                    style={{ objectFit: "contain" }}
-                  />
-                </div>
-              );
-            },
           }}
           styles={{
             container: { backgroundColor: "rgba(8,8,8,0.97)" },
