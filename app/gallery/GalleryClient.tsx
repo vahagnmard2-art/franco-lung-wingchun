@@ -72,6 +72,12 @@ const photos = [
     wide: false,
     caption: "Grandmaster Franco Lung",
   },
+  {
+    src: "/images/coaches-group.jpg",
+    alt: "Coach Patrick, Coach Howard, GM Lung, and Coach Ken at the school",
+    wide: true,
+    caption: "Coach Patrick, Coach Howard, GM Lung, Coach Ken",
+  },
 ];
 
 function PhotoCard({
