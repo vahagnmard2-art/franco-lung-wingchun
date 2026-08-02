@@ -274,30 +274,6 @@ export default function ContactClient() {
           </div>
         </div>
       </section>
-
-      {/* Google Map */}
-      <section className="bg-ink border-t border-ink-400">
-        <div className="max-w-6xl mx-auto px-6 py-14">
-          <div className="text-center mb-10">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-2">Location</p>
-            <h2 className="font-cinzel text-2xl font-bold text-white tracking-wide">
-              Find <span className="text-gold">Us</span>
-            </h2>
-            <p className="text-white/70 text-sm mt-2">{site.address.street}, {site.address.city}, {site.address.state} {site.address.zip}</p>
-          </div>
-          <div className="border border-ink-400 overflow-hidden" style={{ height: "420px" }}>
-            <iframe
-              title="Franco Lung Wing Chun Location"
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.85) contrast(0.9)" }}
-              loading="lazy"
-              referrerPolicy="strict-origin-when-cross-origin"
-              src={site.address.embedSrc}
-            />
-          </div>
-        </div>
-      </section>
     </>
   );
 }
