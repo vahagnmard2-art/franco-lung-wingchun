@@ -122,12 +122,6 @@ export default function AboutPage() {
                   designed to give students a clear, principled pathway from beginner to advanced
                   practitioner.
                 </p>
-                <blockquote className="my-10 px-8 py-6 border border-gold/30 bg-ink text-center">
-                  <p className="font-cinzel text-xl md:text-2xl text-white/80 tracking-wide italic leading-relaxed">
-                    &ldquo;Learning Has No Bounds.&rdquo;
-                  </p>
-                  <span className="gold-line-short mx-auto mt-4" />
-                </blockquote>
                 <p>
                   Today, GM Lung teaches students of all ages and backgrounds at his school in
                   Temple City, CA — children through the Little Dragon Program, adult beginners,
