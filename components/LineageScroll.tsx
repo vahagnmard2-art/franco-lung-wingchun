@@ -177,7 +177,7 @@ export default function LineageScroll() {
 
           {/* Disciples label */}
           <div className="lineage-node border border-gold/20 bg-ink-200 px-6 py-3 text-center w-full max-w-xs">
-            <p className="font-cinzel text-[9px] tracking-ultra text-gold/70 uppercase">
+            <p className="font-cinzel text-[9px] font-bold tracking-ultra text-gold uppercase">
               Disciples · Temple City
             </p>
           </div>
