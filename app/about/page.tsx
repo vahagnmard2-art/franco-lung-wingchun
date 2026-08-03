@@ -84,35 +84,6 @@ export default function AboutPage() {
                   className="object-cover object-top"
                 />
               </div>
-
-              {/* Quick facts */}
-              <div className="mt-6 space-y-4 border border-ink-400 p-6 bg-ink-200">
-                {[
-                  ["Born", "1954, Hong Kong"],
-                  ["Training Since", "Over 50 years"],
-                  ["In Los Angeles", "Since 2009"],
-                  ["Location", "Temple City, CA"],
-                  ["Style", "Wing Chun Kung Fu"],
-                ].map(([label, value]) => (
-                  <div key={label} className="flex justify-between items-start gap-4">
-                    <span className="font-cinzel text-[10px] tracking-widest text-gold/70 uppercase whitespace-nowrap">
-                      {label}
-                    </span>
-                    <span className="text-sm text-white/60 text-right">{value}</span>
-                  </div>
-                ))}
-                <div className="flex justify-between items-start gap-4">
-                  <span className="font-cinzel text-[10px] tracking-widest text-gold/70 uppercase whitespace-nowrap">
-                    Also Teaches
-                  </span>
-                  <span className="text-sm text-white/60 text-right">
-                    Chinese Internal Martial Arts &amp; Filipino Stick Fighting{" "}
-                    <Link href="/classes" className="text-gold hover:text-gold transition-colors whitespace-nowrap">
-                      → See Programs
-                    </Link>
-                  </span>
-                </div>
-              </div>
             </div>
 
             {/* Text */}
