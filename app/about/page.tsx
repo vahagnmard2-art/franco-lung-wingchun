@@ -71,10 +71,10 @@ export default function AboutPage() {
       {/* Biography */}
       <section className="section-pad bg-ink-100">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:items-stretch">
             {/* Portrait */}
             <div className="lg:col-span-2">
-              <div className="relative aspect-[3/4] overflow-hidden max-h-[60vh] md:max-h-none">
+              <div className="relative aspect-[3/4] lg:aspect-auto lg:h-full overflow-hidden max-h-[60vh] lg:max-h-none">
                 <Image
                   src="/images/sifu-portrait.jpg"
                   alt="Grandmaster Franco Lung"
