@@ -168,9 +168,6 @@ export default function LineageScroll() {
             <p className="font-cinzel text-base font-bold text-white tracking-wide relative z-10">
               Franco Lung
             </p>
-            <p className="font-inter text-xs text-white/30 mt-1 relative z-10">
-              Temple City, CA · Est. 2009
-            </p>
           </div>
 
           {/* Bottom connector */}
