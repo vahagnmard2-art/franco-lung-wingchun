@@ -145,7 +145,7 @@ export default function LineageScroll() {
               <div key={name} className="flex flex-col items-center">
                 <div className={`lineage-line ${connectorClass} h-6 w-px`} />
                 <div className="lineage-node border border-gold/20 bg-ink-200 p-2 text-center w-full">
-                  <p className="font-cinzel text-[9px] sm:text-[10px] text-white/70 tracking-wide leading-snug">
+                  <p className="font-cinzel text-[9px] sm:text-[10px] font-bold text-white/70 tracking-wide leading-snug">
                     {name}
                   </p>
                 </div>
