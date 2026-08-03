@@ -180,7 +180,7 @@ export default function ClassesPage() {
                         <p className="text-xs text-gold mt-0.5">{cls.time}</p>
                       </div>
                       {cls.age && (
-                        <span className="font-cinzel font-bold text-[9px] text-white/25 tracking-wide border border-ink-400 px-2 py-0.5 whitespace-nowrap flex-shrink-0 mt-0.5">
+                        <span className="font-cinzel font-extrabold text-[9px] text-white/70 tracking-wide border border-ink-400 px-2 py-0.5 whitespace-nowrap flex-shrink-0 mt-0.5">
                           {cls.age}
                         </span>
                       )}
@@ -193,7 +193,7 @@ export default function ClassesPage() {
                       <span className="text-sm text-gold/80 w-44 flex-shrink-0">{cls.time}</span>
                       <span className="text-sm text-white/60 flex-1">{cls.type}</span>
                       {cls.age && (
-                        <span className="font-cinzel font-bold text-[10px] text-white/30 tracking-wide border border-ink-400 px-2 py-0.5 whitespace-nowrap">
+                        <span className="font-cinzel font-extrabold text-[10px] text-white/60 tracking-wide border border-ink-400 px-2 py-0.5 whitespace-nowrap">
                           {cls.age}
                         </span>
                       )}
