@@ -74,9 +74,9 @@ const photos = [
   },
   {
     src: "/images/coaches-group.jpg",
-    alt: "Coach Patrick, Coach Howard, GM Lung, and Coach Ken at the school",
+    alt: "Coach Patrick, Coach Jason, GM Lung, and Coach Ken at the school",
     wide: true,
-    caption: "Coach Patrick, Coach Howard, GM Lung, Coach Ken",
+    caption: "Coach Patrick, Coach Jason, GM Lung, Coach Ken",
   },
 ];
 
