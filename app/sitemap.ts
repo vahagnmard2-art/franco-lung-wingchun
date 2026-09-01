@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://francolungwingchun.com";
+  const base = "https://www.francolungwingchunacademy.com";
   const now = new Date();
   const routes = [
     { path: "",         freq: "weekly"  as const, priority: 1.0 },

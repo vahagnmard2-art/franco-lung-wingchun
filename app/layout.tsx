@@ -26,7 +26,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://francolungwingchun.com"),
+  metadataBase: new URL("https://www.francolungwingchunacademy.com"),
   title: {
     default: "Grandmaster Franco Lung | Wing Chun Los Angeles",
     template: "%s | Franco Lung Wing Chun",

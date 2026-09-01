@@ -1,5 +1,5 @@
 export const site = {
-  url: "https://francolungwingchun.com",
+  url: "https://www.francolungwingchunacademy.com",
   phone: {
     raw: "+16262332882",
     display: "(626) 233-2882",

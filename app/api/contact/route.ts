@@ -104,7 +104,7 @@ export async function POST(req: NextRequest) {
             <p style="margin: 8px 0 0; white-space: pre-wrap;">${d.Message}</p>
           </div>
           <p style="margin-top: 24px; font-size: 12px; color: #999;">
-            Sent via francolungwingchun.com contact form
+            Sent via francolungwingchunacademy.com contact form
           </p>
         </div>
       `,
