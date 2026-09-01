@@ -48,7 +48,7 @@ const disciples = [
   { name: "Scottmann",       coach: false },
   { name: "David Wong",      coach: true  },
   { name: "Ken Wu",          coach: true  },
-  { name: "Michael Koster",  coach: false },
+  { name: "Michael Koster",  coach: true  },
 ];
 
 export default function LineagePage() {
