@@ -78,7 +78,7 @@ export default function ContactClient() {
   };
 
   const inputClass = (hasError?: boolean) =>
-    `w-full bg-ink border ${hasError ? "border-red-500/60" : "border-ink-400"} focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/35`;
+    `w-full bg-ink border ${hasError ? "border-red-500/60" : "border-ink-400"} focus:border-gold/60 focus-visible:ring-1 focus-visible:ring-gold/60 text-white/80 text-base sm:text-sm px-4 py-3 outline-none transition-colors placeholder:text-white/35`;
 
   return (
     <>

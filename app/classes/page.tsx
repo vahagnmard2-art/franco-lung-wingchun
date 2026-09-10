@@ -477,7 +477,7 @@ export default function ClassesPage() {
             <div className="gold-line mx-auto w-24 mt-6" />
           </div>
           <FAQAccordion />
-          <p className="text-center text-white/30 text-sm mt-10">
+          <p className="text-center text-white/60 text-sm mt-10">
             Don&apos;t see your question?{" "}
             <Link href="/contact" className="text-gold hover:text-gold transition-colors underline underline-offset-4">
               Send us a message

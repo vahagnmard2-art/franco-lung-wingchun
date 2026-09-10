@@ -129,7 +129,7 @@ export default function LineageScroll() {
             <p className="font-cinzel text-sm font-semibold text-white tracking-wide">
               Grandmaster Ip Man 葉問
             </p>
-            <p className="font-inter text-xs text-white/30 mt-1">Founder of Modern Wing Chun</p>
+            <p className="font-inter text-xs text-white/60 mt-1">Founder of Modern Wing Chun</p>
           </div>
 
           {/* Connector 1 */}

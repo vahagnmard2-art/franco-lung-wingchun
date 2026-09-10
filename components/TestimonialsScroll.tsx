@@ -99,7 +99,7 @@ export default function TestimonialsScroll() {
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between mt-8">
-          <p className="text-white/30 text-xs font-cinzel tracking-widest uppercase">
+          <p className="text-white/60 text-xs font-cinzel tracking-widest uppercase">
             ← Drag to explore
           </p>
           <a
