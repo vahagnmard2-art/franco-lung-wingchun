@@ -105,7 +105,7 @@ export default function Navbar() {
               <span className="font-cinzel text-lg tracking-ultra text-white group-hover:text-gold transition-colors duration-200">
                 FRANCO <span className="text-gold">LUNG</span>
               </span>
-              <span className="font-inter text-[9px] tracking-[0.45em] text-white/60 uppercase group-hover:text-gold transition-colors duration-200">
+              <span className="font-inter text-[10px] tracking-[0.45em] text-white/60 uppercase group-hover:text-gold transition-colors duration-200">
                 Wing Chun
               </span>
             </div>

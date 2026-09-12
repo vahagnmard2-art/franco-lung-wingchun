@@ -107,7 +107,7 @@ export default function LineagePage() {
                   {/* Header */}
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-3 mb-1">
-                      <span className="font-cinzel text-[9px] tracking-ultra text-gold/70 uppercase border border-gold/20 px-2 py-0.5">
+                      <span className="font-cinzel text-[10px] tracking-ultra text-gold/70 uppercase border border-gold/20 px-2 py-0.5">
                         {m.label}
                       </span>
                     </div>
@@ -167,7 +167,7 @@ export default function LineagePage() {
                   {d.name}
                 </span>
                 {d.coach && (
-                  <span className="font-cinzel text-[8px] tracking-ultra text-gold uppercase border border-gold/40 px-2 py-0.5 whitespace-nowrap flex-shrink-0">
+                  <span className="font-cinzel text-[10px] tracking-ultra text-gold uppercase border border-gold/40 px-2 py-0.5 whitespace-nowrap flex-shrink-0">
                     Coach
                   </span>
                 )}

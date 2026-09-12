@@ -94,7 +94,7 @@ export default function TestimonialsScroll() {
               &ldquo;{t.text}&rdquo;
             </p>
             <span className="gold-line-short !w-8 mb-3" />
-            <span className="font-cinzel text-[9px] tracking-ultra text-gold/70 uppercase">
+            <span className="font-cinzel text-[10px] tracking-ultra text-gold/70 uppercase">
               {t.attribution}
             </span>
           </div>

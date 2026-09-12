@@ -125,7 +125,7 @@ export default function LineageScroll() {
 
           {/* Ip Man */}
           <div className="lineage-node border border-gold/30 bg-ink-200 px-4 sm:px-8 py-4 text-center w-full max-w-xs">
-            <p className="font-cinzel text-[9px] tracking-ultra text-gold/70 uppercase mb-1">Origin</p>
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold/70 uppercase mb-1">Origin</p>
             <p className="font-cinzel text-sm font-semibold text-white tracking-wide">
               Grandmaster Ip Man 葉問
             </p>
@@ -145,7 +145,7 @@ export default function LineageScroll() {
               <div key={name} className="flex flex-col items-center">
                 <div className={`lineage-line ${connectorClass} h-6 w-px`} />
                 <div className="lineage-node border border-gold/20 bg-ink-200 p-2 text-center w-full">
-                  <p className="font-cinzel text-[9px] sm:text-[10px] font-bold text-white/70 tracking-wide leading-snug">
+                  <p className="font-cinzel text-[10px] font-bold text-white/70 tracking-wide leading-snug">
                     {name}
                   </p>
                 </div>
@@ -162,7 +162,7 @@ export default function LineageScroll() {
           <div className="lineage-node relative border border-gold bg-ink-200 px-6 sm:px-10 py-5 text-center w-full max-w-xs">
             {/* Glow starts invisible, GSAP fades it in */}
             <div className="lineage-glow absolute inset-0 opacity-0 pointer-events-none shadow-[0_0_40px_rgba(201,168,76,0.18)] rounded-sm" />
-            <p className="font-cinzel text-[9px] tracking-ultra text-gold uppercase mb-1 relative z-10">
+            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-1 relative z-10">
               Grandmaster
             </p>
             <p className="font-cinzel text-base font-bold text-white tracking-wide relative z-10">
@@ -177,7 +177,7 @@ export default function LineageScroll() {
 
           {/* Disciples label */}
           <div className="lineage-node border border-gold/20 bg-ink-200 px-6 py-3 text-center w-full max-w-xs">
-            <p className="font-cinzel text-[9px] font-bold tracking-ultra text-gold uppercase">
+            <p className="font-cinzel text-[10px] font-bold tracking-ultra text-gold uppercase">
               Disciples · Temple City
             </p>
           </div>

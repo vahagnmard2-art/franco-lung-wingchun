@@ -129,7 +129,7 @@ export default function ClassesPage() {
                         <p className="text-xs text-gold mt-0.5">{cls.time}</p>
                       </div>
                       {cls.age && (
-                        <span className="font-cinzel font-extrabold text-[9px] text-white/70 tracking-wide border border-ink-400 px-2 py-0.5 whitespace-nowrap flex-shrink-0 mt-0.5">
+                        <span className="font-cinzel font-extrabold text-[10px] text-white/70 tracking-wide border border-ink-400 px-2 py-0.5 whitespace-nowrap flex-shrink-0 mt-0.5">
                           {cls.age}
                         </span>
                       )}
@@ -337,8 +337,8 @@ export default function ClassesPage() {
               <div className="space-y-5">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 border border-gold/30 px-2 py-1 text-center min-w-[4.5rem]">
-                    <p className="font-cinzel text-[9px] tracking-wide text-gold uppercase leading-tight">1 Day</p>
-                    <p className="font-cinzel text-[9px] tracking-wide text-white/60 uppercase leading-tight">Notice</p>
+                    <p className="font-cinzel text-[10px] tracking-wide text-gold uppercase leading-tight">1 Day</p>
+                    <p className="font-cinzel text-[10px] tracking-wide text-white/60 uppercase leading-tight">Notice</p>
                   </div>
                   <div>
                     <p className="font-cinzel text-sm text-white tracking-wide">No Charge</p>
@@ -348,8 +348,8 @@ export default function ClassesPage() {
                 <div className="gold-line-short" />
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 border border-gold/20 px-2 py-1 text-center min-w-[4.5rem]">
-                    <p className="font-cinzel text-[9px] tracking-wide text-white/60 uppercase leading-tight">Same</p>
-                    <p className="font-cinzel text-[9px] tracking-wide text-white/60 uppercase leading-tight">Day</p>
+                    <p className="font-cinzel text-[10px] tracking-wide text-white/60 uppercase leading-tight">Same</p>
+                    <p className="font-cinzel text-[10px] tracking-wide text-white/60 uppercase leading-tight">Day</p>
                   </div>
                   <div>
                     <p className="font-cinzel text-sm text-white tracking-wide">Full Fee Charged</p>
