@@ -5,7 +5,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast, Toaster } from "sonner";
-import { MapPin, Phone, Instagram, Facebook, Youtube, Send } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { MapPin, Phone, Instagram, Facebook, Youtube, Send, Clock } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui/button";
@@ -122,11 +124,39 @@ export default function ContactClient() {
 
             {/* Contact info */}
             <div className="lg:col-span-2">
+              {/* GM Lung — a face to meet, not just a form */}
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-16 h-16 rounded-full overflow-hidden border border-gold/40 flex-shrink-0 relative">
+                  <Image
+                    src="/images/sifu-portrait.jpg"
+                    alt="Grandmaster Franco Lung"
+                    fill
+                    sizes="64px"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div>
+                  <p className="font-cinzel text-sm text-white tracking-wide">Grandmaster Franco Lung</p>
+                  <p className="text-xs text-white/60">You&apos;ll train with Sifu himself — not an assistant.</p>
+                </div>
+              </div>
+
               <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-6">
                 Information
               </p>
 
               <div className="space-y-6 mb-10">
+                {/* Phone — the most prominent item, not a small label */}
+                <a href={site.phone.href} onClick={() => trackEvent("phone_click", { source: "contact_page" })} className="flex items-center gap-4 group">
+                  <div className="w-11 h-11 border border-gold/30 flex items-center justify-center flex-shrink-0 group-hover:border-gold group-hover:bg-gold/10 transition-colors">
+                    <Phone size={16} className="text-gold" />
+                  </div>
+                  <div>
+                    <p className="font-cinzel text-[10px] tracking-widest text-gold uppercase mb-0.5">Call or Text</p>
+                    <p className="font-cinzel text-xl text-white group-hover:text-gold transition-colors tracking-wide">{site.phone.display}</p>
+                  </div>
+                </a>
+
                 <a
                   href={site.address.mapsHref}
                   target="_blank"
@@ -144,15 +174,33 @@ export default function ContactClient() {
                   </div>
                 </a>
 
-                <a href={site.phone.href} className="flex items-start gap-4 group">
-                  <div className="w-9 h-9 border border-gold/30 flex items-center justify-center flex-shrink-0 group-hover:border-gold transition-colors">
-                    <Phone size={14} className="text-gold" />
+                <div className="flex items-start gap-4">
+                  <div className="w-9 h-9 border border-gold/30 flex items-center justify-center flex-shrink-0">
+                    <Clock size={14} className="text-gold" />
                   </div>
                   <div>
-                    <p className="font-cinzel text-[10px] tracking-widest text-gold uppercase mb-1">Phone</p>
-                    <p className="text-sm text-white/75 group-hover:text-white/95 transition-colors">{site.phone.display}</p>
+                    <p className="font-cinzel text-[10px] tracking-widest text-gold uppercase mb-1">Class Hours</p>
+                    <p className="text-sm text-white/75 leading-relaxed">
+                      Sat &amp; Sun · Wed &amp; Fri evenings<br />
+                      <Link href="/classes" className="text-gold/80 hover:text-gold transition-colors underline underline-offset-4">
+                        See full schedule
+                      </Link>
+                    </p>
                   </div>
-                </a>
+                </div>
+              </div>
+
+              {/* Compact embedded map */}
+              <div className="border border-ink-400 overflow-hidden mb-10" style={{ height: "180px" }}>
+                <iframe
+                  title="Franco Lung Wing Chun Location"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.85) contrast(0.9)" }}
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  src={site.address.embedSrc}
+                />
               </div>
 
               <span className="gold-line-short mb-8" />

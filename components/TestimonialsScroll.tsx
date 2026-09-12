@@ -1,8 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion } from "framer-motion";
-import { Star, ArrowUpRight } from "lucide-react";
+import { Star, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { site } from "@/lib/site";
 
 const testimonials = [
@@ -30,6 +29,14 @@ const testimonials = [
 
 export default function TestimonialsScroll() {
   const trackRef = useRef<HTMLDivElement>(null);
+
+  const scrollByCard = (dir: 1 | -1) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.querySelector<HTMLElement>("[data-testimonial-card]");
+    const amount = (card?.offsetWidth ?? 320) + 20; // card width + gap
+    track.scrollBy({ left: dir * amount, behavior: "smooth" });
+  };
 
   return (
     <section className="section-pad bg-ink-100 overflow-hidden">
@@ -63,45 +70,57 @@ export default function TestimonialsScroll() {
         </div>
       </div>
 
-      {/* Horizontal drag-scroll track — overflows viewport intentionally */}
+      {/* Horizontal scroll track — native scroll so it's reachable by touch, mouse-drag-free
+          trackpad/wheel, and keyboard (via the Prev/Next buttons below); overflows viewport
+          intentionally */}
       <div
         ref={trackRef}
-        className="relative cursor-grab active:cursor-grabbing select-none"
+        role="region"
+        aria-label="Student testimonials"
+        className="relative flex gap-5 px-6 md:px-12 pb-4 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        <motion.div
-          drag="x"
-          dragConstraints={trackRef}
-          dragTransition={{ bounceStiffness: 200, bounceDamping: 30 }}
-          className="flex gap-5 px-6 md:px-12 pb-4 w-max"
-          style={{ touchAction: "pan-y" }}
-        >
-          {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className="w-[85vw] sm:w-[440px] flex-shrink-0 card-base p-8 flex flex-col pointer-events-none"
-            >
-              <div className="flex gap-1 mb-5">
-                {Array.from({ length: t.stars }).map((_, j) => (
-                  <Star key={j} size={13} className="text-gold fill-gold" />
-                ))}
-              </div>
-              <p className="text-white/80 text-sm leading-relaxed flex-1 mb-6 italic pointer-events-auto select-text">
-                &ldquo;{t.text}&rdquo;
-              </p>
-              <span className="gold-line-short !w-8 mb-3" />
-              <span className="font-cinzel text-[9px] tracking-ultra text-gold/70 uppercase pointer-events-auto select-text">
-                {t.attribution}
-              </span>
+        {testimonials.map((t, i) => (
+          <div
+            key={i}
+            data-testimonial-card
+            className="w-[85vw] sm:w-[440px] flex-shrink-0 snap-start card-base p-8 flex flex-col"
+          >
+            <div className="flex gap-1 mb-5">
+              {Array.from({ length: t.stars }).map((_, j) => (
+                <Star key={j} size={13} className="text-gold fill-gold" />
+              ))}
             </div>
-          ))}
-        </motion.div>
+            <p className="text-white/80 text-sm leading-relaxed flex-1 mb-6 italic">
+              &ldquo;{t.text}&rdquo;
+            </p>
+            <span className="gold-line-short !w-8 mb-3" />
+            <span className="font-cinzel text-[9px] tracking-ultra text-gold/70 uppercase">
+              {t.attribution}
+            </span>
+          </div>
+        ))}
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between mt-8">
-          <p className="text-white/60 text-xs font-cinzel tracking-widest uppercase">
-            ← Drag to explore
-          </p>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => scrollByCard(-1)}
+              aria-label="Previous testimonial"
+              className="w-8 h-8 flex items-center justify-center border border-ink-400 hover:border-gold/60 text-gold transition-colors"
+            >
+              <ChevronLeft size={14} aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollByCard(1)}
+              aria-label="Next testimonial"
+              className="w-8 h-8 flex items-center justify-center border border-ink-400 hover:border-gold/60 text-gold transition-colors"
+            >
+              <ChevronRight size={14} aria-hidden="true" />
+            </button>
+          </div>
           <a
             href={site.reviews.url}
             target="_blank"

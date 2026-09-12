@@ -95,6 +95,17 @@ a[class*="btn"] {
   }
 }
 
+/* Reserves clearance under all main content so the fixed MobileCallBar never
+   overlaps the last thing on screen at any scroll position, mobile-only. */
+.pb-callbar-safe {
+  padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+}
+@media (min-width: 640px) {
+  .pb-callbar-safe {
+    padding-bottom: 0;
+  }
+}
+
 @media (min-width: 768px) {
   .section-pad {
     padding-top: 7rem;

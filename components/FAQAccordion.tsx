@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: "What age can children start?",
-    a: "Children can join the Little Dragon Program from age 5. The program is structured to be age-appropriate — fun, safe, and focused on building focus, discipline, and confidence alongside the martial arts fundamentals.",
+    a: "Kids classes run ages 6–10 and our Teen Class runs ages 11–16 — see the full schedule above for days and times. Both are structured to be age-appropriate — fun, safe, and focused on building focus, discipline, and confidence alongside the martial arts fundamentals.",
   },
   {
     q: "Is Wing Chun effective for real self-defense?",

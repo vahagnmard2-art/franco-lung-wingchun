@@ -154,7 +154,7 @@ export default function RootLayout({
           <header>
             <Navbar />
           </header>
-          <main id="main-content" className="relative">
+          <main id="main-content" className="relative pb-callbar-safe">
             <PageTransition>{children}</PageTransition>
           </main>
           <Footer />

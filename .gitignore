@@ -30,6 +30,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# impeccable design-critique snapshots (local tooling, not project source)
+.impeccable/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

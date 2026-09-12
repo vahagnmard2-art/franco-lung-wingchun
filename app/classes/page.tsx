@@ -16,7 +16,7 @@ const faqSchema = {
   "@type": "FAQPage",
   mainEntity: [
     { "@type": "Question", name: "Do I need any experience to start?", acceptedAnswer: { "@type": "Answer", text: "None at all. GM Lung's system is specifically designed to take complete beginners and guide them step by step." } },
-    { "@type": "Question", name: "What age can children start?", acceptedAnswer: { "@type": "Answer", text: "Children can join the Little Dragon Program from age 5." } },
+    { "@type": "Question", name: "What age can children start?", acceptedAnswer: { "@type": "Answer", text: "Kids classes run ages 6–10 and our Teen Class runs ages 11–16 — see the schedule for days and times." } },
     { "@type": "Question", name: "Is Wing Chun effective for real self-defense?", acceptedAnswer: { "@type": "Answer", text: "Yes — Wing Chun was designed for close-range, practical confrontations. GM Lung's system develops the internal dimension, making techniques work regardless of size or strength." } },
     { "@type": "Question", name: "What should I wear to class?", acceptedAnswer: { "@type": "Answer", text: "There is no formal uniform requirement to start. Flat-soled shoes are recommended." } },
     { "@type": "Question", name: "What is the difference between group classes and private lessons?", acceptedAnswer: { "@type": "Answer", text: "Group classes develop Chi Sau with partners. Private lessons are one-on-one with GM Lung — faster progress and personal correction." } },
@@ -24,57 +24,6 @@ const faqSchema = {
     { "@type": "Question", name: "How long until I can defend myself?", acceptedAnswer: { "@type": "Answer", text: "Practical self-defense awareness begins almost immediately. Most students feel a meaningful shift in their awareness and structure within the first few months of consistent training." } },
   ],
 };
-
-const programs = [
-  {
-    title: "Children's Little Dragon Program",
-    age: "Ages 5–12",
-    desc: "A structured, fun program designed specifically for children. Students develop focus, discipline, coordination, and confidence through age-appropriate Wing Chun training. Grandmaster Lung's patient and encouraging teaching style makes this an ideal martial arts foundation for young practitioners. Many parents report improvements in focus, respect, and self-confidence within the first few months.",
-    includes: [
-      "Age-appropriate Wing Chun fundamentals",
-      "Focus and discipline training",
-      "Coordination and body awareness",
-      "Confidence and character building",
-      "Safe, supervised partner drills",
-    ],
-  },
-  {
-    title: "Adult — New Students",
-    age: "No experience required",
-    desc: "Beginners are always welcome. GM Lung's system is specifically structured to guide new students clearly from zero to competence. You will learn the foundational forms, structures, and principles of Wing Chun in a welcoming environment with no prior experience required.",
-    includes: [
-      "Siu Nim Tao (first form)",
-      "Structural alignment and stance",
-      "Entry-level Chi Sau (sticky hands)",
-      "Core Wing Chun principles",
-      "Partner practice with supervision",
-    ],
-  },
-  {
-    title: "Adult — Experienced Students",
-    age: "Prior Wing Chun background",
-    desc: "For students who come with prior Wing Chun training — whether from another lineage or school — GM Lung offers classes that meet you at your current level and begin introducing the deeper principles of his 3-level system.",
-    includes: [
-      "Advanced forms and applications",
-      "Upgraded Chi Sau methodology",
-      "Six Harmony Theory application",
-      "Gong Lik development work",
-      "3-Gate Defense and Empty Door Theory",
-    ],
-  },
-  {
-    title: "Filipino Stick Fighting",
-    age: "All experience levels",
-    desc: "Grandmaster Lung also offers instruction in Filipino Stick Fighting (Arnis/Eskrima/Kali) — one of the world's most practical and battle-tested weapons systems. These classes complement Wing Chun training and are open to students of all backgrounds.",
-    includes: [
-      "Single and double stick technique",
-      "Blade and weapon awareness",
-      "Empty-hand transitions",
-      "Coordination and footwork",
-      "Combat-applicable drills",
-    ],
-  },
-];
 
 const schedule = [
   {
@@ -342,57 +291,6 @@ export default function ClassesPage() {
             </div>
             <p className="text-white/65 text-xs text-center mt-4">
               Weapons training is available to qualifying students at GM Lung&apos;s discretion.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Programs */}
-      <section className="section-pad bg-ink-100">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
-              What We Offer
-            </p>
-            <h2 className="font-cinzel text-3xl font-bold text-white tracking-wide">
-              All <span className="text-gold">Programs</span>
-            </h2>
-            <div className="gold-line mx-auto w-24 mt-6" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {programs.map((p) => (
-              <div key={p.title} className="card-base p-8">
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <h3 className="font-cinzel text-base font-semibold text-white tracking-wide leading-snug">
-                    {p.title}
-                  </h3>
-                  <span className="font-cinzel text-[9px] tracking-wide text-gold/70 border border-gold/20 px-2 py-0.5 whitespace-nowrap flex-shrink-0">
-                    {p.age}
-                  </span>
-                </div>
-                <span className="gold-line-short mb-4" />
-                <p className="text-white/60 text-sm leading-relaxed mb-5 mt-4">{p.desc}</p>
-                <ul className="space-y-2">
-                  {p.includes.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-xs text-white/60">
-                      <span className="w-1 h-1 bg-gold rounded-full mt-1.5 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Button asChild><Link href="/contact">Contact to Enroll</Link></Button>
-            <p className="text-white/65 text-xs mt-5">
-              New to Wing Chun? You&apos;re welcome to{" "}
-              <Link href="/contact" className="text-gold/70 hover:text-gold transition-colors underline underline-offset-4">
-                contact us to arrange a first visit
-              </Link>{" "}
-              before committing.
             </p>
           </div>
         </div>
