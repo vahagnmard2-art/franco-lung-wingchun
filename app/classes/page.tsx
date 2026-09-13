@@ -296,6 +296,55 @@ export default function ClassesPage() {
         </div>
       </section>
 
+      {/* Filipino Stick Fighting */}
+      <section className="section-pad bg-ink-100">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-10 items-start">
+            <div className="md:col-span-3">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-3">
+                Also Offered
+              </p>
+              <h2 className="font-cinzel text-2xl md:text-3xl font-bold text-white tracking-wide mb-2">
+                Filipino Stick <span className="text-gold">Fighting</span>
+              </h2>
+              <span className="gold-line-short mb-6 mt-4" />
+              <p className="text-white/70 text-sm leading-relaxed">
+                Grandmaster Lung also offers instruction in Filipino Stick Fighting
+                (Arnis/Eskrima/Kali) — one of the world&apos;s most practical and
+                battle-tested weapons systems. These sessions complement Wing Chun training
+                and are open to students of all backgrounds and experience levels.
+              </p>
+              <p className="text-white/60 text-xs mt-5 leading-relaxed">
+                Arranged directly with Sifu Lung, similar to private lessons.{" "}
+                <Link href="/contact" className="text-gold/80 hover:text-gold transition-colors underline underline-offset-4">
+                  Contact us
+                </Link>{" "}
+                to ask about scheduling.
+              </p>
+            </div>
+            <div className="md:col-span-2 card-base p-6">
+              <p className="font-cinzel text-[10px] tracking-ultra text-gold/70 uppercase mb-4">
+                What&apos;s Covered
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "Single and double stick technique",
+                  "Blade and weapon awareness",
+                  "Empty-hand transitions",
+                  "Coordination and footwork",
+                  "Combat-applicable drills",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm text-white/70">
+                    <CheckCircle2 size={14} className="text-gold/70 mt-0.5 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Private lesson policy */}
       <section className="section-pad bg-ink">
         <div className="max-w-3xl mx-auto px-6">
