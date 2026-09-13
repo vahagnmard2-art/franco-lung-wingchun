@@ -5,6 +5,7 @@ import { site } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import FadeIn from "@/components/FadeIn";
 import HeroReveal from "@/components/HeroReveal";
+import HeroVideo from "@/components/HeroVideo";
 import TestimonialsScroll from "@/components/TestimonialsScroll";
 
 
@@ -13,18 +14,9 @@ export default function HomePage() {
     <>
       {/* ─── HERO ──────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[100svh] flex items-center justify-center">
-        {/* Background — a real photo of the training space, not a heavy autoplay
-            video. Isolated so overflow:hidden here can't trap fixed elements. */}
+        {/* Background — isolated so overflow:hidden here can't trap fixed elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <Image
-            src="/images/wooden-dummy.jpg"
-            alt=""
-            aria-hidden="true"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-top"
-          />
+          <HeroVideo />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,_rgba(30,20,0,0.72)_0%,_rgba(8,8,8,0.88)_65%)]" />
         </div>
         <div className="corner-tl" />
