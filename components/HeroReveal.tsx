@@ -8,12 +8,6 @@ export default function HeroReveal() {
 
   return (
     <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-      <p
-        className="font-cinzel text-[10px] tracking-ultra text-gold uppercase mb-8"
-        style={{ opacity: 0, animation: "heroFadeSlideUp 0.5s cubic-bezier(0.25,0.1,0.25,1) 0.45s both" }}
-      >
-        Grandmaster · Temple City, CA
-      </p>
       <h1
         className="font-cinzel font-black tracking-ultra leading-none mb-8 hero-main-title"
         style={{ fontSize: "clamp(3.5rem, 12vw, 7.5rem)" }}
