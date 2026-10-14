@@ -84,6 +84,12 @@ const photos = [
     wide: false,
     caption: "Franco Lung Wing Chun Sign Boards",
   },
+  {
+    src: "/images/level-1-certificates.jpg",
+    alt: "Students receiving Level 1 certificates from GM Lung",
+    wide: false,
+    caption: "Students Receiving Level 1 Certificates",
+  },
 ];
 
 function PhotoCard({
