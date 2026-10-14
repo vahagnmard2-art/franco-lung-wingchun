@@ -25,6 +25,11 @@ const testimonials = [
     text: "The depth of knowledge GM Lung brings to every class is remarkable. I've trained at several Wing Chun schools and this is something entirely different. The internal principles he teaches changed how I understand the entire art.",
     attribution: "— Experienced Wing Chun Student",
   },
+  {
+    stars: 5,
+    text: "I've been training at Franco Lung Wing Chun Academy for about a year now, and I'm really glad I found it. Sifu's teaching style is what stands out most. He explains things clearly and breaks techniques down in a way that makes sense, whether you're new or have been training for a while. The lessons are also well structured, so every class has a purpose, and you can feel yourself improving over time instead of just repeating random drills. If you're looking for Wing Chun classes, I'd highly recommend giving this academy a try.",
+    attribution: "— Student, Training One Year",
+  },
 ];
 
 export default function TestimonialsScroll() {
