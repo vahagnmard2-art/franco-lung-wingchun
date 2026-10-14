@@ -78,6 +78,12 @@ const photos = [
     wide: true,
     caption: "Coach Patrick, Coach Jason, GM Lung, Coach Ken",
   },
+  {
+    src: "/images/sign-board.jpg",
+    alt: "Custom Franco Lung Wing Chun engraved wooden sign boards",
+    wide: false,
+    caption: "Franco Lung Wing Chun Sign Boards",
+  },
 ];
 
 function PhotoCard({
